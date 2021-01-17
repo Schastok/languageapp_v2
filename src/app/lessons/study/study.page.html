@@ -1,0 +1,86 @@
+<!--
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+    <div class="logoclass">
+    <img class='logo' src="assets/images/logo2.png">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-content>
+
+  <div class='headerimage'>
+    <img class='conversation' src="assets/images/study.jpg">
+    </div>
+
+  <ion-grid class="buttongrid">
+    <ion-row>
+      <ion-col [routerLink]="['view_set']">
+        <ion-card class="card1">
+       <ion-icon name="cloud-upload"></ion-icon>
+       <ion-card-header>
+         <ion-card-title></ion-card-title>
+       </ion-card-header>
+       <ion-card-content>
+         study
+       </ion-card-content>
+     </ion-card>
+      </ion-col>
+      <ion-col [routerLink]="['do_set']">
+          <ion-card class="card1">
+         <ion-icon name="cloud-download"></ion-icon>
+         <ion-card-header>
+           <ion-card-title></ion-card-title>
+         </ion-card-header>
+         <ion-card-content>
+           test yourself
+         </ion-card-content>
+       </ion-card>
+      </ion-col>
+        </ion-row>
+              </ion-grid>
+  <ion-list>
+
+    <ion-item *ngFor="let card of flipcardlist">
+      <ion-thumbnail slot="start">
+        <ion-icon name="bulb" class="bulbclass"></ion-icon>
+      </ion-thumbnail>
+      <ion-label>
+        <h2 class="question">{{ card.Question }}</h2>
+        <p class="answer">{{ card.Answers }}</p>
+      </ion-label>
+    </ion-item>
+
+
+  </ion-list>
+
+</ion-content>
+ -->
+
+ <ion-content>
+
+
+   <div class='backgroundimage'>
+ <img class='wave'  src="/assets/images/background.svg"/>
+<img class='headerimage'  src="/assets/images/flipcard_headerimage.svg"/>
+   </div>
+
+ <h2>Flipcards</h2>
+
+
+<div class='desciption'>Select if you want to study the flipcards or let the app quiz you on the flipcards</div>
+
+ <div class='blueline'></div>
+<div class='content'></div>
+<div class="wrapper">
+
+  <div class="box1" [routerLink]="['view_set']"><span class="boxname">Study</span></div>
+  <div class="box2"  [routerLink]="['do_set']" ><span class="boxname">Quiz</span></div>
+</div>
+
+
+ </ion-content>

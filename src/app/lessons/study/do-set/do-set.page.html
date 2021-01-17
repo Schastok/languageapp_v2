@@ -1,0 +1,81 @@
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
+
+
+
+<ion-content *ngIf="!finished">
+  <div class='backgroundimage'>
+<img class='wave'  src="/assets/images/background.svg"/>
+
+  </div>
+<ion-list>
+
+  <ion-item lines="none" *ngFor="let card of flipcardset">
+
+
+
+    <ion-card *ngIf="card.flipcardID === showid && showside === 0" class='animated bounceInRight'>
+        <!--    <img src="./madison.jpg" /> -->
+        <ion-card-header *ngIf="card.image === ''">
+          <img class='imgstandard'  src="assets/images/flipcard_background.jpg" (click)="changeshowside($event)"/>
+          <ion-card-title *ngIf="card.image === ''" (click)="changeshowside($event)"> {{ card.Question }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-header *ngIf="card.image != ''" >
+          <img class = 'imgindiv' *ngIf="card.image != ''" [src]="'https://www.e-fluent.com/media/' + card.image" (click)="changeshowside($event)"/>
+          <h4 *ngIf="card.image != ''" (click)="changeshowside($event)"> {{ card.Question }}</h4>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+                <ion-item *ngFor="let answer of card.Alt_Answers">
+                  <ion-label class='answ' (click)="checkanswer(answer, $event, card.Answers)">
+                    <h2 ticked='nein'>{{answer}}</h2>
+                  </ion-label>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+
+          <ion-card *ngIf="card.flipcardID === showid && showside === 1" class='animated flipInY' (click)="submitanswer(card.ProgressID, card.Status, $event)" >
+              <!--    <img src="./madison.jpg" /> -->
+              <ion-card-header *ngIf="card.image === ''">
+                <img class='imgstandard'  src="assets/images/flipcard_background.jpg"/>
+                <ion-card-title *ngIf="card.image === ''"> {{ card.Question }}</ion-card-title>
+              </ion-card-header>
+              <ion-card-header *ngIf="card.image != ''">
+                <img class = 'imgindiv' *ngIf="card.image != ''" [src]="'https://www.e-fluent.com/media/' + card.image"/>
+                <ion-card-title *ngIf="card.image === ''"> {{ card.Question }}</ion-card-title>
+                <h4 *ngIf="card.image != ''"> {{ card.Question }}</h4>
+              </ion-card-header>
+                  <ion-card-content>
+
+                    <ion-list>
+                      <ion-item *ngFor="let answer of card.Answers">
+                        <ion-label class='answ' >
+                          <h2>{{answer}}</h2>
+                        </ion-label>
+                      </ion-item>
+                    </ion-list>
+                    <div align="right">
+                    </div>
+                  </ion-card-content>
+                </ion-card>
+
+  </ion-item>
+
+
+</ion-list>
+
+</ion-content>
+
+<ion-content *ngIf="finished" id="finished" >
+  <div class='backgroundimage'>
+<img class='wave'  src="/assets/images/background.svg"/>
+
+  </div>
+ <div class='congrats'>
+  <h1>Congrats!</h1>
+  <h2>You finished the unit!</h2>
+
+</div>

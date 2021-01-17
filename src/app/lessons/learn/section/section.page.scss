@@ -1,0 +1,125 @@
+
+ion-content{
+
+//  --background: rgb(29,253,220);
+//  --background: linear-gradient(to top, rgba(29,253,220,1) 28%, rgba(69,116,252,1) 100%);
+--background: #001124;
+
+//--background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,168,252,1) 100%);
+}
+
+ion-slides{
+  --bullet-background: rgba(255, 255, 255, 1)!important;
+  --bullet-background-active: white;
+  //min-height: -webkit-fill-available;
+  min-height: -webkit-fill-available;
+
+
+
+}
+
+ion-slide{
+  position: relative;
+
+  max-width: 100%!important;
+  padding-top: 20%;
+  padding-bottom: 20%;
+  padding-left: 5%;
+  padding-right: 5%;
+  overflow: scroll !important;
+  //overflow-y: scroll;
+  display: block;
+  max-height: fit-content!important;
+  min-height: 200vh;
+
+
+}
+video{
+  max-width: 100%!important;
+}
+
+.backgroundimage{
+  position: absolute;
+}
+
+.swiper-pagination-bullet{
+
+  offset: 1!important;
+}
+
+.logo{
+  height: 50px;
+  width: auto;
+}
+
+.logoclass{
+  text-align: center;
+}
+
+
+.ion-padding{
+  position: fixed;
+  --padding-top: 0px;
+
+
+}
+
+
+
+.slide{
+  //margin-top: 20%;
+}
+
+
+#htmlslide{
+  //padding: 5%;
+  //background-color: #fe5f55; // for styling only
+  font-family: Avenir Next LT Pro;
+  //font-family: Georgia, serif;
+  //font-size: 24px;
+  //font-size: 1.5em;
+  letter-spacing: 0.2px;
+  word-spacing: 0.4px;
+  color: #FFFFFF;
+  font-weight: 400;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  //padding-left: 5%;
+}
+
+img{
+  transform: translateY(-5%);
+}
+ion-toolbar{
+
+//  --background: rgb(29,253,220);
+//  --background: linear-gradient(to top, rgba(29,253,220,1) 28%, rgba(69,116,252,1) 100%);
+--background: rgb(40, 47, 57);
+//--background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,168,252,1) 100%);
+}
+
+ion-back-button{
+  color: white;
+}
+
+#nav{
+    text-align: center;
+    width: 100%;
+}
+
+
+
+.navigation{
+
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-bottom: 10%;
+  margin-top: 10%;
+  width: 30%;
+  max-width: 200px;
+  background-color:#10D398;
+  border-radius:25px;
+
+}

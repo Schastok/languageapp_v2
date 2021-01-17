@@ -1,0 +1,70 @@
+
+
+<ion-content >
+
+  <div class='backgroundimage'>
+<img class='wave'  src="/assets/images/background.svg"/>
+<img  *ngIf="quizType === 1 || quizType === 2 " class='headerimage'  src="/assets/images/fillthegap_icon.svg"/>
+<img  *ngIf="quizType === 6" class='headerimage'  src="/assets/images/multiplechoice_icon.svg"/>
+<img  *ngIf="quizType === 3" class='headerimage'  src="/assets/images/qa_icon.svg"/>
+<img  *ngIf="quizType === 7" class='headerimage'  src="/assets/images/container_icon.svg"/>
+  </div>
+
+
+  <h2>{{ quizName }}</h2>
+ <div class='desciption'>  {{ quizDescription }}</div>
+
+  <div class='blueline'></div>
+
+
+
+
+
+  <div *ngIf='!showsolution' class='quizframe' >
+    <div class='content'>Quiz</div>
+<form (ngSubmit)="submit($event)">
+
+
+
+  <div *ngIf="html" class="quizcontent" [innerHTML]="html | safe: 'html'"> </div>
+
+<div *ngIf='quizType == 1' class='answeropts'  id='answeropt'>
+  <div *ngFor='let opt of answeropts; let i = index'>
+    <div class='dragbadge' id='ao{{i+1}}' (click)="doclick($event)">
+      {{opt}}
+    </div>
+  </div>
+</div>
+<div *ngIf='quizType == 7' class='answeropts'  id='answeropt'>
+  <div *ngFor='let opt of answeropts; let i = index'>
+    <div class='dragbadge' id='ao{{i+1}}' (click)="doclick7($event)">
+      {{opt}}
+    </div>
+  </div>
+</div>
+  <div id='submitdiv'>
+  <ion-button shape="round" style="background-color:#008086ff" color="#008086ff" class="submit" id="check" type="submit" name="submit">Check</ion-button>
+  </div>
+
+
+</form>
+</div>
+
+<div *ngIf='showsolution' class='quizframe' id='t1'>
+  <div class='content'>Solution</div>
+  <div id='scorediv'>
+  <div id='score'> <b>Your score: {{solutiondata.score}} / {{solutiondata.total}} </b></div>
+
+<ion-button shape="round" style="background-color:#008086ff" color="#008086ff" id="switch1" *ngIf='sol' (click)="checkanswer(0)">solution</ion-button>
+<ion-button shape="round"  style="background-color:#008086ff" color="#008086ff" id="switch2" *ngIf='!sol' (click)="checkanswer(1)">my answers</ion-button>
+</div>
+<div class="quizcontent" [innerHTML]="solutionhtml | safe: 'html'" hidden='true' id='solhtml' > </div>
+</div>
+
+
+
+</ion-content>
+<ion-footer>
+  <div class="footer">
+    </div>
+</ion-footer>

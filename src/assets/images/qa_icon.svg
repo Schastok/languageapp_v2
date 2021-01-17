@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg id="svg5644" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="52.732mm" width="84.478mm" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 299.33084 186.84739">
+ <defs id="defs5646">
+  <filter id="filter898-8-9-5-7-1-09" style="color-interpolation-filters:sRGB" height="1.051" width="1.0337" y="-.025519" x="-.016826">
+   <feGaussianBlur id="feGaussianBlur900-9-9-2-1-16-1" stdDeviation="0.84075437"/>
+  </filter>
+ </defs>
+ <metadata id="metadata5649">
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g id="layer1" transform="translate(-136.05 -393.22)">
+  <g id="g6265" transform="translate(-3056.1 -1728.9)">
+   <rect id="rect1203-9-0-5-0-2-2-0" transform="matrix(2.3677 0 0 2.1396 3650.3 1763)" fill-opacity=".53815" rx="1.0683" ry="1.0683" height="79.072" filter="url(#filter898-8-9-5-7-1-09)" width="119.92" y="174.11" x="-191.48"/>
+   <g>
+    <rect id="rect1203-9-0-5-0-6-7-7-9" style="mix-blend-mode:normal" rx="2.5295" ry="2.5295" height="169.18" width="283.94" y="2122.2" x="3207.5" fill="#fff"/>
+    <rect id="rect1899-2-5-4-0-4-5" ry="7.4769" rx="7.4769" transform="matrix(1 .0027015 -.14242 .98981 0 0)" height="14.954" width="185.86" y="2159.9" x="3570.8" fill="#b3b3b3"/>
+    <rect id="rect472-64-9" fill-rule="evenodd" rx="3.0186" ry="3.0186" height="6.1556" width="165.89" y="2203.5" x="3263.6" stroke-width=".9375" fill="#b3b3b3"/>
+    <rect id="rect472-9-1-2-1-2-0-8" fill-rule="evenodd" rx="3.0186" ry="3.0186" height="6.1556" width="164.6" y="2225.5" x="3263" stroke-width=".64158" fill="#09debb"/>
+    <flowRoot id="flowRoot5695" style="word-spacing:0px;letter-spacing:0px" font-family="sans-serif" xml:space="preserve" transform="translate(-10.286 -6.4286)" line-height="125%" stroke="#b3b3b3" font-size="40px" stroke-width="1.4" fill="#b3b3b3"><flowRegion id="flowRegion5697"><rect id="rect5699" height="76.429" width="130.71" stroke="#b3b3b3" y="2195.9" x="3444.3" stroke-width="1.4" fill="#b3b3b3"/></flowRegion><flowPara id="flowPara5701" font-size="22.5px" stroke="#b3b3b3" stroke-width="1.4" fill="#b3b3b3">?</flowPara></flowRoot>
+    <flowRoot id="flowRoot5695-6" style="word-spacing:0px;letter-spacing:0px" font-family="sans-serif" xml:space="preserve" transform="translate(-8.1133 16.149)" line-height="125%" stroke="#09debb" font-size="40px" stroke-width="1.3" fill="#09debb"><flowRegion id="flowRegion5697-9"><rect id="rect5699-6" height="76.429" width="130.71" stroke="#09debb" y="2195.9" x="3444.3" stroke-width="1.3" fill="#09debb"/></flowRegion><flowPara id="flowPara5701-7" font-size="22.5px" stroke="#09debb" stroke-width="1.3" fill="#09debb">!</flowPara></flowRoot>
+   </g>
+  </g>
+ </g>
+</svg>

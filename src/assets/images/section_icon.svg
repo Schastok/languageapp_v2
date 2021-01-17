@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="58.65mm" height="38.28mm" version="1.1" viewBox="0 0 58.65 38.28" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <defs>
+  <filter id="filter898-8-9-5-3-1-2" x="-.016826" y="-.025519" width="1.0337" height="1.051" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="0.84075437"/>
+  </filter>
+ </defs>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g transform="matrix(.28222 0 0 .28222 441.35 629.86)">
+  <rect transform="matrix(1.5967,0,0,1.537,-1254.9,-2488.4)" x="-191.48" y="174.11" width="119.92" height="79.072" rx="1.0683" ry="0" fill-opacity=".53815" filter="url(#filter898-8-9-5-3-1-2)"/>
+  <rect x="-1548.6" y="-2231.8" width="192.56" height="121.53" rx="1.7154" ry="0" fill="#fff" style="mix-blend-mode:normal"/>
+  <path d="m-1468.3-2193.2v38.369l45.463-18.87z" fill="#b3b3b3"/>
+  <rect x="-1527.8" y="-2124.6" width="148.86" height="6.1556" ry="3.0186" fill="#b3b3b3" fill-rule="evenodd" stroke-width="1.1768"/>
+  <rect x="-1527.8" y="-2124.6" width="19.502" height="6.1556" ry="3.0186" fill="#09debb" fill-rule="evenodd" stroke-width=".42597"/>
+ </g>
+</svg>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="84.679mm" height="52.934mm" version="1.1" viewBox="0 0 84.679 52.934" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <defs>
+  <filter id="filter898-8-9-5-7" x="-.016826" y="-.025519" width="1.0337" height="1.051" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="0.84075437"/>
+  </filter>
+ </defs>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g transform="translate(-108.09 -105.82)">
+  <g transform="matrix(.28222 0 0 .28222 -719.42 -42.049)">
+   <rect transform="matrix(2.3677 0 0 2.1396 3390.3 165.5)" x="-191.48" y="174.11" width="119.92" height="79.072" rx="1.0683" ry="0" fill-opacity=".53815" filter="url(#filter898-8-9-5-7)"/>
+   <rect x="2948.2" y="523.96" width="283.94" height="169.18" rx="2.5295" ry="0" fill="#fff" style="mix-blend-mode:normal"/>
+   <g fill="#b3b3b3">
+    <rect transform="matrix(1 .0027015 -.14242 .98981 0 0)" x="3081.1" y="547.27" width="185.86" height="14.954" ry="7.4769"/>
+    <g fill-rule="evenodd">
+     <rect x="2989.6" y="606.03" width="94.465" height="6.1556" ry="3.0186" stroke-width=".9375"/>
+     <rect x="3103.4" y="606.3" width="40.559" height="6.1556" ry="3.0186" stroke-width=".6143"/>
+     <rect x="3167.9" y="606.3" width="24.153" height="6.1556" ry="3.0186" stroke-width=".47404"/>
+     <rect x="2990.9" y="623.04" width="24.153" height="6.1556" ry="3.0186" stroke-width=".47404"/>
+     <rect x="3038.5" y="623.04" width="94.465" height="6.1556" ry="3.0186" stroke-width=".9375"/>
+     <rect x="3177.2" y="622.7" width="15.49" height="6.1556" ry="3.0186" stroke-width=".37963"/>
+     <rect x="2992.3" y="644.13" width="85.425" height="6.1556" ry="3.0186" stroke-width=".89151"/>
+     <rect x="3102.6" y="643.8" width="88.773" height="6.1556" ry="3.0186" stroke-width=".90882"/>
+    </g>
+   </g>
+   <g fill="#09debb" fill-rule="evenodd">
+    <rect x="3014.3" y="623.04" width="24.153" height="6.1556" ry="3.0186" stroke-width=".47404"/>
+    <rect x="3084" y="606.03" width="17.456" height="6.1556" ry="3.0186" stroke-width=".403"/>
+    <rect x="3132.9" y="623.04" width="44.242" height="6.1556" ry="3.0186" stroke-width=".64158"/>
+   </g>
+  </g>
+ </g>
+</svg>

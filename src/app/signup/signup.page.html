@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-input type="text"  id="first_name" placeholder="Enter Display Name" required></ion-input>
+  <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'first_name'">{{errorobj[error]}}</span></span>
+  <ion-input type="text"  id="username" placeholder="Enter Username" required></ion-input>
+  <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'username'">{{errorobj[error]}}</span></span>
+  <ion-input type="password" id="password1" placeholder="Enter Password" required></ion-input>
+  <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'password'">{{errorobj[error]}}</span></span>
+  <ion-input type="password" id="password2" placeholder="Repeat Password" required></ion-input>
+  <span class="fielderrors">{{pw_error}}</span>
+  <ion-input type="email" id="email" placeholder="Enter Email" required></ion-input>
+  <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'email'">{{errorobj[error]}}</span></span>
+  <ion-button (click)="signup()" expand="block">Register</ion-button>
+  <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error !== 'email' && error !== 'password' && error !== 'username' && error !== 'first_name'">{{errorobj[error]}}</span></span>
+</ion-content>

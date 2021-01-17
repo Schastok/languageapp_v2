@@ -1,0 +1,48 @@
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
+
+
+
+<ion-content class="content">
+
+  <div class='backgroundimage'>
+<img class='wave'  src="/assets/images/background.svg"/>
+
+  </div>
+<ion-slides (ionSlideWillChange)="slide($event)">
+
+<ion-slide *ngFor="let card of flipcardset" (click)="changeshowside($event)" >
+    <ion-card *ngIf="showside === 0">
+        <!--    <img src="./madison.jpg" /> -->
+            <ion-card-header *ngIf="card.image === ''" class="nopictureheader">
+              <img class='imgstandard'  src="assets/images/flipcard_background.jpg"/>
+              <ion-card-title *ngIf="card.image === ''"> {{ card.Question }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-header *ngIf="card.image != ''">
+              <img class = 'imgindiv' *ngIf="card.image != ''" [src]="'https://www.e-fluent.com/media/' + card.image"/>
+              <ion-card-title *ngIf="card.image === ''"> {{ card.Question }}</ion-card-title>
+              <h4 *ngIf="card.image != ''"> {{ card.Question }}</h4>
+            </ion-card-header>
+
+       </ion-card>
+
+          <ion-card *ngIf="showside === 1" class='animated flipInY'>
+              <!--    <img src="./madison.jpg" /> -->
+              <ion-card-header *ngIf="card.image === ''">
+                <img class='imgstandard'  src="assets/images/flipcard_background.jpg"/>
+                <ion-card-title *ngIf="card.image === ''"> {{ card.Answers }}</ion-card-title>
+              </ion-card-header>
+              <ion-card-header *ngIf="card.image != ''">
+                <img class = 'imgindiv' *ngIf="card.image != ''" [src]="'https://www.e-fluent.com/media/' + card.image"/>
+                <ion-card-title *ngIf="card.image === ''"> {{ card.Answers }}</ion-card-title>
+                <h4 *ngIf="card.image != ''"> {{ card.Answers }}</h4>
+              </ion-card-header>
+
+                </ion-card>
+
+  </ion-slide>
+</ion-slides>
+
+</ion-content>

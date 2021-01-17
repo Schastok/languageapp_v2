@@ -1,0 +1,111 @@
+.buttongrid{
+
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+ion-col{
+
+  //font-family: Georgia, serif;
+  //font-size: 12px;
+  //font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Roboto", sans-serif;
+  padding: 2px!important;
+
+
+}
+
+.logo{
+  height: 50px;
+  width: auto;
+}
+
+.logoclass{
+  text-align: center;
+}
+
+ion-icon {
+  font-size: 24px;
+  color : #d3b0e8;
+  text-align: center;
+}
+
+
+.schoolclass {
+  font-size: 32px;
+  color : #d3b0e8;
+  text-align: center;
+  vertical-align: middle;
+}
+
+ion-card-header{
+  padding: 3px!important;
+  padding-top: 5px!important;
+  text-align: center;
+
+}
+
+ion-card-title{
+  color: #FFFFFF;
+  font-family: Arial, Helvetica, sans-serif;
+  //letter-spacing: 0.8px;
+  //word-spacing: 0.4px;
+}
+ion-list{
+  background: transparent;
+}
+
+ion-item{
+  --background: transparent;
+  //border: 1px solid #d3b0e8;
+  margin-left: 5px;
+  margin-right: 5px;
+  --color: #FFFFFF;
+  box-shadow: 4px 4px 6px 1px rgba(0,0,0,0.4) ;
+  margin-top: 5px;
+
+}
+ion-label{
+  background: transparent;
+  --color: #FFFFFF;
+}
+
+ion-card{
+  //background-color: 	#fe5f55;
+  text-align: center;
+  //border-radius: 10px 10px 10px 10px;
+  border: 1px solid #d3b0e8;
+
+  padding: 5px!important;
+  margin: 0px;
+  //height: 50%;
+  background: transparent;
+  //background: rgb(9,45,121);
+  //background: linear-gradient(to left, rgba(9,45,121,0.5) 0%, rgba(41,86,250,0.5) 84%);
+  //box-shadow: 4px 4px 6px 1px rgba(0,0,0,0.4) ;
+}
+
+ion-card-content{
+  padding: 10%;
+  color: #d3b0e8;
+}
+
+ion-content{
+
+//  --background: rgb(29,253,220);
+//  --background: linear-gradient(to top, rgba(29,253,220,1) 28%, rgba(69,116,252,1) 100%);
+--background: rgb(40, 47, 57);
+//--background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,168,252,1) 100%);
+}
+
+
+ion-toolbar{
+
+//  --background: rgb(29,253,220);
+//  --background: linear-gradient(to top, rgba(29,253,220,1) 28%, rgba(69,116,252,1) 100%);
+--background: rgb(0,168,252,1);
+//--background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,168,252,1) 100%);
+}
+
+ion-back-button{
+  color: white;
+}

@@ -1,0 +1,37 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+  <div class='backgroundimage'>
+<img class='wave'  src="/assets/images/background.svg"/>
+
+  </div>
+
+  <div id='nav'>
+    <ion-button  *ngIf="!disablePrevBtn" shape="round" style="background-color:#10D398" color="#10D398" class="navigation" id="nav-back" (click)="back()" >Back</ion-button>
+  <ion-button *ngIf="!disableNextBtn" shape="round" style="background-color:#10D398" color="#10D398" class="navigation" id="nav-next" (click)="next()" >Next</ion-button>
+
+  </div>
+
+    <ion-slides [options]="slideConfig" #slides>
+           <ion-slide *ngFor="let item of sectiondetails" id="section{{item.position}}" >
+
+             <div class="slide" id="htmlslide" *ngIf="item.type === 'text'" [innerHTML]="item.content | safe: 'html'">
+              </div>
+              <div  class="slide" *ngIf="item.type === 'image'">
+                <img [src]="'https://www.e-fluent.com'+item.path"/>
+               </div>
+               <div class="slide" *ngIf="item.type === 'audio'">
+                 <audio controls src="'https://www.e-fluent.com'+item.path" type='audio/mp3'></audio>
+                </div>
+                <div class="slide" *ngIf="item.type === 'video'" >
+                  <video controls [src]="'https://www.e-fluent.com'+item.path" type='video/mp4'></video>
+                 </div>
+
+
+           </ion-slide>
+
+    </ion-slides>
+
+
+</ion-content>

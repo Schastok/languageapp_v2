@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+    <div class="logoclass">
+    <img class='logo' src="assets/images/logo2.png">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class='headerimage'>
+    <img class='conversation' src="assets/images/quiz.jpg">
+    </div>
+
+<ion-list>
+
+  <ion-item *ngFor="let quiz of exercises"  [routerLink]="['../../do_quiz/', quiz.ID]">
+    <ion-thumbnail slot="start">
+      <ion-icon name="create" class="createclass"></ion-icon>
+    </ion-thumbnail>
+    <ion-label>
+      <h2>{{quiz.Title}}</h2>
+      <h5><i>{{quiz.Description}}</i></h5>
+    </ion-label>
+  </ion-item>
+
+
+</ion-list>
+</ion-content>

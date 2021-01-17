@@ -1,0 +1,113 @@
+.backgroundimage{
+  position: absolute;
+}
+
+ion-card{
+  width: 100%;
+  max-width: 800px;
+  max-height: 1000px;
+  margin: 5%;
+  margin-top: 10%;
+  //position: absolute;
+  //top: 30%;
+  text-align: center;
+  //background: transparent;
+  background-color: #52BEC4;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  border-radius: 25px;
+}
+
+.logo{
+  height: 50px;
+  width: auto;
+}
+
+.logoclass{
+  text-align: center;
+}
+
+ion-card-header{
+  padding: 0;
+  font-size: 3.5vw;
+
+}
+ion-card-title{
+  transform: translateY(-40%);
+  font-size: 3.5vw;
+  padding:5%;
+
+
+}
+
+ion-slides{
+  //height: 50%;
+}
+
+h2{
+
+  text-align: center;
+
+}
+
+h4{
+  color: #fff;
+  font-size: 5vw;
+}
+
+ion-card-title {
+    position: absolute;
+    top: 37%;
+    font-size: 7vw;
+    line-height: 7vw;
+    width: 100%;
+    //font-weight: bold;
+    color: #fff;
+    font-family: Avenir Next LT Pro;
+    font-style: normal;
+    font-weight: 1000;
+    //font-size: 32px;
+  }
+
+ion-card-subtitle {
+    font-size: 1.0em;
+    position: absolute;
+    top: 53%;
+    width: 100%;
+    color: #fff;
+  }
+
+  #background-content{
+    background-color: #fe5f55;
+   }
+
+   ion-content{
+
+   //  --background: rgb(29,253,220);
+   //  --background: linear-gradient(to top, rgba(29,253,220,1) 28%, rgba(69,116,252,1) 100%);
+
+    --background: #001124;
+
+  // --background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,168,252,1) 100%);
+   }
+
+   ion-toolbar{
+
+   //  --background: rgb(29,253,220);
+   //  --background: linear-gradient(to top, rgba(29,253,220,1) 28%, rgba(69,116,252,1) 100%);
+   --background: rgb(0,168,252,1);
+   //--background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,168,252,1) 100%);
+   }
+
+   ion-back-button{
+     color: white;
+   }
+
+   .imgstandard{
+     width: 100%;
+     //height: 60vw;
+   }
+   .imgindiv{
+     width: 100%;
+     //max-height: 20%;
+     object-fit: cover;
+   }

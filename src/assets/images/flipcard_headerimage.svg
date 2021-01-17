@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="85.886mm" height="58.878mm" version="1.1" viewBox="0 0 85.886 58.878" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <defs>
+  <filter id="filter898-8-9" x="-.016826" y="-.025519" width="1.0337" height="1.051" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="0.84075437"/>
+  </filter>
+ </defs>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g transform="translate(-34.92 -49.936)">
+  <g transform="matrix(.28222 0 0 .28222 -1145.5 537.24)">
+   <rect transform="matrix(2.3677 0 0 2.1396 4651.6 -2064.1)" x="-191.48" y="174.11" width="119.92" height="79.072" rx="1.0683" ry="0" fill-opacity=".53815" filter="url(#filter898-8-9)"/>
+   <rect transform="matrix(.99186 .12732 0 1 0 0)" x="4238" y="-2266.9" width="280.99" height="169.2" rx="0" ry="5.6133" fill="#fcffff"/>
+   <path d="m4182.6-1626 20.738-11.748 0.118 20.973-15.778 9.764c-3.6561-6.0393-4.068-14.222-5.0776-18.99z" fill="#00d097" fill-opacity=".60882"/>
+   <g fill="#09debb">
+    <path d="m4236.4-1585.9c-42.226 23.651-51.878-14.862-51.878-14.862l-1.8712-25.203c7.981 48.315 36.356 23.634 44.158 20.805 3.4825 6.4985 7.504 16.967 9.5913 19.26z"/>
+    <path d="m4225.2-1604.3-5.0691-8.0479c8.7642 3.3579 6.7568 2.9509 26.685 10.211l-6.9548 23.461-4.4496-7.0328"/>
+    <path transform="matrix(2.3677 .75453 0 2.1396 4102.2 -2094.1)" d="m106.59 170.47-4.7092-1.0347-3.5221 3.2928-0.47116-4.7985-4.22-2.3322 4.418-1.9309 0.91401-4.7341 3.2017 3.6051 4.7849-0.59366-2.4393 4.159z" fill-rule="evenodd"/>
+   </g>
+   <g fill="#b3b3b3">
+    <rect transform="matrix(.98754 .15735 0 1 0 0)" x="4324.3" y="-2328.3" width="168.56" height="10.513" ry="5.2566"/>
+    <rect transform="matrix(.98754 .15735 0 1 0 0)" x="4325.2" y="-2309.3" width="168.56" height="10.513" ry="5.2566"/>
+    <rect transform="matrix(.98754 .15735 0 1 0 0)" x="4325.9" y="-2286.7" width="168.56" height="10.513" ry="5.2566"/>
+   </g>
+  </g>
+ </g>
+</svg>

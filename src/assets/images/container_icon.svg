@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg id="svg6251" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="52.934mm" width="84.679mm" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 300.04506 187.56186">
+ <defs id="defs6253">
+  <filter id="filter898-8-9-5-7-1-3" style="color-interpolation-filters:sRGB" height="1.051" width="1.0337" y="-.025519" x="-.016826">
+   <feGaussianBlur id="feGaussianBlur900-9-9-2-1-16-9" stdDeviation="0.84075437"/>
+  </filter>
+ </defs>
+ <metadata id="metadata6256">
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g id="layer1" transform="translate(-221.41 -438.58)">
+  <g id="g6744" transform="translate(-3999.7 -724.24)">
+   <rect id="rect1203-9-0-5-0-2-2-2" transform="matrix(2.3677 0 0 2.1396 4679.2 804.36)" fill-opacity=".53815" rx="1.0683" ry="1.0683" height="79.072" filter="url(#filter898-8-9-5-7-1-3)" width="119.92" y="174.11" x="-191.48"/>
+   <rect id="rect1203-9-0-5-0-6-7-7-1" style="mix-blend-mode:normal" rx="2.5295" ry="2.5295" height="169.18" width="283.94" y="1162.8" x="4237.2" fill="#fff"/>
+   <g fill="#b3b3b3">
+    <rect id="rect1899-2-5-4-0-4-1" ry="7.4769" rx="7.4769" transform="matrix(1 .0027015 -.14242 .98981 0 0)" height="14.954" width="185.86" y="1189" x="4450"/>
+    <g fill-rule="evenodd">
+     <rect id="rect472-9-1-1-5" rx="3.0186" ry="3.0186" height="6.1556" width="36.295" y="1226.2" x="4406.2" stroke-width=".47404"/>
+     <rect id="rect472-9-1-2-9-6" rx="3.0186" ry="3.0186" height="6.1556" width="24.153" y="1243" x="4406.2" stroke-width=".47404"/>
+     <rect id="rect472-9-9-0-4" rx="3.0186" ry="3.0186" height="6.1556" width="37.99" y="1260.5" x="4406.2" stroke-width=".37963"/>
+     <rect id="rect472-3-2-91-6" rx="3.0186" ry="3.0186" height="6.1556" width="23.416" y="1278" x="4406.2" stroke-width=".90882"/>
+    </g>
+   </g>
+   <g id="g6738" fill-rule="evenodd" transform="translate(-24.286 -2.1429)">
+    <rect id="rect472-9-6-0" rx="3.0186" ry="3.0186" height="6.1556" width="40.559" y="1226.9" x="4322.2" stroke-width=".61430" fill="#2ae2c4"/>
+    <g fill="#09debb">
+     <rect id="rect472-9-1-2-1-60-8" rx="3.0186" ry="3.0186" height="6.1556" width="24.153" y="1261.2" x="4322.2" stroke-width=".47404"/>
+     <rect id="rect472-9-1-2-1-8-6-8-1" rx="3.0186" ry="3.0186" height="6.1556" width="17.456" y="1244.9" x="4322.2" stroke-width="0.403"/>
+     <rect id="rect472-9-1-2-1-2-0-3" rx="3.0186" ry="3.0186" height="6.1556" width="44.242" y="1279.7" x="4322.2" stroke-width=".64158"/>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>

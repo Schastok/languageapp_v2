@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="57.374mm" height="40.343mm" version="1.1" viewBox="0 0 57.374 40.343" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <defs>
+  <filter id="filter898-8-37" x="-.016826" y="-.025519" width="1.0337" height="1.051" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="0.84075437"/>
+  </filter>
+ </defs>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g transform="translate(-68.075 -22.918)">
+  <g transform="matrix(.28222 0 0 .28222 -237.24 264.5)">
+   <g transform="matrix(1.1402 0 0 .97571 -143.39 6.6952)">
+    <g transform="matrix(1.0255 0 0 1.0921 1613.5 -301.15)">
+     <g transform="matrix(1.1682 0 0 1.2847 70.614 168.18)">
+      <rect transform="matrix(1.1579 0 0 1.071 -280.94 -715.35)" x="-191.48" y="174.11" width="119.92" height="79.072" rx="1.0683" ry="0" fill-opacity=".53815" filter="url(#filter898-8-37)"/>
+      <g>
+       <rect transform="matrix(.99148 .13026 0 1 0 0)" x="-504.4" y="-481.09" width="137.47" height="84.693" rx="0" ry="2.8098" fill="#fcffff"/>
+       <path d="m-510.29-496.07 10.142-5.8803 0.0577 10.498-7.7166 4.8874c-1.788-3.023-1.9895-7.1191-2.4832-9.5053z" fill="#666"/>
+       <path d="m-484-476.02c-20.651 11.839-25.371-7.4394-25.371-7.4394l-0.91517-12.616c3.9032 24.184 17.78 11.83 21.596 10.414 1.7032 3.2529 3.6699 8.493 4.6907 9.6409z" fill="#999"/>
+       <path d="m-489.48-485.21-2.4791-4.0284c4.2862 1.6808 3.3044 1.4771 13.051 5.111l-3.4013 11.744-2.1761-3.5203" fill="#999"/>
+      </g>
+     </g>
+    </g>
+    <g fill="#b3b3b3">
+     <rect transform="matrix(.98572 .16841 0 1 0 0)" x="1122.5" y="-1038" width="121.79" height="8.1302" ry="4.0651"/>
+     <rect transform="matrix(.98572 .16841 0 1 0 0)" x="1120.8" y="-1019.9" width="121.79" height="8.1302" ry="4.0651"/>
+     <rect transform="matrix(.98572 .16841 0 1 0 0)" x="1122.1" y="-1001.6" width="121.79" height="8.1302" ry="4.0651"/>
+    </g>
+   </g>
+   <path transform="matrix(1.6566 .54307 0 1.54 1028.7 -1135.2)" d="m106.59 170.47-4.7092-1.0347-3.5221 3.2928-0.47116-4.7985-4.22-2.3322 4.418-1.9309 0.91401-4.7341 3.2017 3.6051 4.7849-0.59366-2.4393 4.159z" fill="#09debb" fill-rule="evenodd"/>
+  </g>
+ </g>
+</svg>
