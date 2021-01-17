@@ -17,7 +17,8 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "types":["core-js"],
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

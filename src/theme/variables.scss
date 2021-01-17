@@ -2,6 +2,19 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
+
+@font-face {
+  font-family: 'Avenir Next LT Pro';
+  src: url('../assets/fonts/Avenir-Next-LT-Pro.ttf');//mine
+}
+
+@font-face {
+  font-family: 'Avenir Next LT Pro Medium Condensed';
+  src: url('../assets/fonts/Avenir-Next-LT-Pro-Medium-Condensed.ttf');//mine
+}
+
+
+
 :root {
   /** primary **/
   --ion-color-primary: #3880ff;

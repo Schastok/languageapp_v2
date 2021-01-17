@@ -9,10 +9,19 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+
+import { HttpClientModule } from '@angular/common/http';
+import { FlipModule } from 'ngx-flip';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { IonicStorageModule } from '@ionic/storage';
+
+//import { SafePipe } from './safe.pipe';
+
 @NgModule({
   declarations: [AppComponent],
+
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FlipModule, DragDropModule, IonicStorageModule.forRoot()],
   providers: [
     StatusBar,
     SplashScreen,

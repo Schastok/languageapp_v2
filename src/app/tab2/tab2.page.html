@@ -4,14 +4,203 @@
       Tab 2
     </ion-title>
   </ion-toolbar>
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.js"></script>
+
+
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style>
+    .container{
+      padding-left: 100px;
+
+    }
+
+  #inner_content{
+    padding-left: 100px;
+    padding-right: 100px;
+    line-height: 2em;
+  }
+
+
+  html {
+    font-family: 'Lora', sans-serif;
+    width: 100%;
+  }
+
+
+
+  h1 {
+    font-size: 28px;
+    margin-bottom: 2.5%;
+  }
+
+  input,
+  label,
+  textarea {
+    font-family: 'Ubuntu', sans-serif;
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    font-size: 3.5vw;
+  }
+
+  textarea:focus,
+  input:focus {
+    outline: 0;
+  }
+  /* Question */
+
+  input.question,
+  textarea.question {
+    font-size: 3.5vw;
+    font-weight: 300;
+    border-radius: 2px;
+    margin: 0;
+    border: none;
+    width: 80%;
+    background: rgba(0, 0, 0, 0);
+    transition: padding-top 0.2s ease, margin-top 0.2s ease;
+    overflow-x: hidden; /* Hack to make "rows" attribute apply in Firefox. */
+  }
+  /* Underline and Placeholder */
+
+  input.question + label,
+  textarea.question + label {
+    display: block;
+    position: relative;
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+    width: 10%;
+    border-top: 1px solid red;
+    -webkit-transition: width 0.4s ease;
+    transition: width 0.4s ease;
+    height: 0px;
+  }
+
+  input.question:focus + label,
+  textarea.question:focus + label {
+    width: 80%;
+  }
+
+  input.question:focus,
+  input.question:valid {
+    padding-top: 35px;
+  }
+
+  textarea.question:valid,
+  textarea.question:focus {
+    margin-top: 35px;
+  }
+
+  input.question:focus + label > span,
+  input.question:valid + label > span {
+    top: -100px;
+    color: #333;
+  }
+
+  textarea.question:focus + label > span,
+  textarea.question:valid + label > span {
+    top: -150px;
+    color: #333;
+  }
+
+  input.question:valid + label,
+  textarea.question:valid + label {
+    border-color: green;
+  }
+
+  input.question:invalid,
+  textarea.question:invalid {
+    box-shadow: none;
+  }
+
+  input.question + label > span,
+  textarea.question + label > span {
+    font-weight: 300;
+    margin: 0;
+    position: absolute;
+    color: #8F8F8F;
+    top: -66px;
+    left: 0px;
+    z-index: -1;
+    -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+    transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+  }
+
+  input[type="submit"] {
+    -webkit-transition: opacity 0.2s ease, background 0.2s ease;
+    transition: opacity 0.2s ease, background 0.2s ease;
+    display: block;
+    opacity: 0;
+    margin: 10px 0 0 0;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background: #EEE;
+  }
+
+  input[type="submit"]:active {
+    background: #999;
+  }
+
+  input.question:valid ~ input[type="submit"], textarea.question:valid ~ input[type="submit"] {
+    -webkit-animation: appear 1s forwards;
+    animation: appear 1s forwards;
+  }
+
+  input.question:invalid ~ input[type="submit"], textarea.question:invalid ~ input[type="submit"] {
+    display: none;
+  }
+
+  @-webkit-keyframes appear {
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes appear {
+    100% {
+      opacity: 1;
+    }
+  }
+
+
+  </style>
+
+
+
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+
+<div>
+  <div>Wenn die V&ouml;gel zwitschern und die Bl&auml;tter an den B&auml;umen wachsen, hat der Fr&uuml;hling begonnen. Die Menschen freuen sich auf den Fr&uuml;hling. In dieser Jahreszeit wird alles lebendig. Die Blumen bl&uuml;hen in verschiedenen Farben und die Bienen best&auml;uben die Pflanzen. Die Natur erwacht. Manchmal tanzt ein Schmetterling &uuml;ber das gr&uuml;ne Gras.</div>
+ <div>Nach dem Fr&uuml;hling kommt der Sommer. Im Sommer ist es hei&szlig;. Viele fahren in den Ferien ans Meer und liegen den ganzen Tag am Strand. Wegen der Sonne tragen sie Sonnenbrillen. Die Massen gehen ins Schwimmbad, um im Wasser zu schwimmen und Spa&szlig; zu haben.</div>
+ <div>Im Herbst k&uuml;hlt alles ab. Die Sonne verschwindet hinter den Wolken und es regnet h&auml;ufig. &Uuml;berall sieht man Regenschirme. W&auml;hrend die Bl&auml;tter von den B&auml;umen fallen, fahren die Bauern die Ernte ein. Die Welt erscheint braun und tr&uuml;b.</div>
+ <div>Es wird immer k&auml;lter. Der Winter kommt und die Natur erstirbt. Die Menschen ziehen sich ihre Jacken, M&uuml;tzen, Schals und Handschuhe an. Warme Kleidung ist bei der K&auml;lte im Winter wichtig. Das Wasser in den Seen und Teichen wird zu Eis. Kinder spielen im Schnee und freuen sich <span class="likediv"> über die wei&szlig;e Pracht. An Weihnachten wird die Geburt von Jesus Christus gefeiert . Die Familien sitzen zusammen in ihren warmen Wohnungen und verbringen Zeit miteinander. Dabei bekommt jeder ein Geschenk. Das Jahr neigt sich dem Ende zu. An Silvester begr&uuml;&szlig;t man das neue Jahr. Wenn der Winter vorbei ist, beginnt der Kreislauf der Jahreszeiten von Neuem.</span></div>
+ <div> </div>
+
+ <div><input class="question" name="q1" type="text" id="q1" required autocomplete="off"> <label for="q1">In welcher Jahreszeit ist es sehr hei&szlig;?</label></div>
+ <div><input class="question" name="q2" type="text" id="q2" required autocomplete="off"> <label for="q2">In welcher Jahreszeit fallen die Bl&auml;tter von den B&auml;umen?</label></div>
+ <div><input class="question" name="q3" type="text" id="q3" required autocomplete="off"> <label for="q3">Wann ist es am k&auml;ltesten?</label></div>
+ <div><input class="question" name="q4" type="text" id="q4" required autocomplete="off"> <label for="q4">Wann fangen die Blumen an zu bl&uuml;hen?</label></div>
+
+</div>
+
+
 </ion-content>
