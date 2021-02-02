@@ -75,12 +75,18 @@
 <div class='desciption'>Select if you want to study the flipcards or let the app quiz you on the flipcards</div>
 
  <div class='blueline'></div>
+
+ <div id="cont" data-pct="100">
+ <svg id="svg" width="200" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+   <circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+   <circle id="bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+ </svg>
+ </div>
+
 <div class='content'></div>
-<div class="wrapper">
 
-  <div class="box1" [routerLink]="['view_set']"><span class="boxname">Study</span></div>
-  <div class="box2"  [routerLink]="['do_set']" ><span class="boxname">Quiz</span></div>
+<div class="buttonfields">
+<button [routerLink]="['view_set']" class="study" shape="round" >Study</button>
+<button [routerLink]="['do_set']" class="quiz" shape="round" >Quiz</button>
 </div>
-
-
  </ion-content>

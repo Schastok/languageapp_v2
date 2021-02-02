@@ -34,7 +34,8 @@ export class ApiService {
 
 
   private handleError(error: HttpErrorResponse) {
-    let result = {'unknown': 'unknown error'};
+    let result;
+    console.log("enter error");
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
       console.log('An error occurred:', error.error.message);
@@ -52,8 +53,10 @@ export class ApiService {
   }
 
   getLessons(){
+
     let headers = new HttpHeaders();
     let token = "Token " + this.TOKEN;
+    console.log(token);
     headers = headers.set('Authorization', token);
     return this.httpClient.get(`${this.URL}/api_lessons_2/?project=${this.PROJECT_ID}`,  {headers: headers});
   }
@@ -62,35 +65,36 @@ export class ApiService {
     let headers = new HttpHeaders();
     let token = "Token " + this.TOKEN;
     headers = headers.set('Authorization', token);
-    return this.httpClient.get(`${this.URL}/api_sections_2/?lesson=${lessonID}`);
+
+    return this.httpClient.get(`${this.URL}/api_sections_2/?lesson=${lessonID}`,  {headers: headers});
   }
 
   getFlipcards(lessonID: string){
     let headers = new HttpHeaders();
     let token = "Token " + this.TOKEN;
     headers = headers.set('Authorization', token);
-    return this.httpClient.get(`${this.URL}/api_flipcardlist_2/?lesson=${lessonID}&student=${this.STUDENT_ID}`);
+    return this.httpClient.get(`${this.URL}/api_flipcardlist_2/?lesson=${lessonID}&student=${this.STUDENT_ID}`,  {headers: headers});
   }
 
   getEcercises(lessonID: string){
     let headers = new HttpHeaders();
     let token = "Token " + this.TOKEN;
     headers = headers.set('Authorization', token);
-    return this.httpClient.get(`${this.URL}/api_excercises_2/?lesson=${lessonID}&student=${this.STUDENT_ID}`);
+    return this.httpClient.get(`${this.URL}/api_excercises_2/?lesson=${lessonID}&student=${this.STUDENT_ID}`,  {headers: headers});
   }
 
   getSection_details(sectionID: string){
     let headers = new HttpHeaders();
     let token = "Token " + this.TOKEN;
     headers = headers.set('Authorization', token);
-    return this.httpClient.get(`${this.URL}/api_section_2/?section=${sectionID}`);
+    return this.httpClient.get(`${this.URL}/api_section_2/?section=${sectionID}`,  {headers: headers});
   }
 
   getFlipcardset(lessonID: string){
     let headers = new HttpHeaders();
     let token = "Token " + this.TOKEN;
     headers = headers.set('Authorization', token);
-    return this.httpClient.get(`${this.URL}/api_flipcards_2/?lesson=${lessonID}&student=${this.STUDENT_ID}`);
+    return this.httpClient.get(`${this.URL}/api_flipcards_2/?lesson=${lessonID}&student=${this.STUDENT_ID}`,  {headers: headers});
   }
 
   //getFlipcardset(lessonID: string){
@@ -103,21 +107,21 @@ export class ApiService {
     let headers = new HttpHeaders();
     let token = "Token " + this.TOKEN;
     headers = headers.set('Authorization', token);
-    return this.httpClient.get(`${this.URL}/api_flipcards_2/?lesson=${lessonID}&student=${this.STUDENT_ID}`);
+    return this.httpClient.get(`${this.URL}/api_flipcards_2/?lesson=${lessonID}&student=${this.STUDENT_ID}`,  {headers: headers});
   }
 
   getExerciselist(lessonID: string){
     let headers = new HttpHeaders();
     let token = "Token " + this.TOKEN;
     headers = headers.set('Authorization', token);
-    return this.httpClient.get(`${this.URL}/api_excercises_2/?lesson=${lessonID}&student=${this.STUDENT_ID}`);
+    return this.httpClient.get(`${this.URL}/api_excercises_2/?lesson=${lessonID}&student=${this.STUDENT_ID}`,  {headers: headers});
   }
 
   getExercise(quizID: string){
     let headers = new HttpHeaders();
     let token = "Token " + this.TOKEN;
     headers = headers.set('Authorization', token);
-    return this.httpClient.get(`${this.URL}/api_excercise_content_2/?excercise=${quizID}`);
+    return this.httpClient.get(`${this.URL}/api_excercise_content_2/?excercise=${quizID}`,  {headers: headers});
   }
 
   postupdateprogress(progressid: string, statusstr: string, answerlist: string){
@@ -129,7 +133,7 @@ export class ApiService {
         "progress": statusstr,
         "answer": answerlist
       };
-    return this.httpClient.post(`${this.URL}/api_updateprogress_2/`, postData, {observe: "body"});
+    return this.httpClient.post(`${this.URL}/api_updateprogress_2/`, postData, {observe: "body", headers: headers});
   }
 
   postquiz(quizdata: any, quizid: string){
@@ -141,7 +145,7 @@ export class ApiService {
     postData['student'] = this.STUDENT_ID;
     delete postData.null;
     console.log(postData);
-    return this.httpClient.post(`${this.URL}/api_evaluate_2/`, postData, {observe: "body"});
+    return this.httpClient.post(`${this.URL}/api_evaluate_2/`, postData, {observe: "body", headers: headers});
   }
 
   authenticate(username: string, password: string){

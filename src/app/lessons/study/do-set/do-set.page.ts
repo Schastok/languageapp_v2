@@ -41,7 +41,7 @@ export class DoSetPage implements OnInit {
     currentcard;
     showside;
     finished;
-
+    random;
 
 
     constructor(private location: Location, private activatedRoute: ActivatedRoute, private apiService: ApiService, private renderer: Renderer2, private router: Router) {
@@ -51,6 +51,7 @@ export class DoSetPage implements OnInit {
 
     ngOnInit() {
       console.log("ngOnInit called")
+      this.random = Math.random() < 0.5;
       this.finished = false;
       this.showside = 0;
       this.activatedRoute.paramMap.subscribe(paramMap => {
@@ -65,7 +66,12 @@ export class DoSetPage implements OnInit {
         const set = Object.values(data);
         console.log('data pulled: ')
         console.log(set);
-        this.flipcardset = set.filter(t=>t.multiplechoice_possible === 1);
+        //this.flipcardset = set.filter(t=>t.multiplechoice_possible === 0);
+        this.flipcardset = set.filter(function(item){
+          if((item.multiplechoice_possible === 1|| item.entry_possible === 1)&&item.Status <5){
+            return true
+          }
+        });
         console.log('flipcarset init: ')
         console.log(this.flipcardset);
         if (this.flipcardset.length != 0){
@@ -76,7 +82,15 @@ export class DoSetPage implements OnInit {
         else{
           this.location.back();
         }
-      });
+      },
+    (error)=>{
+      let err = error.status as number;
+      console.log("is there an error: ");
+      if ([401, 404].indexOf(err) >= 0){
+        console.log("re-route");
+        this.router.navigate(['/authenticate']);
+      };
+    });
     }
 
 
@@ -84,12 +98,12 @@ export class DoSetPage implements OnInit {
    console.log(window.getComputedStyle(event.target).background)
    console.log(event.target.getAttribute('ticked'))
    if(event.target.getAttribute('ticked') === 'true'){
-     this.renderer.setStyle(event.target.parentNode, 'color', 'white');
+     this.renderer.setStyle(event.target, 'background-color', 'rgba(106, 101, 101, 0.2)');
      this.renderer.setAttribute(event.target, 'ticked', 'false');
      remove(this.empList, answer);
    }
    else{
-   this.renderer.setStyle(event.target.parentNode , 'color', '#FCCE38');
+   this.renderer.setStyle(event.target , 'background-color', '#72d6e1ff');
    this.renderer.setAttribute(event.target, 'ticked', 'true');
    console.log(this.empList);
    this.empList.push(answer);
@@ -105,12 +119,28 @@ export class DoSetPage implements OnInit {
 
  }
 
+
+ checkanswerinput(answer, event, correct){
+
+   const arr1 = answer.split(',').map(s => s.trim()).sort();
+   const arr2 = correct.sort();
+   this.iscorrect = JSON.stringify(arr1)===JSON.stringify(arr2);
+   console.log(arr1)
+   console.log(arr2)
+   console.log(this.iscorrect)
+
+
+ }
+
  changeshowside(event){
+
    console.log("current side");
    console.log(this.showside);
    if (this.showside === 0){
      console.log("flip to back");
-     console.log(event.target.parentNode.parentNode.parentNode.parentNode.getAttribute('class'));
+     if(this.iscorrect === true){
+     console.log("ISCORRECT");
+     }
      this.showside = 1;
      //this.renderer.setAttribute(event.target.parentNode.parentNode.parentNode.parentNode, 'class', 'animated flipOutY md hydrated');
 
@@ -124,6 +154,7 @@ export class DoSetPage implements OnInit {
  }
 
  submitanswer(progressid, status, event){
+   this.random = Math.random() < 0.5;
    this.changeshowside(event);
    console.log('progressid');
    console.log(progressid);
@@ -153,6 +184,8 @@ export class DoSetPage implements OnInit {
 
    console.log('POST updateprogress for ');
    console.log(this.currentcard);
+   console.log('new status: ');
+   console.log(statusstr);
    this.apiService.postupdateprogress(progressidstr, statusstr, answerlist).subscribe(data => {
         console.log(data['_body']);
        }, error => {
@@ -161,6 +194,7 @@ export class DoSetPage implements OnInit {
 
    this.flipcardset.shift();
    this.currentcard = this.flipcardset[0];
+   this.iscorrect = false;
 
   if (this.currentcard){
   this.showid = this.currentcard.flipcardID;

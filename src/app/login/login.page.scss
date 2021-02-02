@@ -1,0 +1,137 @@
+
+ion-content{
+
+//  --background: rgb(29,253,220);
+//  --background: linear-gradient(to top, rgba(29,253,220,1) 28%, rgba(69,116,252,1) 100%);
+--background: #001124;
+
+
+
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+input{
+ --background: #001124;
+ color: white;
+ border: 0 solid #005e68;
+ border-bottom: 2px solid #005e68;
+ margin-bottom: 50px;
+ text-align: center;
+
+}
+
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+
+
+  border-bottom: 2px solid #005e68;
+  -webkit-text-fill-color: white;
+  background: #001124;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.formfields{
+  text-align: center;
+  margin-top: 25%;
+
+
+
+}
+
+.userfield{
+    position: relative;
+}
+
+.pwfield{
+    position: relative;
+}
+.signup{
+  width: 200px;
+  height: 31px;
+  font-size: 14px;
+  background-color: white;
+  border-radius:25px;
+  color: #005e68;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.submit{
+  width: 200px;
+  height: 31px;
+  font-size: 14px;
+  background-color:#005e68;
+  border-radius:25px;
+  color: white;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.buttonfields{
+  position: absolute;
+  bottom: 10%;
+  margin-top: 50px;
+  text-align: left;
+  width: 100%;
+  margin-left:calc(50% - 100px);
+}
+
+.forgotpw{
+  display: block;
+  font-size: 14px;
+}
+
+.field{
+  background:  #001124;
+}
+.fielderrors{
+  display: block;
+  color: #ffb6b7ff;
+  font-size: 12px;
+}
+
+.formdescriptions2{
+  margin-left: calc(50% - 100px);
+  text-align: left;
+  font-size: 12px;
+  color: #b2cdd1ff;
+  display: block;
+}
+
+
+.formdescriptions{
+  position: absolute;
+  left:calc(50% - 100px);
+  top: -10px;
+  margin-bottom: 20px;
+  text-align: left;
+  font-size: 12px;
+  color: #b2cdd1ff;
+
+
+}
+input:valid + label.formdescriptions{
+  font-size: 10px;
+  transition: font-size 0.5s;
+}
+input:focus + label.formdescriptions{
+  font-size: 10px;
+  transition: font-size 0.5s;
+}
+
+a{
+  color: #0075c8fd;
+
+}

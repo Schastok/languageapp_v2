@@ -29,6 +29,7 @@ pw_error;
     if (password1 === password2){
       let email = (document.getElementById('email')as HTMLInputElement).value;
       let first_name = (document.getElementById('first_name')as HTMLInputElement).value;
+      console.log(first_name);
       this.apiService.register(username, password1, first_name, email).subscribe((data)=>{
         console.log(data);
         this.router.navigate(['/login']);

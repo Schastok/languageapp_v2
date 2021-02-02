@@ -1,20 +1,55 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>signup</ion-title>
-  </ion-toolbar>
-</ion-header>
+
+
+
 
 <ion-content>
-  <ion-input type="text"  id="first_name" placeholder="Enter Display Name" required></ion-input>
-  <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'first_name'">{{errorobj[error]}}</span></span>
-  <ion-input type="text"  id="username" placeholder="Enter Username" required></ion-input>
-  <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'username'">{{errorobj[error]}}</span></span>
-  <ion-input type="password" id="password1" placeholder="Enter Password" required></ion-input>
-  <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'password'">{{errorobj[error]}}</span></span>
-  <ion-input type="password" id="password2" placeholder="Repeat Password" required></ion-input>
-  <span class="fielderrors">{{pw_error}}</span>
-  <ion-input type="email" id="email" placeholder="Enter Email" required></ion-input>
-  <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'email'">{{errorobj[error]}}</span></span>
-  <ion-button (click)="signup()" expand="block">Register</ion-button>
-  <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error !== 'email' && error !== 'password' && error !== 'username' && error !== 'first_name'">{{errorobj[error]}}</span></span>
+  <div class='backgroundimage'>
+<img class='wave'  src="/assets/images/background.svg"/>
+</div>
+
+  <div class="formblock">
+    <div class="formfields">
+
+      <div class="namefield">
+    <input class="field" type="text"  id="first_name"  name="first_name" required />
+    <label class="formdescriptions" for="first_name">display name</label>
+    <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'first_name'">{{errorobj[error]}}</span></span>
+    </div>
+
+      <div class="userfield">
+    <input class="field" type="text"  id="username"  name="username" required/>
+    <label class="formdescriptions" for="username">username</label>
+    <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'username'">{{errorobj[error]}}</span></span>
+    </div>
+
+    <div class="pwfield">
+      <input class="field" type="password" id="password1" name="password1" required />
+      <label class="formdescriptions"  for="password1">password</label>
+      <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'password'">{{errorobj[error]}}</span></span>
+      </div>
+
+    <div class="pwrepeatfield">
+      <input class="field" type="password" id="password2" name="password2" required />
+        <label class="formdescriptions"  for="password2">repeat password</label>
+      <span class="fielderrors">{{pw_error}}</span>
+      </div>
+
+    <div class="emailfield">
+        <input class="field" type="email" id="email" name="email" required />
+          <label class="formdescriptions"  for="email">email</label>
+          <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'email'">{{errorobj[error]}}</span></span>
+          <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'non_field_errors'">{{errorobj[error]}}</span></span>
+        </div>
+
+
+
+
+</div>
+
+
+<div class="buttonfields">
+    <button (click)="signup()" class="submit" shape="round" >Register</button>
+        <button [routerLink]="['/login']" class="login" shape="round" >Login</button>
+</div>
+</div>
 </ion-content>

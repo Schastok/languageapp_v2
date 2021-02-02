@@ -1,13 +1,28 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content>
-    <ion-input type="text"  id="username" placeholder="Enter Username"></ion-input>
-      <ion-input type="password" id="password" placeholder="Enter Password"></ion-input>
-      <span *ngFor="let error of errors" class="errormessage">{{error}}</span>
-    <ion-button (click)="login()" expand="block">Login</ion-button>
+  <div class='backgroundimage'>
+<img class='wave'  src="/assets/images/background.svg"/>
+</div>
 
+  <div class="formblock">
+    <div class="formfields">
+      <div class="userfield">
+            <input class="field" type="text"  id="username"  name="username" required />
+      <label class="formdescriptions" for="username">username</label>
+
+    </div>
+    <div class="pwfield">
+
+      <input class="field" type="password" id="password" name="password" required />
+    <label class="formdescriptions"  for="password">password</label>
+      </div>
+        <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'non_field_errors'">{{errorobj[error]}}</span></span>
+      </div>
+      <div class="buttonfields">
+    <button (click)="login()" class="submit" shape="round" >Login</button>
+    <button [routerLink]="['/signup']" class="signup" shape="round" >Signup</button>
+    <a class="forgotpw" href="https://www.e-fluent.com/password_reset/">forgot password?</a>
+</div>
+</div>
 </ion-content>

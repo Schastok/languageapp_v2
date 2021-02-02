@@ -13,7 +13,10 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
+
 errors = [];
+errorkeys = [];
+errorobj;
 
   constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private storage: Storage, private router: Router) { }
 
@@ -31,13 +34,14 @@ errors = [];
         this.router.navigate(['/lessons']);
       }, (error)=>{
         console.log("This is the error", error);
+        this.errorobj = error;
         for (let i = 0; i < Object.keys(error).length; i++){
           let e = Object.keys(error)[i]
           if (e != 'client'){
           this.errors.push(error[e])
+          this.errorkeys.push(e)
           }
         }
-
       });
       this.apiService.getuserid(username).subscribe((data)=>{
         this.storage.set('userid', data['id']);
@@ -47,10 +51,12 @@ errors = [];
       },
       (error)=>{
         console.log("This is the error", error);
+        this.errorobj = error;
         for (let i = 0; i < Object.keys(error).length; i++){
           let e = Object.keys(error)[i]
           if (e != 'client'){
           this.errors.push(error[e])
+          this.errorkeys.push(e)
           }
         }
 

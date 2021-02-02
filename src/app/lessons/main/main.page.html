@@ -78,8 +78,16 @@
 <div class='content'></div>
 <div class="wrapper">
   <div class="boxwrapper" *ngFor="let section of sections; let i = index"> <div class="box" [routerLink]="['../../../../../../learn/', lessonId, 'section', section.Section_ID]" [ngStyle]="{'background-color': getColor(i%4)}"><img class='icon'  src="/assets/images/section_icon.svg"/></div> <span class="boxname">{{section.name}}</span></div>
-  <div class="boxwrapper"  *ngIf="flipcardlist?.length > 0"> <div class="box" [routerLink]="['../../../../../../study/', lessonId]" ><img class='icon'  src="/assets/images/flipcard_icon.svg"/></div><span class="boxname">Flipcards</span></div>
-  <div class="boxwrapper" *ngFor="let quiz of exercises; let i = index" > <div class="box" [routerLink]="['../../../../../../quiz/', lessonId, 'do_quiz', quiz.ID]" [ngStyle]="{'background-color': getColor2(i%4)}"><img  *ngIf="quiz.Type === 1 || quiz.Type === 2 " class='icon'  src="/assets/images/fillthegap_icon.svg"/><img  *ngIf="quiz.Type === 6" class='icon'  src="/assets/images/multiplechoice_icon.svg"/><img  *ngIf="quiz.Type === 3" class='icon'  src="/assets/images/container_qa.svg"/><img  *ngIf="quiz.Type === 7" class='icon'  src="/assets/images/container_icon.svg"/></div><span class="boxname">{{quiz.Title}}</span></div>
+  <div class="boxwrapper"  *ngIf="flipcardlist?.length > 0"> <div class="box" [routerLink]="['../../../../../../study/', lessonId]" ><img *ngIf="!flipdone" class='icon'  src="/assets/images/flipcard_icon.svg"/><img *ngIf="flipdone" class='icon'  src="/assets/images/flipcard_badge.svg"/></div><span class="boxname">Flipcards</span></div>
+  <div class="boxwrapper" *ngFor="let quiz of exercises; let i = index" > <div class="box" [routerLink]="['../../../../../../quiz/', lessonId, 'do_quiz', quiz.ID]" [ngStyle]="{'background-color': getColor2(i%4)}">
+    <img  *ngIf="quiz.Type === 1 || quiz.Type === 2 " class='icon'  src="/assets/images/fillthegap_icon.svg"/>
+
+    <img  *ngIf="quiz.Type === 6 && quiz.Evaluation < 80" class='icon'  src="/assets/images/multiplechoice_icon.svg"/>
+    <img  *ngIf="quiz.Type === 6 && quiz.Evaluation >= 80" class='icon'  src="/assets/images/multiplechoice_badge.svg"/>
+
+    <img  *ngIf="quiz.Type === 3" class='icon'  src="/assets/images/container_qa.svg"/>
+    <img  *ngIf="quiz.Type === 7" class='icon'  src="/assets/images/container_icon.svg"/>
+  </div><span class="boxname">{{quiz.Title}}</span></div>
 
 </div>
 

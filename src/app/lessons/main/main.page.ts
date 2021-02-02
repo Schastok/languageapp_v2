@@ -16,6 +16,7 @@ export class MainPage implements OnInit {
   sections;
   exercises;
   flipcardlist;
+  flipdone = false;
 
   constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService) { }
 
@@ -43,6 +44,7 @@ export class MainPage implements OnInit {
       this.lessonName = paramMap.get('lessonName');
       console.log(this.lessonId);
 
+      console.log("TOKEN ", this.apiService.TOKEN);
       this.apiService.getSections(this.lessonId).subscribe((data)=>{
         console.log(data);
         this.sections = data;
@@ -58,6 +60,23 @@ export class MainPage implements OnInit {
         console.log(data);
         this.flipcardlist = data;
         console.log(this.flipcardlist);
+        var all = Object.values(data);
+        var finished = all.filter(function(item){
+          if(item.Status >=5){
+            return true
+          }
+        });
+        if(all.length>0){
+        var val = Math.floor((finished.length/all.length)*100);
+        }
+        else{
+          var val = 0;
+        }
+        if (val == 100){
+          this.flipdone = true;
+        }
+        console.log(val);
+        console.log(this.flipdone);
       });
     });
   }
