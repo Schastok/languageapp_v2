@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { ApiService } from '../../../api.service';
 import {Directive, ElementRef, HostListener, Renderer2} from '@angular/core';
 import { Location } from '@angular/common';
+//import { AudioService } from '../../../services/audio.service';
+
 
 //import { FlipModule } from 'ngx-flip';
 
@@ -25,6 +27,9 @@ function remove(array, element) {
   array.splice(index, 1);
 }
 
+
+
+
 @Component({
   selector: 'app-do-set',
   templateUrl: './do-set.page.html',
@@ -42,6 +47,10 @@ export class DoSetPage implements OnInit {
     showside;
     finished;
     random;
+    timer = 5;
+    timer2 = 15;
+    timerstart = false;
+    timerend = false;
 
 
     constructor(private location: Location, private activatedRoute: ActivatedRoute, private apiService: ApiService, private renderer: Renderer2, private router: Router) {
@@ -50,6 +59,7 @@ export class DoSetPage implements OnInit {
 
 
     ngOnInit() {
+
       console.log("ngOnInit called")
       this.random = Math.random() < 0.5;
       this.finished = false;
@@ -74,6 +84,9 @@ export class DoSetPage implements OnInit {
         });
         console.log('flipcarset init: ')
         console.log(this.flipcardset);
+        this.timerstart= true;
+        this.timerend = false;
+        setTimeout(() => { this.countdown(this.timer); }, 1000);
         if (this.flipcardset.length != 0){
         this.currentcard = this.flipcardset[0];
         this.showid = this.currentcard.flipcardID;
@@ -93,6 +106,42 @@ export class DoSetPage implements OnInit {
     });
     }
 
+    countdown(x){
+      if(this.timerend == true){
+        return;
+      }
+      let card = this.currentcard;
+        if(card.multiplechoice_possible == 1 && card.entry_possible == 1 && this.random == true){
+          if(this.timerstart== true){
+            x = this.timer2;
+            this.timerstart= false;
+          }
+        }
+
+        if(x<0){
+          console.log("click ", "card_"+this.showid);
+          x = this.timer;
+          this.changeshowside(x);
+          return x;
+        }
+        else{
+          let el = document.getElementById("timer");
+          if(el !== null)
+              {
+                console.log(el);
+                el.innerHTML= x;
+                x--;
+              }
+            else{
+              return
+            }
+
+
+        setTimeout(() => { this.countdown(x); }, 1000);
+
+      }
+
+    }
 
  checkanswer(answer, event, correct){
    console.log(window.getComputedStyle(event.target).background)
@@ -133,7 +182,8 @@ export class DoSetPage implements OnInit {
  }
 
  changeshowside(event){
-
+   this.timer = 5;
+   this.timerend = true;
    console.log("current side");
    console.log(this.showside);
    if (this.showside === 0){
@@ -153,9 +203,13 @@ export class DoSetPage implements OnInit {
 
  }
 
+
+
+
  submitanswer(progressid, status, event){
    this.random = Math.random() < 0.5;
    this.changeshowside(event);
+
    console.log('progressid');
    console.log(progressid);
    var statusint;
@@ -198,6 +252,9 @@ export class DoSetPage implements OnInit {
 
   if (this.currentcard){
   this.showid = this.currentcard.flipcardID;
+  this.timerstart= true;
+  this.timerend = false;
+  this.countdown(this.timer);
    }
    else{
      console.log('the end');

@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { LessonsPageRoutingModule } from './lessons-routing.module';
-import { SafePipe } from '../safe.pipe';
+import { PipesModule } from '../pipes/pipes.module';
 
 import { LessonsPage } from './lessons.page';
 
@@ -14,9 +14,10 @@ import { LessonsPage } from './lessons.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    LessonsPageRoutingModule
+    LessonsPageRoutingModule,
+    PipesModule
   ],
-  declarations: [LessonsPage, SafePipe],
-  exports:[SafePipe]
+  declarations: [LessonsPage],
+
 })
 export class LessonsPageModule {}

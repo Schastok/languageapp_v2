@@ -23,13 +23,14 @@ pw_error;
     this.errors = [];
     this.errorkeys = [];
     this.pw_error= '';
-    let username = (document.getElementById('username') as HTMLInputElement).value;
+    let username = (document.getElementById('user_name') as HTMLInputElement).value;
     let password1 = (document.getElementById('password1')as HTMLInputElement).value;
     let password2 = (document.getElementById('password2')as HTMLInputElement).value;
     if (password1 === password2){
       let email = (document.getElementById('email')as HTMLInputElement).value;
       let first_name = (document.getElementById('first_name')as HTMLInputElement).value;
       console.log(first_name);
+      console.log("username: ", username);
       this.apiService.register(username, password1, first_name, email).subscribe((data)=>{
         console.log(data);
         this.router.navigate(['/login']);

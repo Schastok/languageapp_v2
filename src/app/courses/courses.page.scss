@@ -1,0 +1,203 @@
+
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+  -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
+  outline: none !important;
+}
+
+ion-toolbar{
+  --background: transparent!important;
+  position: absolute;
+
+}
+
+ion-menu-button{
+  --color: white;
+}
+
+ion-content{
+
+//  --background: rgb(29,253,220);
+//  --background: linear-gradient(to top, rgba(29,253,220,1) 28%, rgba(69,116,252,1) 100%);
+--background: #001124;
+
+
+
+}
+
+ion-slides{
+  margin-left: 5%;
+}
+
+ion-slide{
+  //margin-right: 5%!important;
+  padding-right: 20px;
+}
+
+h2{
+position: relative;
+width: 60%;
+//height: 72px;
+//padding-top: 20%;
+padding-left: 5%;
+margin-top:0px;
+
+
+  font-family: Avenir Next LT Pro;
+  font-style: normal;
+  //font-weight: 600;
+  font-size: 32px;
+    font-size: 7vw;
+  line-height: 7vw;
+  /* or 125% */
+
+  display: flex;
+  //align-items: center;
+
+  color: #FFFFFF;
+}
+
+ion-slide{
+
+  //height: '-webkit-fill-available'!important;
+}
+
+
+
+.lessonitem{
+
+//  background: linear-gradient(180deg, rgba(18, 20, 33, 0) 50%, rgba(18, 20, 33, 0.5) 100%);
+  box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+  display: inline-block;
+  //margin: 15px 12px;
+  //position: relative;
+  top:5%;
+  //height: 200px;
+  //width: 500px;
+  width: 100%;
+  height: 55vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 16px;
+  margin-bottom: 100%;
+  margin-top: 2vw;
+}
+
+
+.name{
+  font-family: Avenir Next LT Pro;
+  position: absolute;
+  //margin-top: 150px;
+  bottom: 10%;
+  margin-left: 10px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  color: #FFFFFF;
+
+}
+
+.desciption{
+  font-family: Avenir Next LT Pro;
+  //position: absolute;
+  //width: 60%;
+  //height: 70px;
+  left: 0px;
+  //top: 50%;
+  margin-top: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 5%;
+text-align: left;
+font-style: normal;
+font-weight: normal;
+//font-size: 14px;
+font-size: 4vw;
+line-height: 6vw;
+/* or 171% */
+color: #FFFFFF;
+}
+
+.blueline{
+  position: absolute;
+  width: 40px;
+  height: 0.3%;
+  left: 5%;
+  background-color: #4A80F0;
+
+}
+
+
+.button_dark{
+  width: 200px;
+  height: 36px;
+  font-size: 14px;
+  background-color:#005e68;
+  border-radius:25px;
+  color: white;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.buttonfields{
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: left;
+  width: 100%;
+  margin-left:calc(50% - 100px);
+}
+
+.cl_name{
+  font-family: Avenir Next LT Pro;
+  //margin-top: 150px;
+  bottom: 10%;
+  //margin-left: 10px;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
+
+}
+
+.cl_description{
+  font-family: Avenir Next LT Pro;
+  //margin-top: 150px;
+  bottom: 10%;
+  margin-left: 10px;
+  font-style: normal;
+
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
+  font-style: italic;
+}
+
+ion-list{
+  background: transparent;
+  margin-top: 50px;
+}
+
+ion-item {
+    --background: transparent!important;
+  }
+
+ion-avatar{
+  width: 70px;
+  height: 70px;
+}
+ion-avatar > img{
+      border-radius:0%;
+      height:60px;
+      width:60px;
+      border: 2px solid white;
+  }
+
+ion-label{
+  text-align: left;
+}

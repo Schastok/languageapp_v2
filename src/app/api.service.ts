@@ -28,6 +28,7 @@ export class ApiService {
     }
     else{
       this.URL = 'https://www.e-fluent.com';
+      this.STUDENT_ID = '';
       this.SIZE = '10';
     }
   }
@@ -167,6 +168,7 @@ export class ApiService {
         "email": email,
         "classroom": this.PROJECT_ID
       };
+      console.log(postData);
     return this.httpClient.post(`${this.URL}/api_signup_register/`, postData, {observe: "body"}).pipe(
       catchError(this.handleError)
     );
@@ -176,4 +178,34 @@ export class ApiService {
   getuserid(username: string){
 return this.httpClient.get(`${this.URL}/api_userid/?username=${username}`);
 }
+
+
+getcls(){
+  let headers = new HttpHeaders();
+  let token = "Token " + this.TOKEN;
+  headers = headers.set('Authorization', token);
+  return this.httpClient.get(`${this.URL}/api_allclassrooms/`,  {headers: headers});
+}
+
+getstudentcls(){
+  let headers = new HttpHeaders();
+  let token = "Token " + this.TOKEN;
+  headers = headers.set('Authorization', token);
+  return this.httpClient.get(`${this.URL}/api_classrooms/?student=${this.STUDENT_ID}`,  {headers: headers});
+}
+
+getstudentassigned(classroom:string){
+  let headers = new HttpHeaders();
+  let token = "Token " + this.TOKEN;
+  headers = headers.set('Authorization', token);
+  return this.httpClient.get(`${this.URL}/api_classroomsignup/?student=${this.STUDENT_ID}&classroom=${classroom}`,  {headers: headers});
+}
+
+getclsdetails(classroom:string){
+  let headers = new HttpHeaders();
+  let token = "Token " + this.TOKEN;
+  headers = headers.set('Authorization', token);
+  return this.httpClient.get(`${this.URL}/api_classroomdetails/?classroom=${classroom}`,  {headers: headers});
+}
+
 }

@@ -1,0 +1,44 @@
+<ion-content>
+  <div class='backgroundimage'>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      <ion-title>
+      </ion-title>
+    </ion-toolbar>
+<img class='wave'  src="/assets/images/background.svg"/>
+
+  </div>
+<h2>Courses</h2>
+<div class='desciption'>Please select a new course</div>
+<div class='blueline'></div>
+
+<ion-list *ngFor="let course of courses">
+
+       <ion-item class="item"  *ngIf="validated(course.Classroom_ID)" [routerLink]="['./coursedetails', course.Classroom_ID, course.Classroom_image, course.Classroom_name, course.Classroom_description, 0]">
+         <ion-avatar slot="start">
+           <img [src]="course.Classroom_image">
+         </ion-avatar>
+         <ion-label>
+           <h2 class="cl_name">{{course.Classroom_name}}</h2>
+           <p class="cl_description">{{course.Classroom_description}}</p>
+         </ion-label>
+       </ion-item>
+
+
+        <ion-item class="item"  *ngIf="!validated(course.Classroom_ID)" [routerLink]="['./coursedetails', course.Classroom_ID, course.Classroom_image, course.Classroom_name, course.Classroom_description, 1]">
+
+         <ion-avatar slot="start">
+           <img [src]="course.Classroom_image">
+         </ion-avatar>
+         <ion-label>
+           <h2 class="cl_name">{{course.Classroom_name}}</h2>
+           <p class="cl_description">{{course.Classroom_description}}</p>
+         </ion-label>
+       </ion-item>
+
+</ion-list>
+
+
+</ion-content>

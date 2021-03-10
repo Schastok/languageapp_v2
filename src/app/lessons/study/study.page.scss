@@ -1,4 +1,20 @@
 
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+  -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
+  outline: none !important;
+}
+
+ion-toolbar{
+  --background: transparent!important;
+  position: absolute;
+
+}
+
+ion-menu-button{
+  --color: white;
+}
+
 
 ion-content{
 
@@ -282,7 +298,7 @@ background: #4f71ecff;
 
 .quiz{
   width: 200px;
-  height: 31px;
+  height: 36px;
   font-size: 14px;
   background-color: white;
   border-radius:25px;
@@ -293,7 +309,7 @@ background: #4f71ecff;
 
 .study{
   width: 200px;
-  height: 31px;
+  height: 36px;
   font-size: 14px;
   background-color:#005e68;
   border-radius:25px;

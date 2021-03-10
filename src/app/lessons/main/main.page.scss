@@ -1,4 +1,21 @@
 
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+  -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
+  outline: none !important;
+}
+
+ion-toolbar{
+  --background: transparent!important;
+  position: absolute;
+
+}
+
+ion-menu-button{
+  --color: white;
+}
+
+
 ion-content{
 
 //  --background: rgb(29,253,220);
@@ -157,7 +174,7 @@ height: 100%;
 //text-align: center;
 background: #FCCE38;
 border-radius: 100%;
-display: table;
+//display: table;
 
 
 }
@@ -208,13 +225,28 @@ display: table;
 }
 
 .footer{
-  background-color: #001124;
-  background-image: linear-gradient(90deg, #008086 0%, rgba(0, 128, 134, 0) 100%);
-  height: 50px;
+  //background-color: #001124;
+  //background-image: linear-gradient(90deg, #008086 0%, rgba(0, 128, 134, 0) 100%);
+  height: 5px;
   width: 100%;
 
 }
 
 ion-footer{
   background-color: transparent!important;
+}
+
+
+.prc{
+
+  position: relative;
+  font-family: Avenir Next LT Pro;
+  font-style: normal;
+  font-weight: 100;
+  //font-size: 4vw;
+  font-size: 16px;
+  line-height: 20px;
+  color: #FFFFFF;
+  bottom: 20px;
+
 }

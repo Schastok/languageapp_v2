@@ -8,6 +8,13 @@
 <ion-content class="content">
 
   <div class='backgroundimage'>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      <ion-title>
+      </ion-title>
+    </ion-toolbar>
 <img class='wave'  src="/assets/images/background.svg"/>
 
   </div>
@@ -29,35 +36,58 @@
             </ion-card-header>
 
        </ion-card>
+
+       <image  *ngIf="card.image != ''" x="0" y="0" width="600" [attr.xlink:href]="card.image"></image>
        -->
 
        <svg  *ngIf="showside === 0"  id="level{{card.Status}}"  width="100%" height="100%" version="1.1" viewBox="0 0 875.37 662.23" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 
 
-               <pattern id="image" x="0" y="0" patternUnits="objectBoundingBox" height="1" width="1">
-               <image x="0" y="0" width="600" xlink:href="https://www.e-fluent.com/media/images/flipcards/san-francisco-210230_960_720_H5WVRcO.jpg"></image>
+               <pattern *ngIf="card.image == ''" id="image{{card.flipcardID}}" x="0" y="0" patternUnits="objectBoundingBox" height="1" width="1">
+
+               <image   x="0" y="0" width="600" xlink:href="https://www.e-fluent.com/media/images/user_10/flipcard_background.jpg"></image>
              </pattern>
+
+             <pattern *ngIf="card.image != ''" id="image{{card.flipcardID}}" x="0" y="0" patternUnits="objectBoundingBox" height="1" width="1">
+
+               <image   x="0" y="0" width="600" [attr.xlink:href]="'https://www.e-fluent.com/media/' + card.image"></image>
+           </pattern>
               <g transform="translate(1.8439 -3.3629)">
 
                <path x="-1.8438932" y="3.3629329" width="875.28021" height="658.43988" rx="42.230354" ry="46.564548" d="m40.386 3.3629h790.82c23.396 0 42.23 20.768 42.23 46.565v565.31c0 25.797-18.835 46.565-42.23 46.565h-790.82c-23.396 0-42.23-20.768-42.23-46.565v-565.31c0-25.797 18.835-46.565 42.23-46.565z" fill="#14a2af" opacity=".699" stroke="#4d4d4d" stroke-width="2.2774"/>
                <path id="water" d="" fill="#72d6e1" stroke-width="1.3863"/>
-               <text transform="scale(1.0093 .99081)" x="325.0621" y="574.06549" font-size="27.709px" letter-spacing="0px" stroke-width="2.3091" word-spacing="0px" xml:space="preserve"><tspan x="325.0621" y="574.06549" stroke-width="2.3091"><tspan x="325.0621" y="574.06549" fill="#ffffff" font-family="Arial" font-size="92.364px" stroke-width="2.3091" style="line-height:1.25">{{ card.Question }}</tspan></tspan></text>
-               <ellipse cx="435.8" cy="246.2" rx="199.78" ry="196.61"  fill="url(#image)" fill-opacity=".85"/>
+               <text transform="scale(1.0093 .9908)" x="825.42889" y="579.16003" font-size="27.709px" letter-spacing="0px" stroke-width="2.3091" text-align="center" text-anchor="middle" word-spacing="0px" xml:space="preserve">
+                 <tspan x="439.93542" y="529.16003" fill="#ffffff" font-family="Arial" font-size="60px" stroke-width="2.3091" text-align="center" text-anchor="middle" style="line-height:1.25" >{{ card.Question | slice:0:26 }}</tspan>
+                 <tspan x="439.93542" y="559.16003" fill="#ffffff" font-family="Arial" font-size="60px" stroke-width="2.3091" text-align="center" text-anchor="middle" style="line-height:1.25" dy="30">{{ card.Question | slice:26:52}}</tspan>
+                 <tspan x="439.93542" y="579.16003" fill="#ffffff" font-family="Arial" font-size="60px" stroke-width="2.3091" text-align="center" text-anchor="middle" style="line-height:1.25" dy="80">{{ card.Question | slice:52}}</tspan>
+               </text>
+
+               <ellipse cx="435.8" cy="246.2" rx="199.78" ry="196.61"  [attr.fill]="'url(#image' + card.flipcardID + ')'" fill-opacity=".85"/>
               </g>
              </svg>
 
              <svg class='animated flipInY' *ngIf="showside === 1"  id="level{{card.Status}}"  width="100%" height="100%" version="1.1" viewBox="0 0 875.37 662.23" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+               <pattern *ngIf="card.image == ''" id="image{{card.flipcardID}}" x="0" y="0" patternUnits="objectBoundingBox" height="1" width="1">
 
+               <image   x="0" y="0" width="600" xlink:href="https://www.e-fluent.com/media/images/user_10/flipcard_background.jpg"></image>
+             </pattern>
 
-                     <pattern id="image" x="0" y="0" patternUnits="objectBoundingBox" height="1" width="1">
-                     <image x="0" y="0" width="600" xlink:href="https://www.e-fluent.com/media/images/flipcards/san-francisco-210230_960_720_H5WVRcO.jpg"></image>
-                   </pattern>
+             <pattern *ngIf="card.image != ''" id="image{{card.flipcardID}}" x="0" y="0" patternUnits="objectBoundingBox" height="1" width="1">
+
+               <image   x="0" y="0" width="600" [attr.xlink:href]="'https://www.e-fluent.com/media/' + card.image"></image>
+           </pattern>
+
                     <g transform="translate(1.8439 -3.3629)">
 
                      <path x="-1.8438932" y="3.3629329" width="875.28021" height="658.43988" rx="42.230354" ry="46.564548" d="m40.386 3.3629h790.82c23.396 0 42.23 20.768 42.23 46.565v565.31c0 25.797-18.835 46.565-42.23 46.565h-790.82c-23.396 0-42.23-20.768-42.23-46.565v-565.31c0-25.797 18.835-46.565 42.23-46.565z" fill="#14a2af" opacity=".699" stroke="#4d4d4d" stroke-width="2.2774"/>
                      <path id="water" d="" fill="#72d6e1" stroke-width="1.3863"/>
-                     <text transform="scale(1.0093 .99081)" x="325.0621" y="574.06549" font-size="27.709px" letter-spacing="0px" stroke-width="2.3091" word-spacing="0px" xml:space="preserve"><tspan x="325.0621" y="574.06549" stroke-width="2.3091"><tspan x="325.0621" y="574.06549" fill="#ffffff" font-family="Arial" font-size="92.364px" stroke-width="2.3091" style="line-height:1.25">{{ card.Answers }}</tspan></tspan></text>
-                     <ellipse cx="435.8" cy="246.2" rx="199.78" ry="196.61"  fill="url(#image)" fill-opacity=".85"/>
+                     <text transform="scale(1.0093 .9908)" x="825.42889" y="579.16003" font-size="27.709px" letter-spacing="0px" stroke-width="2.3091" text-align="center" text-anchor="middle" word-spacing="0px" xml:space="preserve">
+                       <tspan x="439.93542" y="529.16003" fill="#ffffff" font-family="Arial" font-size="60px" stroke-width="2.3091" text-align="center" text-anchor="middle" style="line-height:1.25" >{{ card.Answers | slice:0:26 }}</tspan>
+                       <tspan x="439.93542" y="559.16003" fill="#ffffff" font-family="Arial" font-size="60px" stroke-width="2.3091" text-align="center" text-anchor="middle" style="line-height:1.25" dy="30">{{ card.Answers | slice:26:52}}</tspan>
+                       <tspan x="439.93542" y="579.16003" fill="#ffffff" font-family="Arial" font-size="60px" stroke-width="2.3091" text-align="center" text-anchor="middle" style="line-height:1.25" dy="80">{{ card.Answers | slice:52}}</tspan>
+                     </text>
+
+                     <ellipse cx="435.8" cy="246.2" rx="199.78" ry="196.61"  [attr.fill]="'url(#image' + card.flipcardID + ')'" fill-opacity=".85"/>
                     </g>
                    </svg>
 <!--

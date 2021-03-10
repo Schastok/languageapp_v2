@@ -35,13 +35,18 @@ export class StudyPage implements OnInit {
 
 
         var all = Object.values(data);
+        var filtered = all.filter(function(item){
+          if(item.multiplechoice_possible === 1|| item.entry_possible === 1){
+            return true
+          }
+        });
         var finished = all.filter(function(item){
           if(item.Status >=5){
             return true
           }
         });
         if(all.length>0){
-        var val = Math.floor((finished.length/all.length)*100);
+        var val = Math.floor((finished.length/filtered.length)*100);
         }
         else{
           var val = 0;
@@ -57,7 +62,7 @@ export class StudyPage implements OnInit {
 
          this.renderer.setAttribute( el, 'style', 'stroke-dashoffset:'+pct);
 
-         document.getElementById('cont').setAttribute('data-pct', val);
+         document.getElementById('cont').setAttribute('data-pct', val.toString());
 
 
       });

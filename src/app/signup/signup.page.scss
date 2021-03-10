@@ -1,4 +1,8 @@
-
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+-webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
+outline: none !important;
+}
 ion-content{
 
 //  --background: rgb(29,253,220);
@@ -71,7 +75,7 @@ select:-webkit-autofill:focus {
 
 .login{
   width: 200px;
-  height: 31px;
+  height: 36px;
   font-size: 14px;
   background-color: white;
   border-radius:25px;
@@ -82,7 +86,7 @@ select:-webkit-autofill:focus {
 
 .submit{
   width: 200px;
-  height: 31px;
+  height: 36px;
   font-size: 14px;
   background-color:#005e68;
   border-radius:25px;

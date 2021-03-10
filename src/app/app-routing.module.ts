@@ -6,7 +6,7 @@ const routes: Routes = [
 
   {
     path: '',
-    redirectTo: 'authenticate',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
 
@@ -85,6 +85,27 @@ const routes: Routes = [
   {
     path: 'signup',
     loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
+  },
+  {
+    path: 'logout',
+    loadChildren: () => import('./logout/logout.module').then( m => m.LogoutPageModule)
+  },
+  {
+    path: 'mycourses',
+    loadChildren: () => import('./mycourses/mycourses.module').then( m => m.MycoursesPageModule)
+  },
+  {
+    path: 'courses',
+    children:[
+      {
+    path: '',
+    loadChildren: () => import('./courses/courses.module').then( m => m.CoursesPageModule)
+  },
+      {
+    path: 'coursedetails/:ClassroomId/:ClassroomImage/:ClassroomName/:ClassroomDescription/:new',
+    loadChildren: () => import('./courses/coursedetails/coursedetails.module').then( m => m.CoursedetailsPageModule)
+    }
+  ]
   }
 ];
 @NgModule({

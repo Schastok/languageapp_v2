@@ -67,26 +67,45 @@
 
  <ion-content>
    <div class='backgroundimage'>
+     <ion-toolbar>
+         <ion-buttons slot="start">
+         <ion-menu-button></ion-menu-button>
+         </ion-buttons>
+       <ion-title>
+       </ion-title>
+     </ion-toolbar>
  <img class='wave'  src="/assets/images/background.svg"/>
 
    </div>
 
  <h2>{{ lessonName }}</h2>
-<div class='desciption'>  {{ lessonDescription }}</div>
+<div class='desciption' [innerHTML]="lessonDescription | safe: 'html'"></div>
 
  <div class='blueline'></div>
+
 <div class='content'></div>
 <div class="wrapper">
-  <div class="boxwrapper" *ngFor="let section of sections; let i = index"> <div class="box" [routerLink]="['../../../../../../learn/', lessonId, 'section', section.Section_ID]" [ngStyle]="{'background-color': getColor(i%4)}"><img class='icon'  src="/assets/images/section_icon.svg"/></div> <span class="boxname">{{section.name}}</span></div>
+  <div class="boxwrapper" *ngFor="let section of sections; let i = index">
+
+    <div class="box" [routerLink]="['../../../../../../learn/', lessonId, 'section', section.Section_ID]" [ngStyle]="{'background-color': getColor(i%4)}">
+      <img *ngIf="sections_done[section.Section_ID] === 0" class='icon'  src="/assets/images/section_icon.svg"/>
+      <img *ngIf="sections_done[section.Section_ID] === 1" class='icon'  src="/assets/images/section_badge.svg"/>
+  </div> <span class="boxname">{{section.name}}</span></div>
   <div class="boxwrapper"  *ngIf="flipcardlist?.length > 0"> <div class="box" [routerLink]="['../../../../../../study/', lessonId]" ><img *ngIf="!flipdone" class='icon'  src="/assets/images/flipcard_icon.svg"/><img *ngIf="flipdone" class='icon'  src="/assets/images/flipcard_badge.svg"/></div><span class="boxname">Flipcards</span></div>
   <div class="boxwrapper" *ngFor="let quiz of exercises; let i = index" > <div class="box" [routerLink]="['../../../../../../quiz/', lessonId, 'do_quiz', quiz.ID]" [ngStyle]="{'background-color': getColor2(i%4)}">
-    <img  *ngIf="quiz.Type === 1 || quiz.Type === 2 " class='icon'  src="/assets/images/fillthegap_icon.svg"/>
+
+    <img  *ngIf="(quiz.Type === 1 || quiz.Type === 2) && quiz.Evaluation < 80" class='icon'  src="/assets/images/fillthegap_icon.svg"/>
+    <img  *ngIf="(quiz.Type === 1 || quiz.Type === 2) && quiz.Evaluation >= 80" class='icon'  src="/assets/images/fillthegap_badge.svg"/>
 
     <img  *ngIf="quiz.Type === 6 && quiz.Evaluation < 80" class='icon'  src="/assets/images/multiplechoice_icon.svg"/>
     <img  *ngIf="quiz.Type === 6 && quiz.Evaluation >= 80" class='icon'  src="/assets/images/multiplechoice_badge.svg"/>
 
     <img  *ngIf="quiz.Type === 3" class='icon'  src="/assets/images/container_qa.svg"/>
-    <img  *ngIf="quiz.Type === 7" class='icon'  src="/assets/images/container_icon.svg"/>
+
+
+    <img  *ngIf="quiz.Type === 7  && quiz.Evaluation < 80" class='icon'  src="/assets/images/container_icon.svg"/>
+    <img  *ngIf="quiz.Type === 7 && quiz.Evaluation >= 80" class='icon'  src="/assets/images/container_badge.svg"/>
+    <span *ngIf="quiz.Evaluation >= 0"class="prc">{{quiz.Evaluation |  number:'1.0-0'}}%</span>
   </div><span class="boxname">{{quiz.Title}}</span></div>
 
 </div>
@@ -96,5 +115,6 @@
 
  <ion-footer>
    <div class="footer">
+     <ion-progress-bar id="prog" value="{{overallprogress}}"></ion-progress-bar>
      </div>
  </ion-footer>

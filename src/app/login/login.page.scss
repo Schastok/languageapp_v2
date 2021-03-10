@@ -1,3 +1,8 @@
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+  -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
+  outline: none !important;
+}
 
 ion-content{
 
@@ -59,7 +64,7 @@ select:-webkit-autofill:focus {
 }
 .signup{
   width: 200px;
-  height: 31px;
+  height: 36px;
   font-size: 14px;
   background-color: white;
   border-radius:25px;
@@ -70,7 +75,7 @@ select:-webkit-autofill:focus {
 
 .submit{
   width: 200px;
-  height: 31px;
+  height: 36px;
   font-size: 14px;
   background-color:#005e68;
   border-radius:25px;
@@ -79,10 +84,12 @@ select:-webkit-autofill:focus {
   display: block;
 }
 
+
+
 .buttonfields{
-  position: absolute;
-  bottom: 10%;
+  position: relative;
   margin-top: 50px;
+  margin-bottom: 50px;
   text-align: left;
   width: 100%;
   margin-left:calc(50% - 100px);

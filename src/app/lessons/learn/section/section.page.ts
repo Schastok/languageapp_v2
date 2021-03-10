@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { ApiService } from '../../../api.service';
 import { IonContent } from '@ionic/angular';
 import {IonSlides} from '@ionic/angular';
-
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-section',
@@ -33,7 +33,7 @@ export class SectionPage implements OnInit{
 @ViewChild(IonContent, {static: false}) IonContent: IonContent;
 
 
-  constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private router: Router) {}
+  constructor(private activatedRoute: ActivatedRoute, private storage: Storage, private apiService: ApiService, private router: Router) {}
 
 
 
@@ -61,6 +61,10 @@ export class SectionPage implements OnInit{
       console.log(data);
       if (Object.values(data).length >= 2){
   this.disableNextBtn = false;
+  //this.storage.set('section_' + this.sectionId + '_done', 0);
+}
+else{
+  this.storage.set('section_' + this.sectionId + '_done', 1);
 }
       this.sectiondetails = data;
       for (let slide of this.sectiondetails) {
@@ -199,6 +203,13 @@ back()
 doCheck() {
   let prom1 = this.IonSlides.isBeginning();
   let prom2 = this.IonSlides.isEnd();
+  prom2.then((istrue) => {
+      console.log(istrue);
+      if (istrue) {
+        this.storage.set('section_' + this.sectionId + '_done', 1);
+      } else {
+      }
+    });
 
   Promise.all([prom1, prom2]).then((data) => {
     data[0] ? this.disablePrevBtn = true : this.disablePrevBtn = false;

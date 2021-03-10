@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { DoQuizPageRoutingModule } from './do-quiz-routing.module';
 
 import { DoQuizPage } from './do-quiz.page';
-import { LessonsPageModule } from '../../lessons.module';
+import { PipesModule } from '../../../pipes/pipes.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
@@ -18,7 +18,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     IonicModule,
     DoQuizPageRoutingModule,
     DragDropModule,
-    LessonsPageModule
+    PipesModule
   ],
   declarations: [DoQuizPage]
 })

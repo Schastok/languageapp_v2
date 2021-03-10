@@ -10,17 +10,18 @@
   <div class="formblock">
     <div class="formfields">
 
+      <div class="userfield">
+    <input class="field" type="text"  id="user_name"  name="user_name" required />
+    <label class="formdescriptions" for="user_name">username</label>
+    <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'username'">{{errorobj[error]}}</span></span>
+    </div>
+
       <div class="namefield">
     <input class="field" type="text"  id="first_name"  name="first_name" required />
     <label class="formdescriptions" for="first_name">display name</label>
     <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'first_name'">{{errorobj[error]}}</span></span>
     </div>
 
-      <div class="userfield">
-    <input class="field" type="text"  id="username"  name="username" required/>
-    <label class="formdescriptions" for="username">username</label>
-    <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'username'">{{errorobj[error]}}</span></span>
-    </div>
 
     <div class="pwfield">
       <input class="field" type="password" id="password1" name="password1" required />

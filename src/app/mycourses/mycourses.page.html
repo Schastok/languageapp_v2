@@ -1,0 +1,37 @@
+
+
+<ion-content>
+  <div class='backgroundimage'>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      <ion-title>
+      </ion-title>
+    </ion-toolbar>
+<img class='wave'  src="/assets/images/background.svg"/>
+
+
+  </div>
+<h2>My Courses</h2>
+<div class='desciption'>Please choose a course</div>
+<div class='blueline'></div>
+
+<ion-list *ngFor="let course of courses">
+
+       <ion-item class="item" (click)="enter_cl(course.Classroom_ID)">
+         <ion-avatar slot="start">
+           <img [src]="course.Classroom_image">
+         </ion-avatar>
+         <ion-label>
+           <h2 class="cl_name">{{course.Classroom_name}}</h2>
+           <p class="cl_description">{{course.Classroom_description}}</p>
+         </ion-label>
+       </ion-item>
+
+</ion-list>
+
+<div class="buttonfields">
+<button (click)="all_cl()" class="button_dark" shape="round" >Find Courses</button>
+</div>
+</ion-content>

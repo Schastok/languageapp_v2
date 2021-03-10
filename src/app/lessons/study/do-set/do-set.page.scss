@@ -1,3 +1,12 @@
+ion-toolbar{
+  --background: transparent!important;
+  position: absolute;
+
+}
+
+ion-menu-button{
+  --color: white;
+}
 
 .backgroundimage{
   position: absolute;
@@ -228,16 +237,25 @@ max-width:500px;
 
 }
 
+.q{
+  text-align: center;
+}
+.qwrap{
+    text-align: center;
+}
 
+.text{
+    text-align: center;
+}
 
-svg#level1 #water {
+svg.level1 #water {
   d: path("m 797.16401,662.91209 c 51.50706,2.34375 75.21666,-5.51363 76.0311,-40.6076 0.30361,-104.27516 1.26591,49.92676 2.15404,-40.83968 -42.28794,162.3916 -847.879502,-16.36989 -876.10920877,16.51045 l -0.83509263,24.99042 c -0.6737155,20.16116 16.6587504,42.82993 73.3558984,42.62089 z");
   animation-name: makewave1;
   animation-duration: 3s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
-svg#level2 #water {
+svg.level2 #water {
   d: path("m 797.16401,662.91209 c 51.50706,2.34375 75.21666,-5.51363 76.0311,-40.6076 0.30361,-104.27516 -0.62812,-145.15895 0.26001,-235.92539 C 831.16718,548.7707 25.575612,370.00921 -2.6540948,402.88955 l 1.0589434,220.07613 c 0.097063,20.17218 16.6587504,42.82993 73.3558984,42.62089 z");
   animation-name: makewave2;
   animation-duration: 3s;
@@ -245,7 +263,7 @@ svg#level2 #water {
   animation-iteration-count: infinite;
 }
 
-svg#level3 #water {
+svg.level3 #water {
   d: path("m797.16 662.91c51.507 2.3438 75.217-5.5136 76.031-40.608 0.30361-104.28-0.56082-219.66 0.32731-310.43-288.45-64.768-465.03 115.91-875.23-7.4764l0.11193 318.57c0.012333 35.103 30.91 42.777 73.356 42.621z");
   animation-name: makewave3;
   animation-duration: 3s;
@@ -253,7 +271,7 @@ svg#level3 #water {
   animation-iteration-count: infinite;
 }
 
-svg#level4 #water {
+svg.level4 #water {
   d: path("m 797.16401,662.91209 c 51.50706,2.34375 75.21666,-5.51363 76.0311,-40.6076 0.30361,-104.27516 -0.96295,-387.56967 -0.0748,-478.33611 -87.66116,143.24454 -889.781752,-28.85515 -875.7743848,-0.90027 l 1.0589434,479.89757 c 0.044512,20.17236 16.6587504,42.82993 73.3558984,42.62089 z");
   animation-name: makewave4;
   animation-duration: 3s;
@@ -261,7 +279,7 @@ svg#level4 #water {
   animation-iteration-count: infinite;
 }
 
-svg#level5 #water {
+svg.level5 #water {
   d: path("m 797.16401,662.91209 c 51.50706,2.34375 75.21666,-5.51363 76.0311,-40.6076 C 873.50261,518.02738 881.74798,-3.581941 868.3852,29.852708 849.85635,69.872288 78.987361,-21.257372 1.1339773,26.584896 L -1.5951514,622.96568 c -0.092311,20.1722 16.6587504,42.82993 73.3558984,42.62089 z");
   animation-name: makewave5;
   animation-duration: 3s;
@@ -269,7 +287,7 @@ svg#level5 #water {
   animation-iteration-count: infinite;
 }
 
-svg#level0 #rise {
+svg.level0 #rise {
   d: path("m 799.0039,662.18129 c 51.507,0.0391 37.83178,-10.59347 38.22572,-2.77822 0.30361,-1.74091 12.04094,-1.14678 17.54972,-6.02262 -288.53754,-1.06179 -418.84254,4.97461 -824.822965,1.97548 l 3.892458,2.79803 c 0.475952,0.34213 -2.694693,4.07462 39.751307,4.07201 z");
   animation-name: riselevel0, makewave1;
   animation-duration: 3s, 3s;
@@ -278,7 +296,7 @@ svg#level0 #rise {
   animation-fill-mode: forwards;
 }
 
-svg#level1 #rise {
+svg.level1 #rise {
   d: path("m 797.16401,662.91209 c 51.50706,2.34375 75.21666,-5.51363 76.0311,-40.6076 0.30361,-104.27516 1.26591,49.92676 2.15404,-40.83968 -42.28794,162.3916 -847.879502,-16.36989 -876.10920877,16.51045 l -0.83509263,24.99042 c -0.6737155,20.16116 16.6587504,42.82993 73.3558984,42.62089 z");
   animation-name: riselevel1, makewave2;
   animation-duration: 3s, 3s;
@@ -287,7 +305,7 @@ svg#level1 #rise {
   animation-fill-mode: forwards;
 }
 
-svg#level2 #rise {
+svg.level2 #rise {
   d: path("m 797.16401,662.91209 c 51.50706,2.34375 75.21666,-5.51363 76.0311,-40.6076 0.30361,-104.27516 -0.62812,-145.15895 0.26001,-235.92539 C 831.16718,548.7707 25.575612,370.00921 -2.6540948,402.88955 l 1.0589434,220.07613 c 0.097063,20.17218 16.6587504,42.82993 73.3558984,42.62089 z");
   animation-name: riselevel2, makewave3;
   animation-duration: 3s, 3s;
@@ -296,7 +314,7 @@ svg#level2 #rise {
   animation-fill-mode: forwards;
 }
 
-svg#level3 #rise{
+svg.level3 #rise{
   d: path("m797.16 662.91c51.507 2.3438 75.217-5.5136 76.031-40.608 0.30361-104.28-0.56082-219.66 0.32731-310.43-288.45-64.768-465.03 115.91-875.23-7.4764l0.11193 318.57c0.012333 35.103 30.91 42.777 73.356 42.621z");
   animation-name: riselevel3, makewave4;
   animation-duration: 3s, 3s;
@@ -305,7 +323,7 @@ svg#level3 #rise{
   animation-fill-mode: forwards;
 }
 
-svg#level4 #rise {
+svg.level4 #rise {
   d: path("m 797.16401,662.91209 c 51.50706,2.34375 75.21666,-5.51363 76.0311,-40.6076 0.30361,-104.27516 -0.96295,-387.56967 -0.0748,-478.33611 -87.66116,143.24454 -889.781752,-28.85515 -875.7743848,-0.90027 l 1.0589434,479.89757 c 0.044512,20.17236 16.6587504,42.82993 73.3558984,42.62089 z");
   animation-name: riselevel4, makewave5;
   animation-duration: 3s, 3s;
@@ -314,7 +332,7 @@ svg#level4 #rise {
   animation-fill-mode: forwards;
 }
 
-svg#level5 #rise {
+svg.level5 #rise {
   d: path("m 797.16401,662.91209 c 51.50706,2.34375 75.21666,-5.51363 76.0311,-40.6076 C 873.50261,518.02738 881.74798,-3.581941 868.3852,29.852708 849.85635,69.872288 78.987361,-21.257372 1.1339773,26.584896 L -1.5951514,622.96568 c -0.092311,20.1722 16.6587504,42.82993 73.3558984,42.62089 z");
   animation-name: riselevel5;
   animation-duration: 3s;
@@ -327,7 +345,7 @@ svg#level5 #rise {
 
 
 
-svg#level1 #drop {
+svg.level1 #drop {
   d: path("m 797.16401,662.91209 c 51.50706,2.34375 75.21666,-5.51363 76.0311,-40.6076 0.30361,-104.27516 1.26591,49.92676 2.15404,-40.83968 -42.28794,162.3916 -847.879502,-16.36989 -876.10920877,16.51045 l -0.83509263,24.99042 c -0.6737155,20.16116 16.6587504,42.82993 73.3558984,42.62089 z");
   animation-name: droplevel1;
   animation-duration: 1s;
@@ -335,7 +353,7 @@ svg#level1 #drop {
   animation-iteration-count: 1;
   animation-fill-mode: forwards, none;
 }
-svg#level2 #drop {
+svg.level2 #drop {
   d: path("m 797.16401,662.91209 c 51.50706,2.34375 75.21666,-5.51363 76.0311,-40.6076 0.30361,-104.27516 -0.62812,-145.15895 0.26001,-235.92539 C 831.16718,548.7707 25.575612,370.00921 -2.6540948,402.88955 l 1.0589434,220.07613 c 0.097063,20.17218 16.6587504,42.82993 73.3558984,42.62089 z");
   animation-name: droplevel2, makewave1;
   animation-duration: 2s, 2s;
@@ -344,7 +362,7 @@ svg#level2 #drop {
   animation-fill-mode: forwards, none;
 }
 
-svg#level3 #drop{
+svg.level3 #drop{
   d: path("m797.16 662.91c51.507 2.3438 75.217-5.5136 76.031-40.608 0.30361-104.28-0.56082-219.66 0.32731-310.43-288.45-64.768-465.03 115.91-875.23-7.4764l0.11193 318.57c0.012333 35.103 30.91 42.777 73.356 42.621z");
   animation-name: droplevel3, makewave2;
   animation-duration: 3s, 2s;
@@ -353,7 +371,7 @@ svg#level3 #drop{
   animation-fill-mode: forwards, none;
 }
 
-svg#level4 #drop {
+svg.level4 #drop {
   d: path("m 797.16401,662.91209 c 51.50706,2.34375 75.21666,-5.51363 76.0311,-40.6076 0.30361,-104.27516 -0.96295,-387.56967 -0.0748,-478.33611 -87.66116,143.24454 -889.781752,-28.85515 -875.7743848,-0.90027 l 1.0589434,479.89757 c 0.044512,20.17236 16.6587504,42.82993 73.3558984,42.62089 z");
   animation-name: droplevel4, makewave3;
   animation-duration: 3s, 2s;
@@ -362,7 +380,7 @@ svg#level4 #drop {
   animation-fill-mode: forwards, none;
 }
 
-svg#level5 #drop {
+svg.level5 #drop {
   d: path("m 797.16401,662.91209 c 51.50706,2.34375 75.21666,-5.51363 76.0311,-40.6076 C 873.50261,518.02738 881.74798,-3.581941 868.3852,29.852708 849.85635,69.872288 78.987361,-21.257372 1.1339773,26.584896 L -1.5951514,622.96568 c -0.092311,20.1722 16.6587504,42.82993 73.3558984,42.62089 z");
   animation-name: droplevel5, makewave4;
   animation-duration: 3s, 2s;

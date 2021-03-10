@@ -2,7 +2,17 @@
 
 <ion-content>
   <div class='backgroundimage'>
+
+    <ion-toolbar>
+        <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      <ion-title>
+      </ion-title>
+    </ion-toolbar>
+
 <img class='wave'  src="/assets/images/background.svg"/>
+
 
   </div>
 <h2>Example German Course</h2>
@@ -11,10 +21,12 @@
   <ion-slides loop="true" [options]="sliderConfig" style="//height: -webkit-fill-available !important;">
          <ion-slide *ngFor="let lesson of lessons" >
            <div class='lessonitem'  [ngStyle]="{'background-image': 'url(' + lesson.Lesson_image + ')'}" [routerLink]="['./', lesson.Lessons_ID, lesson.Lesson_image, lesson.Lesson_name, lesson.Lesson_description, 'overview']">
-              <div class='overlay'><div class='name'>{{lesson.Lesson_name}}</div></div>
+              <div class='overlay'><div class='name'>{{lesson.Lesson_name}}</div>
+            <ion-progress-bar class="prog" value="{{lessonprogress[lesson.Lessons_ID]}}"></ion-progress-bar>
+          </div>
 
              </div>
-            <div class='desciption'>{{lesson.Lesson_description}}</div>
+              <div class='desciption' [innerHTML]="lesson.Lesson_description | safe: 'html'"></div>
          </ion-slide>
 
   </ion-slides>

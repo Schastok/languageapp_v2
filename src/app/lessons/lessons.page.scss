@@ -1,4 +1,19 @@
 
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+  -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
+  outline: none !important;
+}
+
+ion-toolbar{
+  --background: transparent!important;
+  position: absolute;
+
+}
+
+ion-menu-button{
+  --color: white;
+}
 
 ion-content{
 
@@ -93,6 +108,14 @@ ion-slide{
   line-height: 4vw;
   color: #FFFFFF;
 
+}
+
+.prog{
+  position: absolute;
+  //margin-top: 150px;
+  top: 2%;
+  margin-left: 5%;
+  width: 80%;
 }
 
 .desciption{

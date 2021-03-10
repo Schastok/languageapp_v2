@@ -1,0 +1,28 @@
+<ion-content>
+  <div class='backgroundimage'>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      <ion-title>
+      </ion-title>
+    </ion-toolbar>
+
+<img class='wave'  src="/assets/images/background.svg"/>
+
+  </div>
+
+
+        <h2 class="cl_name">{{ClassroomName}}</h2>
+        <img class="cl_img" [src]="ClassroomImage">
+
+        <div class='desciption' [innerHTML]="Coursedetails1 | safe: 'html'"></div>
+        <div class='desciption' [innerHTML]="Coursedetails2 | safe: 'html'"></div>
+        <div class='desciption' [innerHTML]="Coursedetails3 | safe: 'html'"></div>
+        <div class='desciption' [innerHTML]="Coursedetails4 | safe: 'html'"></div>
+
+
+  <div class="buttonfields">
+<button  *ngIf="New === '0'" (click)="presentAlertConfirm(ClassroomId, ClassroomName)" class="button_dark" shape="round" >Signup</button>
+  </div>
+</ion-content>

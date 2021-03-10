@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { ApiService } from '../../api.service';
+import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -17,8 +19,11 @@ export class MainPage implements OnInit {
   exercises;
   flipcardlist;
   flipdone = false;
+  flipprogress = 0;
+  sections_done = {};
+  overallprogress = 0;
 
-  constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService) { }
+  constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private storage: Storage) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
@@ -48,7 +53,23 @@ export class MainPage implements OnInit {
       this.apiService.getSections(this.lessonId).subscribe((data)=>{
         console.log(data);
         this.sections = data;
-        console.log(this.sections);
+
+        let sect_arr = Object.keys(data);
+        console.log(sect_arr);
+        for(let i = 0; i < sect_arr.length; i++){
+          console.log("get sections");
+          this.sections_done[this.sections[i].Section_ID] = 0;
+          console.log('section_' + this.sections[i].Section_ID + '_done');
+          this.storage.get('section_' + this.sections[i].Section_ID + '_done').then((val) => {
+            console.log("section found");
+            console.log(val);
+            if(val === 1){
+              this.sections_done[this.sections[i].Section_ID] = 1;
+            }
+
+          },
+        error => console.log(error));
+        }
       });
       this.apiService.getExerciselist(this.lessonId).subscribe((data)=>{
         console.log(data);
@@ -61,13 +82,18 @@ export class MainPage implements OnInit {
         this.flipcardlist = data;
         console.log(this.flipcardlist);
         var all = Object.values(data);
+        var filtered = all.filter(function(item){
+          if(item.multiplechoice_possible === 1|| item.entry_possible === 1){
+            return true
+          }
+        });
         var finished = all.filter(function(item){
           if(item.Status >=5){
             return true
           }
         });
         if(all.length>0){
-        var val = Math.floor((finished.length/all.length)*100);
+        var val = Math.floor((finished.length/filtered.length)*100);
         }
         else{
           var val = 0;
@@ -75,11 +101,65 @@ export class MainPage implements OnInit {
         if (val == 100){
           this.flipdone = true;
         }
-        console.log(val);
+        this.flipprogress = val;
         console.log(this.flipdone);
       });
     });
+
+
+    setTimeout(() => { this.logprogress(); }, 1000);
+
+
+
+
   }
+
+
+logprogress(){
+  //update the general Lessonprogress
+  let has_s = 0;
+  if (Object.keys(this.sections).length > 0){
+    has_s = 1
+  };
+  let has_f = 0;
+  if (Object.keys(this.flipcardlist).length > 0){
+    has_f = 1
+  };
+  let has_q = 0;
+  if (Object.keys(this.exercises).length > 0){
+    has_q = 1
+  };
+
+  let divisor = 100/(has_s + has_f + has_q);
+
+  let s_prog = 0;
+
+  let s_arr = Object.keys(this.sections_done);
+
+
+
+  for(let i = 0; i < s_arr.length; i++){
+  if(this.sections_done[s_arr[i]] == 1){
+    s_prog += (1/s_arr.length)*divisor;
+  }
+}
+
+
+
+  let f_prog = (divisor*this.flipprogress)/100;
+
+  let q_prog = 0
+  let q_arr = Object.keys(this.exercises);
+  for(let i = 0; i < q_arr.length; i++){
+  if(this.exercises[i].Evaluation >= 80){
+    q_prog += (1/q_arr.length)*divisor;
+  }
+}
+
+  this.overallprogress = (q_prog+f_prog+s_prog)*0.01
+  this.storage.set('prog_'+this.lessonId, this.overallprogress);
+
+}
 
   getColor(index:any){
     var colordict = {0: "#F77B6E", 1:"#FCCE38", 2:"#4F71EC", 3:"#10D398"}

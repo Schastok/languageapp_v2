@@ -3,6 +3,10 @@ import {ActivatedRoute} from '@angular/router';
 import { ApiService } from '../api.service';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
+import { IonRouterOutlet, Platform } from '@ionic/angular';
+import { Plugins } from '@capacitor/core';
+const { App } = Plugins;
+
 
 @Component({
   selector: 'app-authenticate',
@@ -16,7 +20,12 @@ export class AuthenticatePage implements OnInit {
 credentials = {};
 
 
-  constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private storage: Storage, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private storage: Storage, private router: Router, private platform: Platform, private routerOutlet: IonRouterOutlet) {
+    this.platform.backButton.subscribeWithPriority(-1, () => {
+      console.log("HW button pressed, exiting....")
+        App.exitApp();
+    });
+}
 
   ngOnInit() {
     //this.storage.remove('userid');
@@ -37,12 +46,14 @@ credentials = {};
     let storageuserid = await storage.get('userid');
     let storageusername = await storage.get('username');
     console.log(storagekey);
+    console.log(storageuserid);
+    console.log(storageusername);
     if(storagekey && storageuserid && storageusername){
       console.log("Great, everything is there!!!!");
       apiService.TOKEN = storagekey;
       apiService.STUDENT_ID = storageuserid;
       apiService.STUDENT_NAME = storageusername;
-      router.navigate(['/lessons']);
+      router.navigate(['/mycourses']);
     }
     else{
       console.log("ugh, i need to log in first...");

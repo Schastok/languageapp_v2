@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { SectionPageRoutingModule } from './section-routing.module';
-import { LessonsPageModule } from '../../lessons.module';
+import { PipesModule } from '../../../pipes/pipes.module';
 import { SectionPage } from './section.page';
 
 
@@ -15,7 +15,7 @@ import { SectionPage } from './section.page';
     FormsModule,
     IonicModule,
     SectionPageRoutingModule,
-    LessonsPageModule
+    PipesModule
   ],
   declarations: [SectionPage]
 })

@@ -3,6 +3,13 @@
 <ion-content >
 
   <div class='backgroundimage'>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      <ion-title>
+      </ion-title>
+    </ion-toolbar>
 <img class='wave'  src="/assets/images/background.svg"/>
 <img  *ngIf="quizType === 1 || quizType === 2 " class='headerimage'  src="/assets/images/fillthegap_icon.svg"/>
 <img  *ngIf="quizType === 6" class='headerimage'  src="/assets/images/multiplechoice_icon.svg"/>
@@ -64,7 +71,3 @@
 
 
 </ion-content>
-<ion-footer>
-  <div class="footer">
-    </div>
-</ion-footer>
