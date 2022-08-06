@@ -10,18 +10,14 @@
       <ion-title>
       </ion-title>
     </ion-toolbar>
-    
+
 <img class='wave'  src="/assets/images/background.svg"/>
 
   </div>
 
-  <div id='nav'>
-    <ion-button  *ngIf="!disablePrevBtn" shape="round" style="background-color:#10D398" color="#10D398" class="navigation" id="nav-back" (click)="back()" >Back</ion-button>
-  <ion-button *ngIf="!disableNextBtn" shape="round" style="background-color:#10D398" color="#10D398" class="navigation" id="nav-next" (click)="next()" >Next</ion-button>
 
-  </div>
 
-    <ion-slides [options]="slideConfig" #slides>
+    <ion-slides *ngIf="didInit" [options]="slideConfig" #slides>
            <ion-slide *ngFor="let item of sectiondetails" id="section{{item.position}}" >
 
              <div class="slide" id="htmlslide" *ngIf="item.type === 'text'" [innerHTML]="item.content | safe: 'html'">
@@ -43,3 +39,11 @@
 
 
 </ion-content>
+
+
+<ion-footer>
+  <div id='nav'>
+    <ion-button  *ngIf="!disablePrevBtn" shape="round" style="background-color:#10D398" color="#10D398" class="navigation" id="nav-back" (click)="back()" >Back</ion-button>
+  <ion-button *ngIf="!disableNextBtn" shape="round" style="background-color:#10D398" color="#10D398" class="navigation" id="nav-next" (click)="next()" >Next</ion-button>
+  </div>
+</ion-footer>

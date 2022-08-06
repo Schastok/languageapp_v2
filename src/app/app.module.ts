@@ -13,21 +13,24 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FlipModule } from 'ngx-flip';
-import { DragDropModule } from '@angular/cdk/drag-drop';
+//import { DragDropModule } from '@angular/cdk/drag-drop';
 import { IonicStorageModule } from '@ionic/storage';
+import { NativeAudio } from '@ionic-native/native-audio/ngx';
 
-
+import { AdMobFree } from '@ionic-native/admob-free/ngx';
 
 //import { SafePipe } from './safe.pipe';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FlipModule, DragDropModule, IonicStorageModule.forRoot()],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FlipModule, IonicStorageModule.forRoot()],
   providers: [
     StatusBar,
     NavigationBar,
     //NavigationBarColor,
+     AdMobFree,
+    NativeAudio,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

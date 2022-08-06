@@ -1,24 +1,196 @@
-.buttongrid{
 
-  margin-left: 10%;
-  margin-right: 10%;
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+  -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
+  outline: none !important;
 }
 
-ion-col{
+ion-toolbar{
+  --background: transparent!important;
+  position: absolute;
 
+}
+
+ion-menu-button{
+  --color: white;
+  margin-top: 20px;
+}
+
+
+ion-content{
+
+//  --background: rgb(29,253,220);
+//  --background: linear-gradient(to top, rgba(29,253,220,1) 28%, rgba(69,116,252,1) 100%);
+--background: #001124;
+
+
+
+}
+
+
+
+
+.confetti{
+  position: absolute;
+  -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+}
+
+.headerimage{
+  position: absolute;
+  left: 10px;
+  top: 90px;
+  top:15%;
+  width: 40%;
+
+}
+ion-slides{
+  margin-left: 5%;
+}
+
+h2{
+position: relative;
+width: 80%;
+//height: 72px;
+//padding-top: 20%;
+padding-left: 5%;
+margin-top:10%;
+
+
+  font-family: Avenir Next LT Pro;
+  font-style: normal;
+  //font-weight: 600;
+  font-size: 32px;
+    font-size: 7vw;
+  line-height: 7vw;
+  /* or 125% */
+
+  display: flex;
+  //align-items: center;
+
+  color: #FFFFFF;
+}
+ion-slide{
+
+  height: '-webkit-fill-available'!important;
+}
+
+
+
+.lessonitem{
+
+//  background: linear-gradient(180deg, rgba(18, 20, 33, 0) 50%, rgba(18, 20, 33, 0.5) 100%);
+  box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+  display: inline-block;
+  //margin: 15px 12px;
+  //position: relative;
+  top:5%;
+  //height: 200px;
+  //width: 500px;
+  width: 100%;
+  height: 30%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 16px;
+  margin-bottom: 100%;
+}
+.overlay{
+
+  background: linear-gradient(180deg, rgba(18, 20, 33, 0) 50%, rgba(18, 20, 33, 0.5) 100%);
+  height: 30%;
+  width:100%;
+  position: absolute;
+  //top: 0;
+  right:0;
+}
+.name{
+  font-family: Avenir Next LT Pro;
+  position: absolute;
+  //margin-top: 150px;
+  bottom: 10%;
+  margin-left: 10px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  color: #FFFFFF;
+
+}
+
+.desciption{
+  font-family: Avenir Next LT Pro;
+  //position: absolute;
+  //width: 60%;
+  //height: 70px;
+  left: 0px;
+  //top: 50%;
+  margin-top: 40px;
+  margin-left: 5%;
+  margin-bottom: 5%;
+text-align: left;
+font-style: normal;
+font-weight: normal;
+//font-size: 14px;
+font-size: 4vw;
+line-height: 6vw;
+/* or 171% */
+color: #FFFFFF;
+}
+
+.blueline{
+  position: relative;
+  width: 40px;
+  height: 0.3%;
+  left: 5%;
+  background-color: #4A80F0;
+}
+
+
+
+
+.content{
+
+
+    margin-top: 5%;
+    margin-bottom: 5%;
+    //margin-left: 5%;
+    font-family: Avenir Next LT Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 3vw;
+    line-height: 24px;
+    /* or 133% */
+
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1em;
+
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.quizframe{
+  padding: 5%;
+  //background-color: #fe5f55; // for styling only
+  font-family: Avenir Next LT Pro;
   //font-family: Georgia, serif;
-  //font-size: 12px;
-  //font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Roboto", sans-serif;
-  padding: 2px!important;
+  //font-size: 24px;
+  font-size: 1.5em;
+  letter-spacing: 0.2px;
+  word-spacing: 0.4px;
+  color: #FFFFFF;
+  font-weight: 400;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  padding-left: 5%;
+}
+table{
 
-
+  font-size: medium;
 }
 
-ion-icon {
-  font-size: 24px;
-  color : #d3b0e8;
-  text-align: center;
-}
 
 .logo{
   height: 50px;
@@ -28,72 +200,13 @@ ion-icon {
 .logoclass{
   text-align: center;
 }
-
-.createclass {
-  font-size: 32px;
-  color : #d3b0e8;
-  text-align: center;
-  vertical-align: middle;
+.quizcontent{
+  margin-top: 10px;
+  //margin-left: 7%;
 }
 
-ion-card-header{
-  padding: 3px!important;
-  padding-top: 5px!important;
-  text-align: center;
-
-}
-
-ion-card-title{
-  color: #FFFFFF;
-  font-family: Arial, Helvetica, sans-serif;
-  //letter-spacing: 0.8px;
-  //word-spacing: 0.4px;
-}
-ion-list{
-  background: transparent;
-}
-
-ion-item{
-  --background: transparent;
-  //border: 1px solid #d3b0e8;
-  margin-left: 5px;
-  margin-right: 5px;
-  --color: #FFFFFF;
-  box-shadow: 4px 4px 6px 1px rgba(0,0,0,0.4) ;
-  margin-top: 5px;
-
-}
-ion-label{
-  background: transparent;
-  --color: #FFFFFF;
-}
-
-ion-card{
-  //background-color: 	#fe5f55;
-  text-align: center;
-  //border-radius: 10px 10px 10px 10px;
-  border: 1px solid #d3b0e8;
-
-  padding: 5px!important;
-  margin: 0px;
-  //height: 50%;
-  background: transparent;
-  //background: rgb(9,45,121);
-  //background: linear-gradient(to left, rgba(9,45,121,0.5) 0%, rgba(41,86,250,0.5) 84%);
-  //box-shadow: 4px 4px 6px 1px rgba(0,0,0,0.4) ;
-}
-
-ion-card-content{
-  padding: 10%;
-  color: #d3b0e8;
-}
-
-ion-content{
-
-//  --background: rgb(29,253,220);
-//  --background: linear-gradient(to top, rgba(29,253,220,1) 28%, rgba(69,116,252,1) 100%);
---background: rgb(40, 47, 57);
-//--background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,168,252,1) 100%);
+.submit{
+  margin-top: 15px;
 }
 
 ion-toolbar{
@@ -106,4 +219,146 @@ ion-toolbar{
 
 ion-back-button{
   color: white;
+}
+
+
+#switch1{
+
+  //width: 80%;
+  background-color: #180f95;
+  border-radius:25px;
+}
+#switch2{
+  //width: 80%;
+  background-color: #180f95;
+  border-radius:25px;
+}
+.submit{
+  width: 200px;
+  background-color: #180f95;
+  border-radius:25px;
+
+}
+#submitdiv{
+  text-align: center;
+  position: relative;
+  bottom: 5%;
+  margin-top: 50px;
+}
+
+#scorediv{
+  //text-align: center;
+  vertical-align: center;
+}
+
+#score{
+
+  //margin-top: 20%;
+  //margin-left: 5%;
+  font-family: Avenir Next LT Pro;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  /* or 133% */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.1em;
+
+  color: rgba(255, 255, 255, 0.35);
+}
+
+example-list {
+  width: 500px;
+  max-width: 100%;
+  border: solid 1px #ccc;
+  min-height: 60px;
+  display: block;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.example-box {
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+}
+
+.answeropts{
+  position:relative;
+  margin-top: 50px;
+  padding-bottom: 50px;
+  display: grid;
+  width: 100%;
+  //grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 2%;
+  grid-auto-rows: 1fr;
+  //overflow: auto;
+}
+
+.dragbadge{
+  display: flex;
+  background: grey;
+  border-radius: 15px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding:10px;
+  width: fit-content;
+  font-size: 16px;
+}
+
+.footer{
+  background: #001124;
+  background-image: linear-gradient(90deg, #008086 0%, rgba(0, 128, 134, 0) 100%);
+  height: 50px;
+  width: 100%;
+
+}
+
+@media screen and (min-width: 600px) {
+
+
+h2{
+    font-size: 32px;
+  }
+  .desciption{
+      font-size: 22px;
+      left: initial;
+      top:35%;
+
+  }
+
+.content{
+  font-size: 22px;
+}
+.headerimage{
+  width:30%;
+  top:20%;
+}
+}
+
+@media screen and (min-width: 800px) {
+  h2{
+    font-size: 32px;
+  }
+  .desciption{
+      font-size: 22px;
+  }
+  .content{
+    font-size: 22px;
+  }
+  .headerimage{
+    width:20%;
+  }
 }

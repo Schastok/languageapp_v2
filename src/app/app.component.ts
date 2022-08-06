@@ -38,10 +38,16 @@ export class AppComponent {
           icon  : "home"
         },
         {
+          title : "Delete Account",
+          url   : "/delete-account",
+          icon  : "trash"
+        },
+        {
           title : "Logout",
           url   : "/logout",
           icon  : "log-out"
         },
+
       ]
     }
 

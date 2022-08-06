@@ -94,6 +94,6 @@
 
 <div class="buttonfields">
 <button [routerLink]="['view_set']" class="study" shape="round" >Study</button>
-<button [routerLink]="['do_set']" class="quiz" shape="round" >Quiz</button>
+<button *ngIf="progress < 100" [routerLink]="['do_set']" class="quiz" shape="round" >Quiz</button>
 </div>
  </ion-content>

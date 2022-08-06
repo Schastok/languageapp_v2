@@ -3,6 +3,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { ApiService } from '../../../api.service';
 import {Directive, ElementRef, HostListener, Renderer2} from '@angular/core';
 import { Location } from '@angular/common';
+import { NativeAudio } from '@ionic-native/native-audio/ngx';
+import { AdMobFree, AdMobFreeBannerConfig,AdMobFreeInterstitialConfig,AdMobFreeRewardVideoConfig } from '@ionic-native/admob-free/ngx';
+
 //import { AudioService } from '../../../services/audio.service';
 
 
@@ -53,12 +56,16 @@ export class DoSetPage implements OnInit {
     timerend = false;
 
 
-    constructor(private location: Location, private activatedRoute: ActivatedRoute, private apiService: ApiService, private renderer: Renderer2, private router: Router) {
+
+    constructor(private admobFree: AdMobFree, private nativeAudio: NativeAudio, private location: Location, private activatedRoute: ActivatedRoute, private apiService: ApiService, private renderer: Renderer2, private router: Router) {
 
     }
 
 
     ngOnInit() {
+      this.nativeAudio.preloadSimple('splash', 'assets/audio/water1.wav');
+      this.nativeAudio.preloadSimple('success', 'assets/audio/success.mp3');
+      this.nativeAudio.preloadSimple('fail', 'assets/audio/fail.wav');
 
       console.log("ngOnInit called")
       this.random = Math.random() < 0.5;
@@ -161,12 +168,21 @@ export class DoSetPage implements OnInit {
    const arr1 = this.empList.sort()
    const arr2 = correct.sort()
    this.iscorrect = JSON.stringify(arr1)===JSON.stringify(arr2);
+
    console.log(this.empList.sort())
    console.log(correct.sort())
    console.log(this.iscorrect)
 
+   this.earlysubmit(arr1, arr2);
 
  }
+
+
+earlysubmit(arr1, arr2){
+  if (arr1.length == arr2.length){
+    let timeout = setTimeout(() => this.changeshowside(0), 250);
+  }
+}
 
 
  checkanswerinput(answer, event, correct){
@@ -190,6 +206,12 @@ export class DoSetPage implements OnInit {
      console.log("flip to back");
      if(this.iscorrect === true){
      console.log("ISCORRECT");
+     this.nativeAudio.play('success');
+     let timeout = setTimeout(() => this.nativeAudio.play('splash'), 300);
+     }
+     else{
+       this.nativeAudio.play('fail');
+       console.log("fail");
      }
      this.showside = 1;
      //this.renderer.setAttribute(event.target.parentNode.parentNode.parentNode.parentNode, 'class', 'animated flipOutY md hydrated');
@@ -258,7 +280,19 @@ export class DoSetPage implements OnInit {
    }
    else{
      console.log('the end');
-     this.finished = true;
+
+ /*
+     let interstitialConfig: AdMobFreeInterstitialConfig = {
+         isTesting: true, // Remove in production
+         autoShow: true//,
+         //id: "ca-app-pub-3940256099942544/6300978111"
+     };
+     this.admobFree.interstitial.config(interstitialConfig);
+     this.admobFree.interstitial.prepare().then(() => {
+       this.finished = true;
+     }).catch(e => alert(e));
+
+*/
    }
   }
 

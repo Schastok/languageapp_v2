@@ -6,6 +6,7 @@ ion-toolbar{
 
 ion-menu-button{
   --color: white;
+  margin-top: 20px;
 }
 
 .backgroundimage{
@@ -235,6 +236,10 @@ max-width:500px;
 }
 .answerlist{
 
+}
+
+.answerlist{
+  text-align: -webkit-center;
 }
 
 .q{

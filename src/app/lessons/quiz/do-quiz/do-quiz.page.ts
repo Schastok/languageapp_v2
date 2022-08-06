@@ -2,7 +2,8 @@ import { Component, OnInit, ViewEncapsulation, AfterViewInit, ViewChild } from '
 import {ActivatedRoute} from '@angular/router';
 import { ApiService } from '../../../api.service';
 import {Directive, ElementRef, HostListener, Renderer2} from '@angular/core';
-
+import { NativeAudio } from '@ionic-native/native-audio/ngx';
+import { AdMobFree, AdMobFreeBannerConfig,AdMobFreeInterstitialConfig,AdMobFreeRewardVideoConfig } from '@ionic-native/admob-free/ngx';
 
 
 @Component({
@@ -25,14 +26,20 @@ export class DoQuizPage implements OnInit {
   solutiondata;
   solutionhtml;
   showsolution = false;
+  showwaiting = false;
   answeropts;
   firstclick = false;
+  next = false;
+  before = false;
+  counter = 0;
   selection;
   selection_id = "";
   selection_dict= {};
   selection_dict_rev= {};
   answermap = {};
-
+  success = false;
+  hasslides = false;
+  slidecheck = false;
   solutionstyle_correct= `display: inline;
   border: 0 solid #F77B6E;
   border-bottom: 2px dotted #10D398;
@@ -68,7 +75,7 @@ export class DoQuizPage implements OnInit {
     -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
     outline: none !important;
   }
-  
+
   .p{
     font-size:smaller;
     padding-top: 30px;
@@ -192,26 +199,30 @@ export class DoQuizPage implements OnInit {
 
   input[type=checkbox]:checked:disabled + label:before {
     transform: scale(1);
-    background-color: #bfb;
-    border-color: #bfb;
+    background-color: #10D398;
+    border-color: #10D398;
   }
 
 
 td{
   padding: 5px;
   width: fit-content!important;
-  text-align: center;
-  font-size: 80%;
+  vertical-align: baseline;
+  //text-align: center;
+  //font-size: 80%;
 }
 
 table{
-  border: 2px solid #4A80F0;
+  //border: 2px solid #4A80F0;
   margin-top: 20px;
   font-size: medium;
   width: 100% !important;
-  table-layout: fixed;
+  //table-layout: fixed;
 }
 
+div.p{
+  margin-bottom: 10px;
+}
 
 .spanclass{
   display: block;
@@ -254,15 +265,44 @@ table{
   width: -webkit-fill-available;
   text-align: center;
 }
+
+textarea{
+  width: -webkit-fill-available;
+  background-color: transparent;
+  border: 2px white solid;
+  color: white;
+}
+
+.slidewrapper{
+  text-align: center;
+}
+
+
+.activeslide {
+
+    -webkit-animation: slide 2s forwards;
+    animation: slide 2s forwards;
+    opacity: 0;
+}
+
+@-webkit-keyframes slide {
+    100% { opacity: 100;}
+}
+
+@keyframes slide {
+    100% { opacity: 100;}
+}
   </style>`;
 
 
 
 
 
-  constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private renderer: Renderer2, private elementRef: ElementRef) { }
+  constructor(private admobFree: AdMobFree, private nativeAudio: NativeAudio, private activatedRoute: ActivatedRoute, private apiService: ApiService, private renderer: Renderer2, private elementRef: ElementRef) { }
+
 
   ngOnInit() {
+    this.nativeAudio.preloadSimple('fanfare', 'assets/audio/fanfare.wav');
     this.activatedRoute.paramMap.subscribe(paramMap => {
 
       if(!paramMap.has('quizId')){
@@ -275,7 +315,7 @@ table{
 
     this.apiService.getExercise(this.quizId).subscribe((data)=>{
       this.data = data
-      console.log(this.data);
+      console.log(this.data.html);
 
       this.html = this.data.html;
       this.html = this.html.replace(new RegExp('/media/', 'g'), 'https://www.e-fluent.com/media/', 'g');
@@ -287,12 +327,26 @@ table{
       this.html = this.html.replace(new RegExp('<div class="badge badge-info".+?</div>', 'g'), '', 'g');
       this.html = this.html.replace(new RegExp('<script>.+?</script>', 'g'), '', 'g');
       this.html = this.html.replace(new RegExp('class="gapfillinput"', 'g'), 'class="gapfillinput" autocapitalize="off" onkeydown="console.log(this.style.width); this.style.width = ((this.value.length + 1) * 16) + \'px\';"' , 'g');
+
+      this.html = this.html.replace(new RegExp('<table.+?>', 'g'), '<div class="slidewrapper" id ="quizslides">', 'g');
+      this.html = this.html.replace(new RegExp('</table>', 'g'), '</div>', 'g');
+      this.html = this.html.replace(new RegExp('<tr.+?>', 'g'), '<div class="slide" style="display:none;">', 'g');
+      this.html = this.html.replace(new RegExp('</tr>', 'g'), '</div>', 'g');
+      this.html = this.html.replace(new RegExp('<td.+?>', 'g'), '<div style="margin-top:10px;">', 'g');
+      this.html = this.html.replace(new RegExp('</td>', 'g'), '</div>', 'g');
+      this.html = this.html.replace(new RegExp('&arr', 'g'), '<p></p>', 'g');
+      var match = this.html.match(new RegExp('<div class="slide"', 'g'));
+      if (match != null){
+        this.hasslides = true;
+      }
+
+
       this.html = this.dynamicstyle + this.html ;
       this.quizDescription = this.data.Description;
       this.quizName = this.data.Title;
       this.quizType = this.data.Type;
 
-      if ([1, 7].includes(this.data.Type)){
+      if ([1,7].includes(this.data.Type)){
         var match = this.data.html.match(new RegExp('<script>var dict = (.+?);</script>', 'g'));
         match = match[0].replace(new RegExp('<script>var dict = ', 'g'), '', 'g');
         match = match.replace(new RegExp(';</script>', 'g'), '', 'g');
@@ -302,11 +356,58 @@ table{
         this.answeropts = Object.keys(dictionary).map(function(key){return dictionary[key];});
         console.log(this.answeropts);
       }
+
+
     });
   }
 
 
+  slidebefore(){
 
+    // all slides invisible, button start in slideshow triggers visibility of first slide. counter-> set next slide to visible with button next
+    let slides = document.getElementById("quizslides").children
+    this.counter = this.counter - 1;
+    this.renderer.setAttribute( slides[this.counter], 'style', 'display: none;');
+    slides[this.counter].className = 'slide';
+    this.renderer.setAttribute( slides[this.counter-1], 'style', 'display: block;');
+    slides[this.counter-1].className = 'activeslide';
+    console.log(this.counter);
+    if (this.counter < slides.length){
+      this.next = true;
+    }
+    if (this.counter == 1){
+      this.before = false;
+    }
+  }
+
+  slidenext(){
+
+    // all slides invisible, button start in slideshow triggers visibility of first slide. counter-> set next slide to visible with button next
+    let slides = document.getElementById("quizslides").children
+    this.renderer.setAttribute( slides[this.counter-1], 'style', 'display: none;');
+    slides[this.counter-1].className = 'slide';
+    this.renderer.setAttribute( slides[this.counter], 'style', 'display: block;');
+    slides[this.counter].className = 'activeslide';
+    this.counter = this.counter + 1;
+    this.before = true;
+    console.log(this.counter);
+    if (this.counter == slides.length){
+      this.next = false;
+      this.slidecheck = true;
+    }
+  }
+
+
+  slidestart(){
+
+    // all slides invisible, button start in slideshow triggers visibility of first slide. counter-> set next slide to visible with button next
+    let slides = document.getElementById("quizslides").children
+    console.log(slides[0]);
+    this.renderer.setAttribute(slides[0], 'style', 'display:block;');
+    slides[0].className = 'activeslide';
+    this.next = true;
+    this.counter = this.counter + 1;
+  }
 
 
   resize(){
@@ -498,13 +599,21 @@ table{
 }
 }
   }
+
+
+
+
   submit(event:any) {
+
+
+
+
   // Process checkout data here
      let target   = event.target;
      let formData = {};
 
 
-    if ([1, 2, 3, 4, 5].indexOf(this.data.Type) >= 0){
+    if ([1, 2, 3, 4, 5, 8].indexOf(this.data.Type) >= 0){
       for (let i = 0; i < target.length; i++) {
 
           formData[target.elements[i].getAttribute("name")] = target.elements[i].value;
@@ -513,6 +622,7 @@ table{
 
     else if (this.data.Type === 6){
       for (let i = 0; i < target.length; i++) {
+
           if (target.elements[i].checked){
             formData[target.elements[i].getAttribute("name")] = 'on';
           }
@@ -560,10 +670,22 @@ table{
      console.log('formData', formData);
      this.apiService.postquiz(formData, this.quizId).subscribe((data:any)=>{
        this.solutiondata = data;
+       console.log("SOLUTIONDATA: ", this.solutiondata);
+       if (this.solutiondata.total > 0){
+       this.success = ((this.solutiondata.score/this.solutiondata.total)>= 0.8);
+        }
+        if (this.success){
+          this.nativeAudio.play('fanfare');
+        }
        this.solutionhtml =this.dynamicstyle + data.ex;
        this.solutionhtml = this.solutionhtml.replace(new RegExp('/media/', 'g'), 'https://www.e-fluent.com/media/', 'g');
        console.log(this.solutionhtml);
+       if(this.quizType != 8){
        this.showsolution = true;
+       }
+       else{
+         this.showwaiting = true;
+       }
      });
 
 
@@ -574,6 +696,8 @@ table{
 
 
 checkanswer(mode){
+
+
   console.log("Ex Data");
   console.log(this.solutiondata);
   let qid = '';
@@ -644,6 +768,7 @@ checkanswer(mode){
           else{
             console.log('was ist das !!!!');
           }
+          this.renderer.setAttribute(element, 'disabled', 'true');
           console.log('Multiple Choice !!!!');
 
         }
@@ -687,6 +812,7 @@ checkanswer(mode){
         console.log('was ist das !!!!');
       }
       console.log('Multiple Choice !!!!');
+      this.renderer.setAttribute(element, 'disabled', 'true');
 
     }
     else {
@@ -831,5 +957,7 @@ checkanswer(mode){
   let htmldivelement = document.getElementById('solhtml');
   this.renderer.removeAttribute(htmldivelement, 'hidden');
 }
+
+
 
 }

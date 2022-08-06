@@ -28,6 +28,10 @@ credentials = {};
 }
 
   ngOnInit() {
+
+
+
+
     //this.storage.remove('userid');
     this.storage.get('userid').then((val) => {
       this.credentials['id'] = val;

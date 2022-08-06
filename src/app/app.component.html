@@ -6,6 +6,7 @@
           </ion-toolbar>
         </ion-header>
         <ion-content>
+          <div id="halfcircle">
           <ion-list *ngFor="let pages of navigate">
           <ion-menu-toggle auto-hide="true">
             <ion-item [routerLink]="pages.url" routerDirection="forward">
@@ -14,6 +15,7 @@
             </ion-item>
           </ion-menu-toggle>
           </ion-list>
+          </div>
         </ion-content>
       </ion-menu>
   <ion-router-outlet id="content1"></ion-router-outlet>

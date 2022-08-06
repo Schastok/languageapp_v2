@@ -5,6 +5,7 @@ import { ApiService } from '../../../api.service';
 import { IonContent } from '@ionic/angular';
 import {IonSlides} from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { AdMobFree, AdMobFreeBannerConfig,AdMobFreeInterstitialConfig,AdMobFreeRewardVideoConfig } from '@ionic-native/admob-free/ngx';
 
 @Component({
   selector: 'app-section',
@@ -19,7 +20,7 @@ export class SectionPage implements OnInit{
 
   disablePrevBtn = true;
   disableNextBtn = true;
-
+  didInit = false;
   sectionId;
   sectiondetails;
 
@@ -29,22 +30,37 @@ export class SectionPage implements OnInit{
       autoHeight: true
     };
 
-@ViewChild(IonSlides, {static: false}) IonSlides: IonSlides;
-@ViewChild(IonContent, {static: false}) IonContent: IonContent;
+@ViewChild(IonSlides) IonSlides: IonSlides;
+@ViewChild(IonContent) IonContent: IonContent;
 
 
-  constructor(private activatedRoute: ActivatedRoute, private storage: Storage, private apiService: ApiService, private router: Router) {}
+  constructor(private admobFree: AdMobFree, private activatedRoute: ActivatedRoute, private storage: Storage, private apiService: ApiService, private router: Router) {}
 
+  ngAfterViewInit() {
+      this.didInit = true;
+      /*
+      let interstitialConfig: AdMobFreeInterstitialConfig = {
+          isTesting: true, // Remove in production
+          autoShow: true//,
+          //id: "ca-app-pub-3940256099942544/6300978111"
+      };
+      this.admobFree.interstitial.config(interstitialConfig);
+      this.admobFree.interstitial.prepare().then(() => {
+      }).catch(e => alert(e));
+      */
+
+  }
 
 
   ionViewDidEnter(){
     this.IonSlides.lockSwipes(true);
-    this.IonSlides.getActiveIndex().then((index: number) => {
-        console.log(index);
+    this.IonSlides.getActiveIndex().then((data) => {
+        console.log("INDEX: ", data);
     });
 
 
   }
+
   ngOnInit() {
 
 
@@ -133,9 +149,12 @@ ncheck(){
 
 next()
 {
-  console.log("START: ", this.IonSlides.isBeginning());
+
+  console.log(this.IonSlides.lockSwipes(false));
   this.IonSlides.lockSwipes(false);
+  console.log(this.IonSlides);
   this.IonSlides.slideNext();
+  console.log("next");
   //console.log(this.IonContent);
   this.IonContent.scrollToTop();
   this.IonSlides.lockSwipes(true)
@@ -206,7 +225,7 @@ doCheck() {
   prom2.then((istrue) => {
       console.log(istrue);
       if (istrue) {
-        this.storage.set('section_' + this.sectionId + '_done', 1);
+        this.storage.set(this.apiService.STUDENT_ID + '_section_' + this.sectionId + '_done', 1);
       } else {
       }
     });

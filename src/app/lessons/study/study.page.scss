@@ -13,6 +13,7 @@ ion-toolbar{
 
 ion-menu-button{
   --color: white;
+  margin-top: 20px;
 }
 
 
@@ -365,4 +366,49 @@ background: #4f71ecff;
   line-height: 160px;
   font-size: 2em;
   text-shadow: 0 0 0.5em black;
+}
+
+
+@media screen and (min-width: 600px) {
+
+
+h2{
+    font-size: 32px;
+      margin-top: 10%;
+  }
+  .desciption{
+      font-size: 22px;
+      left: initial;
+      top:35%;
+
+  }
+
+.content{
+  font-size: 22px;
+}
+.headerimage{
+  width:30%;
+  top:20%;
+}
+}
+
+@media screen and (min-width: 800px) {
+  h2{
+    font-size: 32px;
+    margin-top: 10%;
+  }
+  .desciption{
+      font-size: 22px;
+  }
+  .content{
+    font-size: 22px;
+  }
+  .headerimage{
+    width:20%;
+    top:17%;
+  }
+
+  .buttonfields{
+    top: 60%;
+  }
 }

@@ -16,6 +16,8 @@ export class StudyPage implements OnInit {
 
   lessonId: string;
   flipcardlist;
+  progress;
+
   constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private renderer: Renderer2) { }
 
   ngOnInit() {
@@ -63,7 +65,7 @@ export class StudyPage implements OnInit {
          this.renderer.setAttribute( el, 'style', 'stroke-dashoffset:'+pct);
 
          document.getElementById('cont').setAttribute('data-pct', val.toString());
-
+         this.progress = val;
 
       });
 

@@ -14,8 +14,8 @@
 
   </div>
 <h2>My Courses</h2>
-<div class='desciption'>Please choose a course</div>
-<div class='blueline'></div>
+
+
 
 <ion-list *ngFor="let course of courses">
 
@@ -25,13 +25,16 @@
          </ion-avatar>
          <ion-label>
            <h2 class="cl_name">{{course.Classroom_name}}</h2>
-           <p class="cl_description">{{course.Classroom_description}}</p>
+           <div class="cl_description">{{course.Classroom_description}}</div>
          </ion-label>
        </ion-item>
 
 </ion-list>
 
+
+</ion-content>
+<ion-footer>
 <div class="buttonfields">
 <button (click)="all_cl()" class="button_dark" shape="round" >Find Courses</button>
 </div>
-</ion-content>
+</ion-footer>

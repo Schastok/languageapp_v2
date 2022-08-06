@@ -176,10 +176,18 @@
                 </div>
                 <div class="answerlist" *ngIf="!iscorrect">
 
-                        <div class='answ' *ngFor="let answer of card.Answers">
+                        <div *ngFor="let answer of card.Answers">
 
-                       {{answer}}
+                          <div class='answcorrect' *ngIf="empList.includes(answer)">
 
+                         {{answer}}
+
+        </div>
+                <div class='answ' *ngIf="!empList.includes(answer)">
+
+               {{answer}}
+
+        </div>
       </div>
 
                 </div>

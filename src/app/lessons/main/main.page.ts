@@ -60,7 +60,7 @@ export class MainPage implements OnInit {
           console.log("get sections");
           this.sections_done[this.sections[i].Section_ID] = 0;
           console.log('section_' + this.sections[i].Section_ID + '_done');
-          this.storage.get('section_' + this.sections[i].Section_ID + '_done').then((val) => {
+          this.storage.get(this.apiService.STUDENT_ID + '_section_' + this.sections[i].Section_ID + '_done').then((val) => {
             console.log("section found");
             console.log(val);
             if(val === 1){
@@ -157,7 +157,7 @@ logprogress(){
 }
 
   this.overallprogress = (q_prog+f_prog+s_prog)*0.01
-  this.storage.set('prog_'+this.lessonId, this.overallprogress);
+  this.storage.set(this.apiService.STUDENT_ID +'_prog_'+this.lessonId, this.overallprogress);
 
 }
 

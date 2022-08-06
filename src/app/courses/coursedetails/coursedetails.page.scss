@@ -13,6 +13,7 @@ ion-toolbar{
 }
 
 ion-menu-button{
+  margin-top: 20px;
   --color: white;
 }
 
@@ -29,7 +30,9 @@ ion-content{
 }
 
 .wave{
-  overflow: visible;
+  width: 100vw;
+  max-height: 40vh;
+  object-fit: cover;
 
 
 }
@@ -313,4 +316,106 @@ ion-avatar > img{
 
 ion-label{
   text-align: left;
+}
+
+
+
+@media screen and (min-width: 600px) {
+
+  h2{
+    font-size: 32px;
+  }
+  .cl_name{
+    padding-left: 0px;
+    margin-left: 5%;
+    font-size: 20px;
+  }
+
+  .cl_description{
+
+    margin-left: 0px;
+    font-size: 20px;
+    padding-left: 0px;
+
+  }
+
+.desciption{
+      margin-bottom:10%;
+      font-size: 22px;
+    line-height: 4vw;
+}
+
+
+  ion-avatar{
+    width: 110px;
+    height: 110px;
+  }
+
+  ion-avatar > img{
+        border-radius:0%;
+        height:100px;
+        width:100px;
+        border: 2px solid white;
+    }
+
+  ion-item {
+      margin-left: 3%;
+      margin-top: 20px;
+      --border-style: none;
+      }
+
+ .blueline{
+   margin-bottom: 50px;
+ }
+
+}
+
+@media screen and (min-width: 800px) {
+
+  h2{
+    font-size: 32px;
+  }
+  .cl_name{
+    padding-left: 0px;
+    margin-left: 5%;
+    font-size: 20px;
+  }
+
+  .cl_description{
+    margin-left: 0px;
+    font-size: 20px;
+    padding-left: 0px;
+    line-height: 3vw;
+
+  }
+
+.desciption{
+      margin-bottom:10%;
+      font-size: 22px;
+      line-height: 3vw;
+}
+
+
+  ion-avatar{
+    width: 110px;
+    height: 110px;
+  }
+
+  ion-avatar > img{
+        border-radius:0%;
+        height:100px;
+        width:100px;
+        border: 2px solid white;
+    }
+
+  ion-item {
+      margin-left: 3%;
+      margin-top: 20px;
+      --border-style: none;
+      }
+
+ .blueline{
+   margin-bottom: 50px;
+ }
+
 }

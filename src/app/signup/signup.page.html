@@ -10,6 +10,7 @@
   <div class="formblock">
     <div class="formfields">
 
+<!--
       <div class="userfield">
     <input class="field" type="text"  id="user_name"  name="user_name" required />
     <label class="formdescriptions" for="user_name">username</label>
@@ -21,6 +22,14 @@
     <label class="formdescriptions" for="first_name">display name</label>
     <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'first_name'">{{errorobj[error]}}</span></span>
     </div>
+-->
+    <div class="emailfield">
+        <input class="field" type="email" id="email" name="email" required />
+          <label class="formdescriptions"  for="email">email</label>
+          <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'email'">{{errorobj[error]}}</span></span>
+          <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'username'">{{errorobj[error]}}</span></span>
+          <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'non_field_errors'">{{errorobj[error]}}</span></span>
+        </div>
 
 
     <div class="pwfield">
@@ -35,12 +44,6 @@
       <span class="fielderrors">{{pw_error}}</span>
       </div>
 
-    <div class="emailfield">
-        <input class="field" type="email" id="email" name="email" required />
-          <label class="formdescriptions"  for="email">email</label>
-          <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'email'">{{errorobj[error]}}</span></span>
-          <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'non_field_errors'">{{errorobj[error]}}</span></span>
-        </div>
 
 
 

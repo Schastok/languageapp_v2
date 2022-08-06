@@ -10,6 +10,7 @@ ion-toolbar{
 
 ion-menu-button{
   --color: white;
+  margin-top: 20px;
 }
 
 ion-card{
@@ -202,5 +203,14 @@ ion-card-subtitle {
 
    svg{
    width: 90%;
-   max-width:500px;
+   max-width:400px;
+   }
+
+
+   @media screen and (min-width: 800px) {
+     svg{
+     width: 90%;
+     max-width:500px;
+     }
+
    }

@@ -18,7 +18,7 @@
 <img class='wave'  src="/assets/images/background.svg"/>
 
   </div>
-<ion-slides (ionSlideWillChange)="slide($event)">
+<ion-slides *ngIf="didInit" #slides [options]="slideOpts" (ionSlideWillChange)="slide($event)">
 
 <ion-slide *ngFor="let card of flipcardset" (click)="changeshowside($event)" >
 

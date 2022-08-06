@@ -10,24 +10,50 @@ import { ApiService } from '../../api.service';
   styleUrls: ['./quiz.page.scss'],
 })
 export class QuizPage implements OnInit {
-  lessonId: string;
-  exercises;
+  evalID: string;
+  exercise;
+  title;
+  description;
+  eval;
+  html;
+  result;
+  dynamicstyle= `
+  <style>
+  * {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+    -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
+    outline: none !important;
+  }
+
+  *{
+    color: white
+  }
+  textarea{
+    display: none;
+  }
+  </style>
+  `
+
   constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
-      if(!paramMap.has('lessonId')){
+      if(!paramMap.has('evalID')){
         //redirect
         return;
       }
-      this.lessonId = paramMap.get('lessonId');
-      console.log("learn lesson");
+      this.evalID = paramMap.get('evalID');
+
     });
 
-    this.apiService.getExerciselist(this.lessonId).subscribe((data)=>{
+    this.apiService.getExerciseEval(this.evalID).subscribe((data)=>{
       console.log(data);
-      this.exercises = data;
-      console.log(this.exercises);
+      this.exercise = data;
+      this.title= this.exercise.Title;
+      this.description= this.exercise.Description;
+      this.eval= this.exercise.Eval;
+      this.html= this.dynamicstyle + this.exercise.html;
+      this.result= this.dynamicstyle + this.exercise.result;
     });
   }
 

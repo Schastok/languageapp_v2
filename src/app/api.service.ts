@@ -10,7 +10,7 @@ import {  throwError } from 'rxjs';
 export class ApiService {
 
 
-  TEST = true;
+  TEST = false;
   URL;
   PROJECT_ID = '10';
   STUDENT_ID = '4';
@@ -29,7 +29,7 @@ export class ApiService {
     else{
       this.URL = 'https://www.e-fluent.com';
       this.STUDENT_ID = '';
-      this.SIZE = '10';
+      this.SIZE = '5';
     }
   }
 
@@ -95,7 +95,7 @@ export class ApiService {
     let headers = new HttpHeaders();
     let token = "Token " + this.TOKEN;
     headers = headers.set('Authorization', token);
-    return this.httpClient.get(`${this.URL}/api_flipcards_2/?lesson=${lessonID}&student=${this.STUDENT_ID}`,  {headers: headers});
+    return this.httpClient.get(`${this.URL}/api_flipcards_2/?lesson=${lessonID}&student=${this.STUDENT_ID}&size=${this.SIZE}`,  {headers: headers});
   }
 
   //getFlipcardset(lessonID: string){
@@ -124,6 +124,16 @@ export class ApiService {
     headers = headers.set('Authorization', token);
     return this.httpClient.get(`${this.URL}/api_excercise_content_2/?excercise=${quizID}`,  {headers: headers});
   }
+
+
+  getExerciseEval(evalID: string){
+    let headers = new HttpHeaders();
+    let token = "Token " + this.TOKEN;
+    headers = headers.set('Authorization', token);
+    return this.httpClient.get(`${this.URL}/api_excercise_eval_2/?excercise=${evalID}`,  {headers: headers});
+  }
+
+
 
   postupdateprogress(progressid: string, statusstr: string, answerlist: string){
     let headers = new HttpHeaders();
@@ -160,16 +170,15 @@ export class ApiService {
 
   }
 
-  register(username: string, password: string, first_name: string, email: string){
+  register(password: string, email: string){
     let postData = {
-        "username": username,
         "password": password,
-        "first_name": first_name,
-        "email": email,
-        "classroom": this.PROJECT_ID
+        "first_name": 'S_M_V2',
+        "username": email,
+        "email": email
       };
       console.log(postData);
-    return this.httpClient.post(`${this.URL}/api_signup_register/`, postData, {observe: "body"}).pipe(
+    return this.httpClient.post(`${this.URL}/api_signup/`, postData, {observe: "body"}).pipe(
       catchError(this.handleError)
     );
 
@@ -206,6 +215,14 @@ getclsdetails(classroom:string){
   let token = "Token " + this.TOKEN;
   headers = headers.set('Authorization', token);
   return this.httpClient.get(`${this.URL}/api_classroomdetails/?classroom=${classroom}`,  {headers: headers});
+}
+
+
+deleteaccount(){
+  let headers = new HttpHeaders();
+  let token = "Token " + this.TOKEN;
+  headers = headers.set('Authorization', token);
+  return this.httpClient.get(`${this.URL}/api_delete/?student=${this.STUDENT_ID}`,  {headers: headers});
 }
 
 }

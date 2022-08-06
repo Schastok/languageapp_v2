@@ -15,22 +15,47 @@
 
 
   </div>
-<h2>Example German Course</h2>
 
 
-  <ion-slides loop="true" [options]="sliderConfig" style="//height: -webkit-fill-available !important;">
-         <ion-slide *ngFor="let lesson of lessons" >
+
+
+  <ion-slides *ngIf="didInit" loop="true" [options]="sliderConfig" style="//height: -webkit-fill-available !important;">
+
+         <ion-slide *ngFor="let lesson of lessons; let i = index" >
+
+
+  
+
+
            <div class='lessonitem'  [ngStyle]="{'background-image': 'url(' + lesson.Lesson_image + ')'}" [routerLink]="['./', lesson.Lessons_ID, lesson.Lesson_image, lesson.Lesson_name, lesson.Lesson_description, 'overview']">
-              <div class='overlay'><div class='name'>{{lesson.Lesson_name}}</div>
-            <ion-progress-bar class="prog" value="{{lessonprogress[lesson.Lessons_ID]}}"></ion-progress-bar>
-          </div>
+              <div class='overlay'>
 
+
+
+  <div class='desciption' [innerHTML]="lesson.Lesson_description | safe: 'html'">
+
+</div>
+
+<h3 class='name'>{{lesson.Lesson_name}}</h3>
+
+  </div>
              </div>
-              <div class='desciption' [innerHTML]="lesson.Lesson_description | safe: 'html'"></div>
+
+<div class="progresscircle">
+  <div class='prog_prc'>{{lessonprogress[lesson.Lessons_ID]*100 |  number:'1.0-0'}}%</div>
+             <svg>
+                      <circle cx="70" cy="70" r="70" style=" stroke: grey;"></circle>
+                      <circle cx="70" cy="70" r="70" style="stroke-dashoffset:calc(440 - (440 * {{lessonprogress[lesson.Lessons_ID]*100 |  number:'1.0-0'}} ) / 100); stroke: #180f95;"></circle>
+             </svg>
+
+ </div>
+      <div class="bullets">
+   <div *ngFor="let lesson of lessons; let j = index" class='greyline' style="width:calc(var(--imgsize)  / {{lessons?.length}} / 2 ); left:calc(15% + ({{j}}*(var(--imgsize) / {{lessons?.length}} / 2) + (5px*{{j}})); "></div>
+  <div class='blueline'  style="width:calc( var(--imgsize) / {{lessons?.length}} / 2); left:calc(15% + ( {{i}}*(var(--imgsize) / {{lessons?.length}} / 2) + (5px*{{i}}));"></div>
+</div>
          </ion-slide>
 
   </ion-slides>
-<div class='blueline'></div>
 
 
 </ion-content>

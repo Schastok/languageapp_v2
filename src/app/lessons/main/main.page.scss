@@ -13,6 +13,7 @@ ion-toolbar{
 
 ion-menu-button{
   --color: white;
+  //margin-top: 2px;
 }
 
 
@@ -30,7 +31,9 @@ ion-content{
 
 .wave{
   overflow: visible;
-
+  width: 100vw;
+  max-height: 40vh;
+  object-fit: cover;
 
 }
 
@@ -172,8 +175,8 @@ height: 100%;
 //padding-top: 85%;
 //padding-left: 10%;
 //text-align: center;
-background: #FCCE38;
-border-radius: 100%;
+background: linear-gradient(#180f95 0%, #e95f8d 0%, #e39a65 100%);
+border-radius: 30px;
 //display: table;
 
 
@@ -184,35 +187,39 @@ border-radius: 100%;
   margin-right: 1%;
   display: grid;
   //grid-template-columns: 30% 30%;
-  grid-auto-rows: 120px;
-  grid-template-columns:repeat(auto-fill, 125px);
+  grid-auto-rows: 155px;
+  grid-template-columns:repeat(auto-fill, 155px);
   //grid-row-gap: 1%;
-  grid-column-gap: 17%;
+  grid-column-gap: 30px;
   grid-row-gap: 100px;
-  //background-color: #fff;
+
   color: #444;
   justify-content: center;
-
+margin-bottom: 50px;
 }
 
 .boxname{
 
-  position: relative;
-  display: table-cell;
+  position: absolute;
+  //display: table-cell;
   //line-height: 4vw; /* <-- adjust this */
   font-family: Avenir Next LT Pro;
   font-style: normal;
   font-weight: 100;
   //font-size: 4vw;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 20px;
+  //line-height: 20px;
   color: #FFFFFF;
-  letter-spacing: 0.1em;
+  //letter-spacing: 0.1em;
   vertical-align: bottom;
   padding-bottom: 10%;
   word-break: break-word;
-  width: 125px;
-  padding-top: 20px;
+  //width: 125px;
+  padding-top: 24px;
+  //padding-left: 5px;
+  //padding-right: 5px;
+  z-index: 100;
+  max-width: 123px;
 }
 
 .boxwrapper{
@@ -222,6 +229,13 @@ border-radius: 100%;
 .icon{
   margin-top: 17%;
   width: 115px;
+
+  opacity: 20%;
+  //display: none;
+}
+
+.icon > svg{
+  fill:whitesmoke;
 }
 
 .footer{
@@ -237,6 +251,20 @@ ion-footer{
 }
 
 
+.header{
+  //background-color: #001124;
+  //background-image: linear-gradient(90deg, #008086 0%, rgba(0, 128, 134, 0) 100%);
+  height: 4px;
+  width: 100%;
+
+}
+
+ion-header{
+  --background: transparent!important;
+  //background-color: transparent!important;
+  margin-top: 25px;
+}
+
 .prc{
 
   position: relative;
@@ -249,4 +277,36 @@ ion-footer{
   color: #FFFFFF;
   bottom: 20px;
 
+}
+
+
+@media screen and (min-width: 600px) {
+
+
+h2{
+    font-size: 32px;
+  }
+  .desciption{
+      font-size: 22px;
+      left: initial;
+      top:35%;
+
+  }
+
+  .boxname{
+    font-size: 18px;
+  }
+
+}
+
+@media screen and (min-width: 800px) {
+  h2{
+    font-size: 32px;
+  }
+  .desciption{
+      font-size: 22px;
+  }
+  .boxname{
+    font-size: 20px;
+  }
 }

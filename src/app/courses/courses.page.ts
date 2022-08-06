@@ -27,8 +27,6 @@ export class CoursesPage implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
        if (this.router.getCurrentNavigation().extras.state) {
          this.extradata = this.router.getCurrentNavigation().extras.state.mycourses;
-
-
        }
      });
 

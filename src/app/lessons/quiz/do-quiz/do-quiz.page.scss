@@ -13,6 +13,7 @@ ion-toolbar{
 
 ion-menu-button{
   --color: white;
+  margin-top: 20px;
 }
 
 
@@ -27,39 +28,47 @@ ion-content{
 }
 
 
+
+
+.confetti{
+  position: absolute;
+  -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+}
+
 .headerimage{
   position: absolute;
   left: 10px;
   top: 90px;
   top:15%;
   width: 40%;
+  display: none;
 
 }
 ion-slides{
   margin-left: 5%;
 }
 
-h2{
+.headline{
+  text-align: center;
+  width: 100%;
+}
+
+.title{
 position: relative;
-width: 80%;
+
 //height: 72px;
 //padding-top: 20%;
-padding-left: 5%;
+
 margin-top:10%;
-
-
+margin-bottom:10%;
   font-family: Avenir Next LT Pro;
   font-style: normal;
   //font-weight: 600;
-  font-size: 32px;
     font-size: 7vw;
   line-height: 7vw;
-  /* or 125% */
 
-  display: flex;
   //align-items: center;
-
-  color: #FFFFFF;
+  color: #f3edff;
 }
 ion-slide{
 
@@ -135,7 +144,7 @@ color: #FFFFFF;
   width: 40px;
   height: 0.3%;
   left: 5%;
-  background-color: #4A80F0;
+  background-color: #180f95;
 }
 
 
@@ -163,10 +172,7 @@ color: #FFFFFF;
 
 .quizframe{
   padding: 5%;
-  //background-color: #fe5f55; // for styling only
   font-family: Avenir Next LT Pro;
-  //font-family: Georgia, serif;
-  //font-size: 24px;
   font-size: 1.5em;
   letter-spacing: 0.2px;
   word-spacing: 0.4px;
@@ -177,6 +183,9 @@ color: #FFFFFF;
   font-variant: normal;
   text-transform: none;
   padding-left: 5%;
+  background-color: cadetblue;
+  margin: 5%;
+  border-radius: 10px;
 }
 table{
 
@@ -217,17 +226,23 @@ ion-back-button{
 #switch1{
 
   //width: 80%;
-  background-color:#10D398;
+  background-color:#180f95;
   border-radius:25px;
 }
 #switch2{
   //width: 80%;
-  background-color:#10D398;
+  background-color: #180f95;
   border-radius:25px;
 }
 .submit{
   width: 200px;
-  background-color:#10D398;
+  background-color: #180f95;
+  border-radius:25px;
+
+}
+.scont{
+  width: 100px;
+  background-color: #180f95;
   border-radius:25px;
 
 }
@@ -235,8 +250,17 @@ ion-back-button{
   text-align: center;
   position: relative;
   bottom: 5%;
+  margin-top: 10px;
+}
+
+#slidecontrol{
+  text-align: center;
+  position: relative;
+  bottom: 5%;
   margin-top: 50px;
 }
+
+
 
 #scorediv{
   //text-align: center;
@@ -316,4 +340,107 @@ example-list {
   height: 50px;
   width: 100%;
 
+}
+
+@media screen and (min-width: 600px) {
+
+
+h2{
+    font-size: 32px;
+  }
+  .desciption{
+      font-size: 22px;
+      left: initial;
+      top:35%;
+
+  }
+
+.content{
+  font-size: 22px;
+}
+.headerimage{
+  width:30%;
+  top:20%;
+}
+}
+
+@media screen and (min-width: 800px) {
+  h2{
+    font-size: 32px;
+  }
+  .desciption{
+      font-size: 22px;
+  }
+  .content{
+    font-size: 22px;
+  }
+  .headerimage{
+    width:20%;
+  }
+}
+
+.animate_pop {
+  animation-duration: 0.5s;
+  animation-name: animate-pop;
+  animation-timing-function: cubic-bezier(.26, .53, .74, 1.48);
+}
+
+@keyframes animate-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+.infotext{
+	font-family: sofia-pro,sans-serif;
+	white-space: pre-wrap;
+	font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+	text-align: justify;
+}
+
+.animate_pop {
+  animation-duration: 0.5s;
+  animation-name: animate-pop;
+  animation-timing-function: cubic-bezier(.26, .53, .74, 1.48);
+}
+
+@keyframes animate-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+
+.info{
+
+	background: #f3edff;
+	position: relative;
+    padding: 20px;
+    border-radius: 3px;
+	color: #444;
+	margin-bottom: 20px;
+	margin-top: 20px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.card_icon{
+	position: absolute;
+	top: -15px;
+	right: -7px;
+	width: 40px!important;
 }

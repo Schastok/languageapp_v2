@@ -22,8 +22,11 @@ export class ViewSetPage implements OnInit {
     lessonId;
     flipcardset;
     showside;
-
-
+    didInit = false;
+    slideOpts = {
+      initialSlide: 1,
+      speed: 400
+    };
 
     constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private renderer: Renderer2) {
 
@@ -47,6 +50,9 @@ export class ViewSetPage implements OnInit {
       });
     }
 
+    ngAfterViewInit() {
+        this.didInit = true;
+    }
 
  changeshowside(event:any){
    console.log("current side");
@@ -66,6 +72,7 @@ export class ViewSetPage implements OnInit {
 
  }
  slide(event:any){
+   console.log("slide!");
    this.showside = 0;
    }
 

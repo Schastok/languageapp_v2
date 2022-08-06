@@ -62,7 +62,7 @@ const routes: Routes = [
         path: 'quiz',
         children:[
             {
-            path: ':lessonId',
+            path: ':lessonId/:evalID',
             loadChildren: () => import('./lessons/quiz/quiz.module').then( m => m.QuizPageModule)
              },
             {
@@ -106,11 +106,15 @@ const routes: Routes = [
     loadChildren: () => import('./courses/coursedetails/coursedetails.module').then( m => m.CoursedetailsPageModule)
     }
   ]
+  },
+  {
+    path: 'delete-account',
+    loadChildren: () => import('./delete-account/delete-account.module').then( m => m.DeleteAccountPageModule)
   }
 ];
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
+    RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload', relativeLinkResolution: 'legacy' })
   ],
   exports: [RouterModule]
 })

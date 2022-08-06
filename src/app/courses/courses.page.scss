@@ -13,6 +13,7 @@ ion-toolbar{
 
 ion-menu-button{
   --color: white;
+  margin-top: 20px;
 }
 
 ion-content{
@@ -107,6 +108,7 @@ ion-slide{
   //height: 70px;
   left: 0px;
   //top: 50%;
+
   margin-top: 10%;
   margin-left: 5%;
   margin-right: 5%;
@@ -171,7 +173,7 @@ color: #FFFFFF;
   bottom: 10%;
   margin-left: 10px;
   font-style: normal;
-
+  white-space: pre-wrap;
   font-size: 16px;
   line-height: 24px;
   color: #FFFFFF;
@@ -180,11 +182,12 @@ color: #FFFFFF;
 
 ion-list{
   background: transparent;
-  margin-top: 50px;
 }
 
 ion-item {
-    --background: transparent!important;
+    --background: linear-gradient(#180f95 0%, #e95f8d 0%, #e39a65 100%);
+    margin: 10px;
+    border-radius: 10px;
   }
 
 ion-avatar{
@@ -200,4 +203,96 @@ ion-avatar > img{
 
 ion-label{
   text-align: left;
+}
+
+@media screen and (min-width: 600px) {
+
+  h2{
+    font-size: 32px;
+  }
+  .cl_name{
+    padding-left: 0px;
+    font-size: 20px;
+  }
+
+  .cl_description{
+    margin-left: 0px;
+    font-size: 20px;
+
+  }
+
+.desciption{
+      margin-bottom:10%;
+      font-size: 22px;
+}
+
+
+  ion-avatar{
+    width: 110px;
+    height: 110px;
+  }
+
+  ion-avatar > img{
+        border-radius:0%;
+        height:100px;
+        width:100px;
+        border: 2px solid white;
+    }
+
+  ion-item {
+      margin-left: 3%;
+      margin-top: 20px;
+      --border-style: none;
+      }
+
+ .blueline{
+   margin-bottom: 50px;
+ }
+
+}
+
+@media screen and (min-width: 800px) {
+
+  h2{
+    font-size: 32px;
+  }
+  .cl_name{
+    padding-left: 0px;
+    font-size: 20px;
+  }
+
+  .cl_description{
+    margin-left: 0px;
+    font-size: 20px;
+
+  }
+
+.desciption{
+      margin-bottom:10%;
+      font-size: 22px;
+}
+
+
+  ion-avatar{
+    width: 110px;
+    height: 110px;
+  }
+
+  ion-avatar > img{
+        border-radius:0%;
+        height:100px;
+        width:100px;
+        border: 2px solid white;
+    }
+
+  ion-item {
+      margin-left: 3%;
+      margin-top: 20px;
+      --border-style: none;
+      }
+
+ .blueline{
+   margin-bottom: 50px;
+ }
+
 }

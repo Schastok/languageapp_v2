@@ -49,14 +49,14 @@
        gradientTransform="matrix(0.27977,0,0,0.28222,465.99955,425.08403)"
        gradientUnits="userSpaceOnUse">
       <stop
-         stop-color="#008086"
+         stop-color="#e95f8d"
          offset="0"
          id="stop9646" />
       <stop
-         stop-color="#008086"
-         stop-opacity="0"
+         stop-color="#e39a65"
          offset="1"
          id="stop9648" />
+
     </linearGradient>
   </defs>
   <metadata

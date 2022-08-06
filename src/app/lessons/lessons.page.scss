@@ -5,6 +5,10 @@
   outline: none !important;
 }
 
+* {
+--imgsize: 300px;
+}
+
 ion-toolbar{
   --background: transparent!important;
   position: absolute;
@@ -13,6 +17,7 @@ ion-toolbar{
 
 ion-menu-button{
   --color: white;
+  margin-top: 20px;
 }
 
 ion-content{
@@ -27,6 +32,7 @@ ion-content{
 
 ion-slides{
   margin-left: 5%;
+  margin-top: 5%;
 }
 
 ion-slide{
@@ -78,7 +84,7 @@ ion-slide{
   //height: 200px;
   //width: 500px;
   width: 100%;
-  height: 55vw;
+  height: 60vw;
   background-repeat: no-repeat;
   background-size: cover;
   border: 1px solid #000000;
@@ -90,7 +96,7 @@ ion-slide{
 .overlay{
 
   background: linear-gradient(180deg, rgba(18, 20, 33, 0) 50%, rgba(18, 20, 33, 0.5) 100%);
-  height: 55vw;
+  height: 60vw;
   width:100%;
   position: absolute;
   //top: 0;
@@ -101,12 +107,9 @@ ion-slide{
   position: absolute;
   //margin-top: 150px;
   bottom: 10%;
-  margin-left: 5%;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 4vw;
   line-height: 4vw;
   color: #FFFFFF;
+  width: 90%;
 
 }
 
@@ -118,32 +121,140 @@ ion-slide{
   width: 80%;
 }
 
-.desciption{
+
+.prog_prc{
   font-family: Avenir Next LT Pro;
   position: absolute;
-  width: 90%;
-  left: 0px;
-  top: 65vw;
-  margin-right: 10px;
-text-align: left;
-font-style: normal;
-font-weight: normal;
-font-size: 14px;
-font-size: 4vw;
-line-height: 24px;
-line-height: 6vw;
-/* or 171% */
-color: #FFFFFF;
+  //margin-top: 150px;
+
+  margin-left: 5%;
+  font-size: 14px;
+  color: #FFFFFF;
+  bottom: calc(-30vw + 67px);
+      right: -142px;
+}
+
+.desciption{
+  font-family: Avenir Next LT Pro;
+      position: absolute;
+      width: 90%;
+      left: 0px;
+      margin-top: 40vw;
+      margin-right: 10px;
+      text-align: left;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      font-size: 4vw;
+      line-height: 24px;
+      line-height: 6vw;
+      color: black;
+      background-color: #191640;
+      background: linear-gradient(rgba(24,15,149,1) 0%, rgba(233,95,141,1) 0%, rgba(227,154,101,1) 100%);
+      padding: 15px;
+      border-radius: 15px;
+      height: 100vw;
+      padding-top: 20vw;
+
 }
 
 .blueline{
   position: absolute;
   width: 40px;
-  height: 0.3%;
-  left: 5%;
-  //bottom: 35%;
-  top: 110vw;
-  background-color: #4A80F0;
-  margin-top: 10px;
+  height: 3px;
+  border-radius: 25px;
+  left: 0%;
+  bottom: 3%;
+  background-color: #180f95;
+}
+.greyline{
+
+ background-color: whitesmoke;
+ position: absolute;
+ width: 40px;
+ height: 3px;
+ border-radius: 25px;
+ left: 0%;
+  bottom: 3%;
+
+}
+
+.bullets{
+
+  text-align:center;
+}
+
+
+@media screen and (min-width: 600px) {
+
+  * {
+  --imgsize: 600px;
+  }
+
+  .lessonitem{
+    width:500px;
+    height: 300px;
+  }
+  .overlay{
+    width:500px;
+    height: 300px;
+    right: initial;
+  }
+  .name{
+    font-size: 22px;
+  }
+  .desciption{
+      font-size: 22px;
+      left: initial;
+      top:35%;
+
+  }
+
+}
+
+svg{
+  position: absolute;
+  bottom: -30vw;
+  transform: scale(0.3);
+}
+
+svg circle
+{
+  width:100%;
+  height:100%;
+  fill:none;
+  stroke: #180f95;
+  stroke-width:10;
+  stroke-linecap:round;
+  transform:translate(5px,5px);
+}
+svg circle:nth-child(2)
+{
+  stroke-dasharray:440;
+  stroke-dashoffset:440;
+}
+.card:nth-child(1) svg circle:nth-child(2)
+{
+
+  stroke:#00ff43;
+}
+
+
+.progresscircle{
+  position: absolute;
+  margin-right: 10%;
+
+}
+
+@media screen and (min-width: 800px) {
+
+  * {
+  --imgsize: 800px;
+  }
+
+
+  .desciption{
+      font-size: 32px;
+  }
 
 }
