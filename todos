@@ -1,0 +1,27 @@
+- create api_getstudentinfo endpoint & App: request -> done
+- create new page: "Membership" (Membership info + upgrade button) -> done
+- create new table: products -> done
+- Create api_getproductinfo (by market?) endpoint & App: request & api_create_pmsession -> done
+- create new subpage: "Payment" (get products & prices, click on payment_button: create session_token & pass it to url ) -> done
+- Create payment page in efluent environement -> done
+- build in-App-polling (api_get_session_status) -> done
+- updatemenmbership -> done
+- efluent success page, efluent error page, in app routing to updated membership page in case of success -> done
+- subscription implementation -> done
+- add to transaction table & account.payment_history: setting up subscription, cancel subscription, pay subscription-> done
+- error handling (i.e. timeout, reload payment page)-> done
+- security (webhook secret)-> done
+- testcases -> done
+- delete Account must also delete entries in "Account", must cancel subscription, delete transactions and delete customer at stripe-> done
+- create new subpage: "Downgrade" ("are you sure - confirm")-> done
+- fix str(now) and add other history events -> done
+- make exercises also premium -> done
+
+
+-create new excercise type "writtenai" page in backend
+-create new excercise type "oralai" page in backend
+- create writtenai option in app
+- create evaluation via openai for writtenai
+
+- deploy Backend
+- deploy app

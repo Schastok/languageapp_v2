@@ -1,0 +1,369 @@
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+-webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
+outline: none !important;
+}
+
+
+ion-toolbar{
+  --background: transparent!important;
+  position: absolute;
+
+}
+
+ion-menu-button{
+  --color: white;
+  margin-top: 20px;
+}
+
+
+ion-content{
+
+//  --background: rgb(29,253,220);
+//  --background: linear-gradient(to top, rgba(29,253,220,1) 28%, rgba(69,116,252,1) 100%);
+--background: #001124;
+
+
+
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+input{
+ --background: #001124;
+ color: white;
+ border: 0 solid #005e68;
+ border-bottom: 2px solid #005e68;
+ text-align: center;
+
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+
+
+  border-bottom: 2px solid #005e68;
+  -webkit-text-fill-color: white;
+
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.formfields{
+  text-align: center;
+  margin-top: 25%;
+
+
+
+}
+
+.namefield{
+    position: relative;
+    margin-bottom: 50px;
+}
+.pwrepeatfield{
+    position: relative;
+     margin-bottom: 50px;
+}
+.userfield{
+    position: relative;
+     margin-bottom: 50px;
+}
+
+.pwfield{
+    position: relative;
+     margin-bottom: 50px;
+}
+.emailfield{
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.login{
+  width: 200px;
+  height: 36px;
+  font-size: 14px;
+  background-color: white;
+  border-radius:25px;
+  color: #005e68;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.submit{
+  width: 200px;
+  height: 36px;
+  font-size: 14px;
+  background-color:#005e68;
+  border-radius:25px;
+  color: white;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.buttonfields{
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: left;
+  width: 100%;
+  margin-left:calc(50% - 100px);
+    margin-bottom: 20px;
+}
+
+.forgotpw{
+  display: block;
+  font-size: 14px;
+}
+
+.field{
+  background:  #001124;
+}
+
+h2{
+position: relative;
+width: 80%;
+//height: 72px;
+//padding-top: 20%;
+padding-left: 5%;
+margin-top:20%;
+
+
+  font-family: Avenir Next LT Pro;
+  font-style: normal;
+  //font-weight: 600;
+  font-size: 32px;
+    font-size: 7vw;
+  line-height: 7vw;
+  /* or 125% */
+
+  display: flex;
+  //align-items: center;
+
+  color: #FFFFFF;
+}
+
+.desciption{
+  font-family: Avenir Next LT Pro;
+  //position: absolute;
+  //width: 60%;
+  //height: 70px;
+  left: 0px;
+  //top: 50%;
+  margin-top: 40px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 5%;
+text-align: left;
+font-style: normal;
+font-weight: normal;
+//font-size: 14px;
+font-size: 4vw;
+line-height: 6vw;
+/* or 171% */
+color: #FFFFFF;
+}
+
+.formdescriptions2{
+  margin-left: calc(50% - 100px);
+  text-align: left;
+  font-size: 12px;
+  color: #b2cdd1ff;
+  display: block;
+}
+
+
+.formdescriptions{
+  position: absolute;
+  left:calc(50% - 100px);
+  top: -10px;
+  margin-bottom: 20px;
+  text-align: left;
+  font-size: 12px;
+  color: #b2cdd1ff;
+
+}
+input:valid + label.formdescriptions{
+  font-size: 10px;
+  transition: font-size 0.5s;
+}
+input:focus + label.formdescriptions{
+  font-size: 10px;
+  transition: font-size 0.5s;
+}
+
+
+
+.fielderrors{
+  display: block;
+  color: #ffb6b7ff;
+  font-size: 12px;
+}
+
+
+@media screen and (min-width: 600px) {
+
+
+h2{
+    font-size: 32px;
+      margin-top: 10%;
+  }
+  .desciption{
+      font-size: 22px;
+      left: initial;
+      top:35%;
+      line-height: 4vw;
+
+  }
+
+.content{
+  font-size: 22px;
+}
+
+}
+
+@media screen and (min-width: 800px) {
+  h2{
+    font-size: 32px;
+    margin-top: 10%;
+  }
+  .desciption{
+      font-size: 22px;
+      line-height: 4vw;
+  }
+  .content{
+    font-size: 22px;
+  }
+
+
+  .buttonfields{
+    top: 60%;
+  }
+}
+
+
+
+
+.card {
+    width: 350px;
+    background-color: #efefef;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+    padding:20px;
+    margin-top:20px;
+}
+
+.image img {
+    transition: all 0.5s
+}
+
+.card:hover .image img {
+    transform: scale(1.5)
+}
+
+.btn {
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+    background-color: darkgrey;
+  margin-top: 10px;
+}
+
+.buttoncontainer{
+
+}
+
+.name {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.idd {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.idd1 {
+    font-size: 12px;
+}
+
+.number {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+
+.premiummembership{
+  background-color: #D4AF37;
+  color: white;
+  width: 200px;
+  padding:5px;
+  margin-bottom: 20px;
+}
+
+.basicmembership{
+  background-color: black;
+  color: white;
+  width: 200px;
+  padding:5px;
+  margin-bottom: 20px;
+}
+
+.follow {
+    font-size: 12px;
+    font-weight: 500;
+    color: #444444;
+}
+
+.btn1 {
+    height: 40px;
+    width: 150px;
+    border: none;
+    background-color: #000;
+    color: #aeaeae;
+    font-size: 15px;
+}
+
+.text span {
+    font-size: 13px;
+    color: #545454;
+    font-weight: 500;
+}
+
+.icons i {
+    font-size: 19px;
+}
+
+hr .new1 {
+    border: 1px solid
+}
+
+.join {
+    font-size: 14px;
+    color: #a0a0a0;
+    font-weight: bold;
+
+}
+
+.date {
+    background-color: #ccc;
+    border-radius: 10px;
+    width: 150px;
+  margin-bottom: 50px;
+  padding:2px;
+}
+
+.submit{
+  margin-bottom: 20px;
+}

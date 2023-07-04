@@ -15,8 +15,9 @@ import { AdMobFree, AdMobFreeBannerConfig,AdMobFreeInterstitialConfig,AdMobFreeR
 
 export class DoQuizPage implements OnInit {
 
-
-
+  spinner;
+  showscore = true;
+  available = true;
   quizId;
   html;
   data;
@@ -358,7 +359,17 @@ textarea{
       }
 
 
-    });
+    },
+
+    (err) => {
+         if (err.status == 403){
+           console.log("not authorized. Please change to premium");
+           this.available = false;
+         }
+         console.log('getData has thrown and error of', err)
+
+       }
+     );
   }
 
 
@@ -613,7 +624,7 @@ textarea{
      let formData = {};
 
 
-    if ([1, 2, 3, 4, 5, 8].indexOf(this.data.Type) >= 0){
+    if ([1, 2, 3, 4, 5, 8, 9].indexOf(this.data.Type) >= 0){
       for (let i = 0; i < target.length; i++) {
 
           formData[target.elements[i].getAttribute("name")] = target.elements[i].value;
@@ -666,27 +677,39 @@ textarea{
 
 
 
-
+    this.spinner = true;
      console.log('formData', formData);
-     this.apiService.postquiz(formData, this.quizId).subscribe((data:any)=>{
+     this.apiService.postquiz(formData, this.quizId).subscribe(
+       (data:any)=>{
        this.solutiondata = data;
        console.log("SOLUTIONDATA: ", this.solutiondata);
        if (this.solutiondata.total > 0){
        this.success = ((this.solutiondata.score/this.solutiondata.total)>= 0.8);
+        }
+        if (this.quizType === 9){
+          this.success = false;
+          this.showscore = false;
         }
         if (this.success){
           this.nativeAudio.play('fanfare');
         }
        this.solutionhtml =this.dynamicstyle + data.ex;
        this.solutionhtml = this.solutionhtml.replace(new RegExp('/media/', 'g'), 'https://www.e-fluent.com/media/', 'g');
-       console.log(this.solutionhtml);
        if(this.quizType != 8){
        this.showsolution = true;
        }
        else{
          this.showwaiting = true;
        }
-     });
+     },
+   (error)=>{
+     console.log(error)
+   },
+   ()=>{
+     this.spinner = false;
+   }
+
+   );
 
 
 
@@ -706,16 +729,19 @@ checkanswer(mode){
 
   if (mode === 0){ // correct answers from Db
 
+
+
     for (var i = 0; i < this.solutiondata.ids.length; i++) {
       if (this.data.Type === 3 || this.data.Type === 7){
         qid = this.solutiondata.ids[i].toString();
         element = document.getElementById('q' + qid);
       }
+
     else{
     qid = this.solutiondata.ids[i];
     element = document.getElementById(qid);
     }
-    console.log(qid);
+
 
     if (this.data.Type === 7){
       element.innerHTML = ''
@@ -741,6 +767,10 @@ checkanswer(mode){
         this.renderer.setAttribute(element, 'value', this.solutiondata.canswers[qid]);
         this.renderer.setAttribute(element, 'readonly', 'true');
         this.renderer.setAttribute(element, 'size', this.solutiondata.canswers[qid].length);
+        }
+        else if  (this.data.Type === 9){
+          element.innerHTML = this.solutiondata.canswers[qid];
+
         }
 
         else if  (this.data.Type === 3){
@@ -784,6 +814,10 @@ checkanswer(mode){
         this.renderer.setAttribute(element, 'value', this.solutiondata.canswers[qid]);
         this.renderer.setAttribute(element, 'readonly', 'true');
         this.renderer.setAttribute(element, 'size', this.solutiondata.canswers[qid].length);
+    }
+    else if  (this.data.Type === 9){
+      element.innerHTML = this.solutiondata.canswers[qid];
+
     }
 
     else if  (this.data.Type === 3){
@@ -843,6 +877,8 @@ checkanswer(mode){
     element = document.getElementById(qid);
     }
     console.log(qid);
+    console.log("get element");
+    console.log(element);
 
     if (this.data.Type === 7){
       element.innerHTML = ''
@@ -867,11 +903,15 @@ checkanswer(mode){
     else{
 
     if (this.solutiondata.canswers[qid] === this.solutiondata.yanswers[qid]){
-      if  ([1, 2, 4, 5].indexOf(this.data.Type) >= 0){
+      if  ([1, 2, 4, 5, ].indexOf(this.data.Type) >= 0){
         this.renderer.setAttribute(element, 'style', this.solutionstyle_correct);
         this.renderer.setAttribute(element, 'value', this.solutiondata.yanswers[qid]);
         this.renderer.setAttribute(element, 'readonly', 'true');
         this.renderer.setAttribute(element, 'size', this.solutiondata.canswers[qid].length);
+
+      }
+      else if  (this.data.Type === 9){
+        element.innerHTML = this.solutiondata.yanswers[qid];
 
       }
 
@@ -882,6 +922,7 @@ checkanswer(mode){
               this.renderer.setAttribute(element, 'size', this.solutiondata.canswers[qid].length);
 
             }
+
       else if (this.data.Type === 6){
         console.log(this.solutiondata.canswers);
         let label = document.getElementById('l'+qid);
@@ -914,6 +955,10 @@ checkanswer(mode){
         this.renderer.setAttribute(element, 'value', this.solutiondata.yanswers[qid]);
         this.renderer.setAttribute(element, 'readonly', 'true');
         this.renderer.setAttribute(element, 'size', this.solutiondata.canswers[qid].length);
+    }
+    else if  (this.data.Type === 9){
+      element.innerHTML = this.solutiondata.yanswers[qid];
+
     }
     else if  (this.data.Type === 3){
             this.renderer.setAttribute(element, 'style', this.solutionstyle_wrong_long);

@@ -17,6 +17,7 @@
 
 
 
+
     <ion-slides *ngIf="didInit" [options]="slideConfig" #slides>
            <ion-slide *ngFor="let item of sectiondetails" id="section{{item.position}}" >
 
@@ -36,7 +37,7 @@
            </ion-slide>
 
     </ion-slides>
-
+  <div class="premium_err" *ngIf="!available"> This Section of the lesson is premium content. Please upgrade to premium</div>
 
 </ion-content>
 

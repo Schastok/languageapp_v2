@@ -94,6 +94,7 @@
 
     <div class="box" [routerLink]="['../../../../../../learn/', lessonId, 'section', section.Section_ID]" >
       <span class="boxname">{{section.name}}</span>
+      <span class="premium" *ngIf="section.Subscrmodel === 1">(Premium)</span>
       <img *ngIf="sections_done[section.Section_ID] === 0" class='icon'  src="/assets/images/043-location.svg"/>
       <img *ngIf="sections_done[section.Section_ID] === 1" class='icon'  src="/assets/images/043-location.svg"/>
 
@@ -114,6 +115,7 @@
 
     <div *ngIf="(quiz.Type !== 8)" class="box" [routerLink]="['../../../../../../quiz/', lessonId, 'do_quiz', quiz.ID]" [ngStyle]="{'background-color': getColor2(i%4)}">
 <span class="boxname">{{quiz.Title}}</span>
+<span class="premium" *ngIf="quiz.Subscrmodel === 1">(Premium)</span>
     <img  *ngIf="(quiz.Type === 1 || quiz.Type === 2) && quiz.Evaluation < 80" class='icon'  src="/assets/images/043-location.svg"/>
     <img  *ngIf="(quiz.Type === 1 || quiz.Type === 2) && quiz.Evaluation >= 80" class='icon'  src="/assets/images/043-location.svg"/>
 

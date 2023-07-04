@@ -1,0 +1,47 @@
+
+<ion-content>
+  <div class='backgroundimage'>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      <ion-title>
+      </ion-title>
+    </ion-toolbar>
+<img class='wave'  src="/assets/images/background.svg"/>
+  </div>
+
+
+
+  <div class="container mt-4 mb-4 p-3 d-flex justify-content-center" style="text-align: -webkit-center;">
+    <div class="card p-4">
+      <div class=" image d-flex flex-column justify-content-center align-items-center">
+        <div class="buttoncontainer">
+         <button class="btn btn-secondary">
+            <img src="https://www.svgrepo.com/show/357123/gender-neutral-user.svg" height="100" width="100" /></button></div>
+            <div class="name mt-3">{{username}}</div>
+            <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+                                <div class="date"> <span class="join">Joined {{creation_date | date:'dd-MM-YYYY'}}</span> </div>
+              <span><i class="fa fa-copy"></i></span> </div>
+              <div class="basicmembership" *ngIf="subscription_model === 0" >
+                  <span class='desciption'>Free membership</span> </div>
+              <div class="premiummembership" *ngIf="subscription_model === 1" >
+                  <span class='desciption'>Premium membership</span> </div>
+                <div  *ngIf="subscription_model === 1"> <span class="idd">Premium member since {{change_date | date:'dd-MM-YYYY'}}</span> </div>
+                <div  *ngIf="subscription_model === 1 && status === 2"> <span class="idd">Premium membership cancelled</span> </div>
+
+                 <div class=" d-flex mt-2">
+
+                   <div class="buttonfields">
+                       <button *ngIf="subscription_model === 0" class="submit" shape="round"  [routerLink]="['../payment']">Upgrade to premium</button>
+                       <button *ngIf="subscription_model === 1 && status === 1" class="submit" shape="round" [routerLink]="['../cancelsubscription']">Cancel Subscription</button>
+                   </div>
+                 </div>
+ </div> </div>
+  </div>
+
+
+
+
+
+</ion-content>

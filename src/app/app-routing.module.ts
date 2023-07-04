@@ -91,6 +91,10 @@ const routes: Routes = [
     loadChildren: () => import('./logout/logout.module').then( m => m.LogoutPageModule)
   },
   {
+    path: 'account',
+    loadChildren: () => import('./account/account.module').then( m => m.AccountPageModule)
+  },
+  {
     path: 'mycourses',
     loadChildren: () => import('./mycourses/mycourses.module').then( m => m.MycoursesPageModule)
   },
@@ -110,6 +114,22 @@ const routes: Routes = [
   {
     path: 'delete-account',
     loadChildren: () => import('./delete-account/delete-account.module').then( m => m.DeleteAccountPageModule)
+  },
+  {
+    path: 'account',
+    loadChildren: () => import('./account/account.module').then( m => m.AccountPageModule)
+  },
+  {
+    path: 'payment',
+    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
+  },
+  {
+    path: 'payment',
+    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
+  },
+  {
+    path: 'cancelsubscription',
+    loadChildren: () => import('./cancelsubscription/cancelsubscription.module').then( m => m.CancelsubscriptionPageModule)
   }
 ];
 @NgModule({

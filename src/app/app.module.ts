@@ -18,7 +18,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { NativeAudio } from '@ionic-native/native-audio/ngx';
 
 import { AdMobFree } from '@ionic-native/admob-free/ngx';
-
+import {InAppBrowser} from '@ionic-native/in-app-browser/ngx';
 //import { SafePipe } from './safe.pipe';
 
 @NgModule({
@@ -32,6 +32,7 @@ import { AdMobFree } from '@ionic-native/admob-free/ngx';
      AdMobFree,
     NativeAudio,
     SplashScreen,
+    InAppBrowser,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

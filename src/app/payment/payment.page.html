@@ -1,0 +1,113 @@
+  <!--
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Stripe for PWA
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid text-center>
+    <ion-row>
+      <ion-col>
+        Use this Pay button in your PWA's payment page with the attached logic.
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-card class="welcome-card">
+    <ion-img src="/assets/stripe.png"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>Get Started</ion-card-subtitle>
+      <ion-card-title>Stripe Sample</ion-card-title>
+      <ion-row>
+        <ion-col>Total Payment</ion-col>
+        <ion-col> {{currencyIcon}}{{paymentAmount}} </ion-col>
+      </ion-row>
+    </ion-card-header>
+    <ion-card-content>
+      <form action="/" method="post" id="payment-form">
+        <div class="form-row">
+          <div id="card-element"> </div>
+          //Used to display Element errors
+          <div id="card-errors" role="alert"></div>
+        </div>
+        <ion-button type="submit" color="success" expand="full">Make Payment</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+-->
+
+
+
+<ion-content>
+  <div class='backgroundimage'>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      <ion-title>
+      </ion-title>
+    </ion-toolbar>
+<img class='wave'  src="/assets/images/background.svg"/>
+  </div>
+
+
+
+  <div class="container mt-4 mb-4 p-3 d-flex justify-content-center" style="text-align: -webkit-center;">
+    <div class="card p-4">
+      <div class=" image d-flex flex-column justify-content-center align-items-center">
+  <div *ngIf="polling === 0 && paymentstatus === 0" >
+            <div class="name mt-3">{{product_name}}</div>
+            <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+                                <div class="amount_descr"> <span class="join">Amount</span> </div>
+                                <div class="amount"> {{price}} {{currency_symbol}} </div>
+                                <div class="amount_descr"> <span class="join">VAT {{tax}}%</span> </div>
+                                <div class="amount"> {{tax_amount}} {{currency_symbol}} </div>
+                                <div class="amount_descr"> <span class="total_amount_descr">Total amount </span> </div>
+                                <div class="total_amount"> {{total_amount}} {{currency_symbol}} </div>
+              <span><i class="fa fa-copy"></i></span> </div>
+
+    </div>
+
+    <div *ngIf="polling === 1" >
+      <div class="name mt-3">Waiting for payment</div>
+      <ion-spinner  class="spinnerbig" name="bubbles"></ion-spinner>
+        </div>
+
+
+        <div *ngIf="polling === 3" >
+          <div class="name mt-3">{{paymentstatus_info}}</div>
+            </div>
+
+            <div *ngIf="polling === 4" >
+              <div class="name mt-3">Your payment could not be completed. It timed out. Please try again.</div>
+                <button (click)="openBlank()" shape="round" class="submit" >Try again</button>
+                </div>
+
+                 <div class=" d-flex mt-2">
+
+                   <div class="buttonfields">
+                     <button *ngIf="polling === 0 && paymentstatus === 0" (click)="openBlank()" shape="round" class="submit" >Proceed to payment</button>
+                     <button *ngIf="polling === 1" shape="round" class="submit" style="background-color:grey;" ><ion-spinner  *ngIf="polling === 1" name="bubbles"></ion-spinner></button>
+
+
+
+
+
+
+                   </div>
+
+                 </div>
+ </div> </div>
+  </div>
+
+
+
+
+
+</ion-content>

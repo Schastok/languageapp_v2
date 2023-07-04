@@ -17,7 +17,7 @@ import { AdMobFree, AdMobFreeBannerConfig,AdMobFreeInterstitialConfig,AdMobFreeR
 
 export class SectionPage implements OnInit{
 
-
+  available = true;
   disablePrevBtn = true;
   disableNextBtn = true;
   didInit = false;
@@ -74,7 +74,7 @@ export class SectionPage implements OnInit{
     });
 
     this.apiService.getSection_details(this.sectionId).subscribe((data)=>{
-      console.log(data);
+      console.log("SECTION DETAILS");
       if (Object.values(data).length >= 2){
   this.disableNextBtn = false;
   //this.storage.set('section_' + this.sectionId + '_done', 0);
@@ -102,7 +102,19 @@ else{
       //this.sectiondetails = this.html.replace(new RegExp('/media/', 'g'), 'https://www.e-fluent.com/media/', 'g');
       //console.log(this.sectiondetails);
 
-    });
+    },
+
+
+    (err) => {
+         if (err== 403){
+           console.log("not authorized. Please change to premium");
+           this.available = false;
+         }
+         console.log('getData has thrown and error of', err)
+
+       }
+
+  );
 
 
   }

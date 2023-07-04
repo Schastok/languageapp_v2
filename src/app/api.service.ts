@@ -10,13 +10,14 @@ import {  throwError } from 'rxjs';
 export class ApiService {
 
 
-  TEST = false;
+  TEST = true;
   URL;
   PROJECT_ID = '10';
   STUDENT_ID = '4';
   SIZE;
   TOKEN;
   STUDENT_NAME;
+  MARKET_ID = '1';
 
 
   constructor(private httpClient: HttpClient, private storage: Storage) {
@@ -47,7 +48,7 @@ export class ApiService {
       // The response body may contain clues as to what went wrong.
       console.log(
         `Backend returned code ${error.status}`);
-        result = error.error;
+        result = error.status;
     }
     // Return an observable with a user-facing error message.
     return throwError(result)
@@ -88,7 +89,8 @@ export class ApiService {
     let headers = new HttpHeaders();
     let token = "Token " + this.TOKEN;
     headers = headers.set('Authorization', token);
-    return this.httpClient.get(`${this.URL}/api_section_2/?section=${sectionID}`,  {headers: headers});
+    return this.httpClient.get(`${this.URL}/api_section_2/?section=${sectionID}`,  {headers: headers}).pipe(
+      catchError(this.handleError));
   }
 
   getFlipcardset(lessonID: string){
@@ -203,6 +205,39 @@ getstudentcls(){
   return this.httpClient.get(`${this.URL}/api_classrooms/?student=${this.STUDENT_ID}`,  {headers: headers});
 }
 
+
+getaccountdetails(){
+  let headers = new HttpHeaders();
+  let token = "Token " + this.TOKEN;
+  headers = headers.set('Authorization', token);
+  return this.httpClient.get(`${this.URL}/api_accountdetails/?student=${this.STUDENT_ID}`,  {headers: headers});
+}
+
+
+getproductdetails(){
+  let headers = new HttpHeaders();
+  let token = "Token " + this.TOKEN;
+  headers = headers.set('Authorization', token);
+  return this.httpClient.get(`${this.URL}/api_productdetails/?market=${this.MARKET_ID}&project=${this.PROJECT_ID}`,  {headers: headers});
+}
+
+
+getpaymentsession(product:string){
+  let headers = new HttpHeaders();
+  let token = "Token " + this.TOKEN;
+  headers = headers.set('Authorization', token);
+  return this.httpClient.get(`${this.URL}/api_paymentsession/?student=${this.STUDENT_ID}&product=${product}`,  {headers: headers});
+}
+
+
+getsessionpolling(pmtoken:string){
+  let headers = new HttpHeaders();
+  let token = "Token " + this.TOKEN;
+  headers = headers.set('Authorization', token);
+  return this.httpClient.get(`${this.URL}/api_paymentsessionpolling/?student=${this.STUDENT_ID}&pmtoken=${pmtoken}`,  {headers: headers});
+}
+
+
 getstudentassigned(classroom:string){
   let headers = new HttpHeaders();
   let token = "Token " + this.TOKEN;
@@ -224,5 +259,14 @@ deleteaccount(){
   headers = headers.set('Authorization', token);
   return this.httpClient.get(`${this.URL}/api_delete/?student=${this.STUDENT_ID}`,  {headers: headers});
 }
+
+cancelsubscription(){
+  let headers = new HttpHeaders();
+  let token = "Token " + this.TOKEN;
+  headers = headers.set('Authorization', token);
+  return this.httpClient.get(`${this.URL}/api_cancelsubscription/?student=${this.STUDENT_ID}`,  {headers: headers});
+}
+
+
 
 }

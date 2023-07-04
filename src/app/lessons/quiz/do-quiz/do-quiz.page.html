@@ -1,6 +1,9 @@
 
 
-<ion-content >
+
+<ion-content>
+
+
 
   <div class='backgroundimage'>
     <img *ngIf="success" class='confetti'  src="/assets/images/confetti.gif"/>
@@ -22,7 +25,8 @@
   <div class="title">{{ quizName }}</div>
  </div>
 
-
+<div class="premium_err" *ngIf="!available"> This Section of the lesson is premium content. Please upgrade to premium</div>
+  <div *ngIf="available">
  <div class="info animate_pop">
  <img class="card_icon" src="https://www.e-fluent.com/media/images/bulb.png"  alt=""/> <span class="infotext"> {{ quizDescription }}</span>
  </div>
@@ -35,7 +39,7 @@
 
 
 
-  <div *ngIf="html" class="quizcontent" [innerHTML]="html | safe: 'html'"> </div>
+  <div *ngIf="html" class="quizcontent" id="quizcontent" [innerHTML]="html | safe: 'html'"> </div>
 
 <div *ngIf='quizType == 1' class='answeropts'  id='answeropt'>
   <div *ngFor='let opt of answeropts; let i = index'>
@@ -58,7 +62,7 @@
   </div>
 
   <div id='submitdiv'>
-  <ion-button shape="round" style="background-color:#180f95" color="#180f95" class="submit"  *ngIf='!hasslides || slidecheck'  id="check" type="submit" name="submit">Check</ion-button>
+  <ion-button shape="round" style="background-color:#180f95" color="#180f95" class="submit"  *ngIf='!hasslides || slidecheck'  id="check" type="submit" name="submit"><span *ngIf="!spinner" >Check</span><ion-spinner  *ngIf="spinner" name="bubbles"></ion-spinner></ion-button>
   </div>
 
 </form>
@@ -67,7 +71,7 @@
 <div *ngIf='showsolution' class='quizframe' id='t1'>
   <div class='content'>Solution</div>
   <div id='scorediv'>
-  <div id='score'> <b>Your score: {{solutiondata.score}} / {{solutiondata.total}} </b></div>
+  <div id='score' *ngIf='showscore'> <b>Your score: {{solutiondata.score}} / {{solutiondata.total}} </b></div>
 
 <ion-button shape="round" style="background-color:#180f95" color="#180f95" id="switch1" *ngIf='sol' (click)="checkanswer(0)">solution</ion-button>
 <ion-button shape="round"  style="background-color:#180f95" color="#180f95" id="switch2" *ngIf='!sol' (click)="checkanswer(1)">my answers</ion-button>
@@ -80,5 +84,5 @@
 
 <div class="quizcontent">Please be patient while a teacher will check your submission</div>
 </div>
-
+</div>
 </ion-content>

@@ -1,0 +1,11 @@
+else if (this.data.Type === 9){
+  element.innerHTML = '';
+  let corrected = this.solutiondata.yanswers.split('|');
+  let container_correct = corrected[0];
+  let container_yours = corrected[1];
+  console.log("correct!!!!!!!!");
+  console.log(container_correct);
+  console.log("yours!!!!!!!!");
+  console.log(container_yours);
+  element.innerHTML = container_correct;
+}
