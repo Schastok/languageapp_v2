@@ -31,7 +31,6 @@ export class AccountPage implements OnInit {
 
   ionViewDidEnter() {
   console.log('ionViewDidEnter ');
-  // call update function
   this.apiService.getaccountdetails().subscribe((data)=>{
     console.log(data);
     this.account = data[0];
