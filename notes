@@ -9,3 +9,21 @@ else if (this.data.Type === 9){
   console.log(container_yours);
   element.innerHTML = container_correct;
 }
+
+
+<ion-button *ngIf="record === 2"  shape="round" style="background-color:#180f95" color="#180f95" (click)="play()"><ion-icon name="play-outline"></ion-icon>play</ion-button>
+<ion-button *ngIf="record === 3"  shape="round" style="background-color:#180f95" color="#180f95" (click)="stop()"><ion-icon name="stop-outline"></ion-icon>stop</ion-button>
+
+var blob = new Blob([this.audioFile], {type:‘audio/mp3’});
+var reader = new FileReader();
+reader.readAsBinaryString(blob);
+this.status = reader.result;
+const blob = this.getBlobFromFile(this.audioFile);
+
+this.file.resolveLocalFilesystemUrl(pathToFile, function(fileEntry) {
+  fileEntry.file(function(f) {
+    var reader = new FileReader();
+    reader.readAsBinaryString(f);
+    console.log(reader.result);
+  })
+});

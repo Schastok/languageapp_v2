@@ -10,7 +10,7 @@ import {  throwError } from 'rxjs';
 export class ApiService {
 
 
-  TEST = true;
+  TEST = false;
   URL;
   PROJECT_ID = '10';
   STUDENT_ID = '4';
@@ -267,6 +267,14 @@ cancelsubscription(){
   return this.httpClient.get(`${this.URL}/api_cancelsubscription/?student=${this.STUDENT_ID}`,  {headers: headers});
 }
 
-
+uploadaudio(file){
+  let headers = new HttpHeaders();
+  let token = "Token " + this.TOKEN;
+  headers = headers.set('Authorization', token);
+  headers.set('content-type', 'audio/mpeg')
+  return this.httpClient.post(`${this.URL}/api_audioupload/`, {'file':file}, {observe: "body", headers: headers}).pipe(
+    catchError(this.handleError)
+  );
+}
 
 }

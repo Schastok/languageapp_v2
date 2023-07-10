@@ -32,7 +32,7 @@
  </div>
 
 
-
+<div class="title">{{ status }}</div>
 
   <div *ngIf='!showsolution && !showwaiting' class='quizframe' >
 <form (ngSubmit)="submit($event)">
@@ -40,7 +40,15 @@
 
 
   <div *ngIf="html" class="quizcontent" id="quizcontent" [innerHTML]="html | safe: 'html'"> </div>
-
+  <div *ngIf='quizType == 10'>
+  <p *ngIf='time > 0 && record === 1'>Recording ... {{time}}s</p>
+  <p *ngIf='time > 0 && record === 3'>0:<span *ngIf='time < 10'>0</span>{{time}}s</p>
+  <ion-button *ngIf="record === 0" shape="round" style="background-color:#180f95" color="#180f95" (click)="startrecording()"><ion-icon name="radio-button-on-outline"></ion-icon>start recording</ion-button>
+  <ion-button *ngIf="record === 1"  shape="round" style="background-color:#180f95" color="#180f95" (click)="stoprecording()"><ion-icon name="stop-circle-outline"></ion-icon>stop recording</ion-button>
+  <ion-button *ngIf="record === 2"  shape="round" style="background-color:#180f95" color="#180f95" (click)="play()"><ion-icon name="play-outline"></ion-icon>play recording</ion-button>
+  <ion-button *ngIf="record === 3"  shape="round" style="background-color:#180f95" color="#180f95" (click)="stop()"><ion-icon name="stop-outline"></ion-icon>stop playing</ion-button>
+  <ion-button *ngIf="record === 4"  shape="round" style="background-color:#180f95" color="#180f95" (click)="deleterecording()"><ion-icon name="trash-outline"></ion-icon>delete recording</ion-button>
+   </div>
 <div *ngIf='quizType == 1' class='answeropts'  id='answeropt'>
   <div *ngFor='let opt of answeropts; let i = index'>
     <div class='dragbadge' id='ao{{i+1}}' (click)="doclick($event)">

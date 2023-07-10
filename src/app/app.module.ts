@@ -17,6 +17,9 @@ import { FlipModule } from 'ngx-flip';
 import { IonicStorageModule } from '@ionic/storage';
 import { NativeAudio } from '@ionic-native/native-audio/ngx';
 
+import  { Media } from '@ionic-native/media/ngx';
+import  { File } from '@ionic-native/file/ngx';
+
 import { AdMobFree } from '@ionic-native/admob-free/ngx';
 import {InAppBrowser} from '@ionic-native/in-app-browser/ngx';
 //import { SafePipe } from './safe.pipe';
@@ -33,6 +36,8 @@ import {InAppBrowser} from '@ionic-native/in-app-browser/ngx';
     NativeAudio,
     SplashScreen,
     InAppBrowser,
+    Media,
+    File,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

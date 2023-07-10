@@ -4,7 +4,8 @@ import { ApiService } from '../../../api.service';
 import {Directive, ElementRef, HostListener, Renderer2} from '@angular/core';
 import { NativeAudio } from '@ionic-native/native-audio/ngx';
 import { AdMobFree, AdMobFreeBannerConfig,AdMobFreeInterstitialConfig,AdMobFreeRewardVideoConfig } from '@ionic-native/admob-free/ngx';
-
+import  { Media, MediaObject } from '@ionic-native/media/ngx';
+import  { File } from '@ionic-native/file/ngx';
 
 @Component({
   selector: 'app-do-quiz',
@@ -14,7 +15,14 @@ import { AdMobFree, AdMobFreeBannerConfig,AdMobFreeInterstitialConfig,AdMobFreeR
 
 
 export class DoQuizPage implements OnInit {
-
+  time: number = 0;
+  interval;
+  record = 0;
+  f;
+  duration;
+  audiobinary;
+  status:string="";
+  audioFile:MediaObject;
   spinner;
   showscore = true;
   available = true;
@@ -299,11 +307,15 @@ textarea{
 
 
 
-  constructor(private admobFree: AdMobFree, private nativeAudio: NativeAudio, private activatedRoute: ActivatedRoute, private apiService: ApiService, private renderer: Renderer2, private elementRef: ElementRef) { }
+  constructor(private admobFree: AdMobFree, private nativeAudio: NativeAudio, private activatedRoute: ActivatedRoute, private apiService: ApiService, private renderer: Renderer2, private elementRef: ElementRef, private media: Media, private file: File) { }
 
 
   ngOnInit() {
+
+    this.audioFile = this.media.create(this.file.externalRootDirectory  + '/audiotemp.mp3');
+
     this.nativeAudio.preloadSimple('fanfare', 'assets/audio/fanfare.wav');
+
     this.activatedRoute.paramMap.subscribe(paramMap => {
 
       if(!paramMap.has('quizId')){
@@ -630,7 +642,10 @@ textarea{
           formData[target.elements[i].getAttribute("name")] = target.elements[i].value;
       }
     }
+    else if (this.data.Type === 10){
+        formData['q1'] = this.audiobinary;
 
+    }
     else if (this.data.Type === 6){
       for (let i = 0; i < target.length; i++) {
 
@@ -687,6 +702,10 @@ textarea{
        this.success = ((this.solutiondata.score/this.solutiondata.total)>= 0.8);
         }
         if (this.quizType === 9){
+          this.success = false;
+          this.showscore = false;
+        }
+        if (this.quizType === 10){
           this.success = false;
           this.showscore = false;
         }
@@ -770,9 +789,10 @@ checkanswer(mode){
         }
         else if  (this.data.Type === 9){
           element.innerHTML = this.solutiondata.canswers[qid];
-
         }
-
+        else if  (this.data.Type === 10){
+          element.innerHTML = this.solutiondata.canswers[qid];
+        }
         else if  (this.data.Type === 3){
                 this.renderer.setAttribute(element, 'style', this.solutionstyle_correct_long);
                 this.renderer.setAttribute(element, 'value', this.solutiondata.canswers[qid]);
@@ -819,7 +839,10 @@ checkanswer(mode){
       element.innerHTML = this.solutiondata.canswers[qid];
 
     }
+    else if  (this.data.Type === 10){
+      element.innerHTML = this.solutiondata.canswers[qid];
 
+    }
     else if  (this.data.Type === 3){
             this.renderer.setAttribute(element, 'style', this.solutionstyle_wrong_long);
             this.renderer.setAttribute(element, 'value', this.solutiondata.canswers[qid]);
@@ -914,7 +937,10 @@ checkanswer(mode){
         element.innerHTML = this.solutiondata.yanswers[qid];
 
       }
+      else if  (this.data.Type === 10){
+        element.innerHTML = this.solutiondata.yanswers[qid];
 
+      }
       else if  (this.data.Type === 3){
               this.renderer.setAttribute(element, 'style', this.solutionstyle_correct_long);
               this.renderer.setAttribute(element, 'value', this.solutiondata.yanswers[qid]);
@@ -958,7 +984,9 @@ checkanswer(mode){
     }
     else if  (this.data.Type === 9){
       element.innerHTML = this.solutiondata.yanswers[qid];
-
+    }
+    else if  (this.data.Type === 10){
+      element.innerHTML = this.solutiondata.yanswers[qid];
     }
     else if  (this.data.Type === 3){
             this.renderer.setAttribute(element, 'style', this.solutionstyle_wrong_long);
@@ -1001,6 +1029,111 @@ checkanswer(mode){
 
   let htmldivelement = document.getElementById('solhtml');
   this.renderer.removeAttribute(htmldivelement, 'hidden');
+}
+
+startrecording(){
+
+this.startTimer()
+this.audioFile.startRecord();
+this.record = 1
+
+}
+
+deleterecording(){
+  var pathToFile = this.file.externalRootDirectory  + '/audiotemp.mp3';
+  this.file.resolveLocalFilesystemUrl(pathToFile).then((entry: any) => {
+    var fileEntry = entry;
+    fileEntry.remove();
+    this.audioFile = this.media.create(this.file.externalRootDirectory  + '/audiotemp.mp3');
+    this.record = 0;
+  });
+
+
+}
+
+stoprecording(){
+
+this.stopTimer()
+this.audioFile.stopRecord();
+this.record = 2;
+console.log(this.audioFile);
+this.audioFile.release();
+var pathToFile = this.file.externalRootDirectory  + '/audiotemp.mp3';
+console.log(pathToFile)
+this.file.resolveLocalFilesystemUrl(pathToFile).then((entry: any) => {
+    var fileEntry = entry;
+    this.status = "entry"
+    fileEntry.file((f: any) =>{
+      console.log("file");
+      console.log(f);
+      this.status = "found file"
+      var promise = this.readFile(f);
+      promise.then((r: any) => {
+        console.log("readfile")
+        console.log(r);
+        this.audiobinary = r;
+      });
+    });
+
+});
+
+}
+
+startTimer() {
+  this.interval = setInterval(() => {
+    if(this.time < 30) {
+      this.time++;
+    } else {
+      this.stoprecording()
+      this.time = 0;
+    }
+  },1000)
+}
+
+countdown() {
+  this.duration = 30;
+  this.duration = this.audioFile.getDuration();
+  this.interval = setInterval(() => {
+    if(this.time < this.duration) {
+      this.time++;
+    } else {
+      this.stop()
+      this.duration = 30;
+      this.time = 0;
+    }
+  },1000)
+}
+
+
+stopTimer() {
+  this.time = 0;
+  clearInterval(this.interval);
+}
+
+readFile(file){
+      return new Promise((resolve, reject) => {
+        var fr = new FileReader();
+        fr.onload = () => {
+          resolve(fr.result )
+        };
+        fr.onerror = reject;
+        //fr.readAsArrayBuffer(file);
+        fr.readAsDataURL(file);
+      });
+    }
+
+
+play(){
+  this.audioFile.play();
+  this.record = 3
+  this.countdown()
+
+}
+
+stop(){
+  this.audioFile.stop();
+  this.record = 4;
+
 }
 
 
