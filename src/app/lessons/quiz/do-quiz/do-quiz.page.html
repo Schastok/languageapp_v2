@@ -3,52 +3,39 @@
 
 <ion-content>
 
-
-
-  <div class='backgroundimage'>
-    <img *ngIf="success" class='confetti'  src="/assets/images/confetti.gif"/>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-      <ion-title>
-      </ion-title>
-    </ion-toolbar>
-<img class='wave'  src="/assets/images/background.svg"/>
-<img  *ngIf="quizType === 1 || quizType === 2 " class='headerimage'  src="/assets/images/fillthegap_icon.svg"/>
-<img  *ngIf="quizType === 6" class='headerimage'  src="/assets/images/multiplechoice_icon.svg"/>
-<img  *ngIf="quizType === 3" class='headerimage'  src="/assets/images/qa_icon.svg"/>
-<img  *ngIf="quizType === 7" class='headerimage'  src="/assets/images/container_icon.svg"/>
-  </div>
-
- <div class="headline">
-  <div class="title">{{ quizName }}</div>
- </div>
+<div id="account" routerLink="/account"><ion-icon id="account-icon" name="person" ></ion-icon></div>
 
 <div class="premium_err" *ngIf="!available"> This Section of the lesson is premium content. Please upgrade to premium</div>
   <div *ngIf="available">
- <div class="info animate_pop">
- <img class="card_icon" src="https://www.e-fluent.com/media/images/bulb.png"  alt=""/> <span class="infotext"> {{ quizDescription }}</span>
- </div>
 
 
-<div class="title">{{ status }}</div>
+
+
+
 
   <div *ngIf='!showsolution && !showwaiting' class='quizframe' >
+
+      <div class="description" *ngIf="quizType != 10 && quizType != 9"> {{ quizDescription }}</div>
+
 <form (ngSubmit)="submit($event)">
 
 
 
   <div *ngIf="html" class="quizcontent" id="quizcontent" [innerHTML]="html | safe: 'html'"> </div>
-  <div *ngIf='quizType == 10'>
+  <div *ngIf='quizType == 10' class='recording_handler'>
+
+  <div class="recording" *ngIf="record === 0"  (click)="startrecording()"><ion-icon class="icon_recording"  name="mic"></ion-icon></div>
+  <div class="recording2" *ngIf="record === 1"  (click)="stoprecording()"><ion-icon class="icon_recording" name="stop-circle"></ion-icon></div>
+  <div class="recording" *ngIf="record === 2"  (click)="play()"><ion-icon class="icon_recording" name="play"></ion-icon></div>
+  <div class="recording" *ngIf="record === 3"  (click)="stop()"><ion-icon class="icon_recording" name="stop"></ion-icon></div>
+  <div class="recording" *ngIf="record === 4"  (click)="deleterecording()"><ion-icon class="icon_recording" name="trash"></ion-icon></div>
+
   <p *ngIf='time > 0 && record === 1'>Recording ... {{time}}s</p>
-  <p *ngIf='time > 0 && record === 3'>0:<span *ngIf='time < 10'>0</span>{{time}}s</p>
-  <ion-button *ngIf="record === 0" shape="round" style="background-color:#180f95" color="#180f95" (click)="startrecording()"><ion-icon name="radio-button-on-outline"></ion-icon>start recording</ion-button>
-  <ion-button *ngIf="record === 1"  shape="round" style="background-color:#180f95" color="#180f95" (click)="stoprecording()"><ion-icon name="stop-circle-outline"></ion-icon>stop recording</ion-button>
-  <ion-button *ngIf="record === 2"  shape="round" style="background-color:#180f95" color="#180f95" (click)="play()"><ion-icon name="play-outline"></ion-icon>play recording</ion-button>
-  <ion-button *ngIf="record === 3"  shape="round" style="background-color:#180f95" color="#180f95" (click)="stop()"><ion-icon name="stop-outline"></ion-icon>stop playing</ion-button>
-  <ion-button *ngIf="record === 4"  shape="round" style="background-color:#180f95" color="#180f95" (click)="deleterecording()"><ion-icon name="trash-outline"></ion-icon>delete recording</ion-button>
+  <p *ngIf='record === 3'>0:<span *ngIf='time < 10'>0</span>{{time}}s</p>
+  <p *ngIf='record === 4 || record === 2'>0:<span *ngIf='duration < 10'>0</span>{{duration}}s</p>
    </div>
+
+
 <div *ngIf='quizType == 1' class='answeropts'  id='answeropt'>
   <div *ngFor='let opt of answeropts; let i = index'>
     <div class='dragbadge' id='ao{{i+1}}' (click)="doclick($event)">
@@ -64,29 +51,37 @@
   </div>
 </div>
   <div id='slidecontrol'>
-  <ion-button shape="round" style="background-color:#180f95" color="#180f95" id="slidestart"  class="scont" *ngIf='hasslides && !next && !before' (click)="slidestart()">start</ion-button>
-  <ion-button shape="round" style="background-color:#180f95" color="#180f95" id="slidebefore" class="scont" *ngIf='hasslides && before' (click)="slidebefore()">before</ion-button>
-  <ion-button shape="round" style="background-color:#180f95" color="#180f95" id="slidenext" class="scont" *ngIf='hasslides && next' (click)="slidenext()">next</ion-button>
+  <ion-button shape="round" style="background-color:#008B8B" color="#008B8B" id="slidestart"  class="scont" *ngIf='hasslides && !next && !before' (click)="slidestart()">start</ion-button>
+  <ion-button shape="round" style="background-color:#008B8B" color="#008B8B" id="slidebefore" class="scont" *ngIf='hasslides && before' (click)="slidebefore()">before</ion-button>
+  <ion-button shape="round" style="background-color:#008B8B" color="#008B8B" id="slidenext" class="scont" *ngIf='hasslides && next' (click)="slidenext()">next</ion-button>
   </div>
 
-  <div id='submitdiv'>
-  <ion-button shape="round" style="background-color:#180f95" color="#180f95" class="submit"  *ngIf='!hasslides || slidecheck'  id="check" type="submit" name="submit"><span *ngIf="!spinner" >Check</span><ion-spinner  *ngIf="spinner" name="bubbles"></ion-spinner></ion-button>
+  <div id='submitdiv' *ngIf='quizType != 10 || record > 1'>
+  <ion-button shape="round" style="  background-color:#008B8B;" color="#008B8B" class="submit"  *ngIf='!hasslides || slidecheck'  id="check" type="submit" name="submit"><span *ngIf="!spinner" >Check</span><ion-spinner  *ngIf="spinner" name="bubbles"></ion-spinner></ion-button>
   </div>
 
 </form>
 </div>
 
 <div *ngIf='showsolution' class='quizframe' id='t1'>
-  <div class='content'>Solution</div>
+
+      <div class="description" *ngIf="quizType != 10 && quizType != 9"> {{ quizDescription }}</div>
   <div id='scorediv'>
   <div id='score' *ngIf='showscore'> <b>Your score: {{solutiondata.score}} / {{solutiondata.total}} </b></div>
 
-<ion-button shape="round" style="background-color:#180f95" color="#180f95" id="switch1" *ngIf='sol' (click)="checkanswer(0)">solution</ion-button>
-<ion-button shape="round"  style="background-color:#180f95" color="#180f95" id="switch2" *ngIf='!sol' (click)="checkanswer(1)">my answers</ion-button>
+
+
 </div>
 <div class="quizcontent" [innerHTML]="solutionhtml | safe: 'html'" hidden='true' id='solhtml' > </div>
 </div>
 
+<div *ngIf='showsolution' id="togglecontrol"><span class="toggle_lable">Solution</span><label class="switch">
+
+  <input type="checkbox" id='toggleinput' (click)="toggle()">
+  <span class="slider round"></span>
+</label>
+
+<span class="toggle_lable">Your Text</span></div>
 <div *ngIf='showwaiting' class='quizframe' id='t1'>
   <div class='content'>Thank you for submitting your solution</div>
 

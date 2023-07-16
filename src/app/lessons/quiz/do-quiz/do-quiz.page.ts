@@ -15,6 +15,7 @@ import  { File } from '@ionic-native/file/ngx';
 
 
 export class DoQuizPage implements OnInit {
+  toggle_bool = 1;
   time: number = 0;
   interval;
   record = 0;
@@ -50,29 +51,29 @@ export class DoQuizPage implements OnInit {
   hasslides = false;
   slidecheck = false;
   solutionstyle_correct= `display: inline;
-  border: 0 solid #F77B6E;
-  border-bottom: 2px dotted #10D398;
-  color: #10D398;
+  border: 0 solid #AB2747;
+  border-bottom: 2px dotted #008B8B;
+  color: #008B8B;
   background: rgba(0, 0, 0, 0);
   width: auto;`;
 
   solutionstyle_wrong= `display: inline;
-  border: 0 solid #F77B6E;
-  border-bottom: 2px dotted #f77b6e;
-  color: #f77b6e;
+  border: 0 solid #AB2747;
+  border-bottom: 2px dotted #AB2747;
+  color: #AB2747;
   background: rgba(0, 0, 0, 0);
   width: auto;`;
 
   solutionstyle_correct_long= `display: inline;
-  border: 0 solid #F77B6E;
-  border-bottom: 2px dotted #2dd36f;
-  color: #10D398;
+  border: 0 solid #AB2747;
+  border-bottom: 2px dotted #008B8B;
+  color: #008B8B;
   background: rgba(0, 0, 0, 0);`;
 
   solutionstyle_wrong_long= `display: inline;
-  border: 0 solid #F77B6E;
-  border-bottom: 2px dotted #f77b6e;
-  color: #f77b6e;
+  border: 0 solid #AB2747;
+  border-bottom: 2px dotted #AB2747;
+  color: #AB2747;
   background: rgba(0, 0, 0, 0);`;
 
   element;
@@ -91,22 +92,23 @@ export class DoQuizPage implements OnInit {
   }
   .gapfillinput {
     display: inline;
-    border: 0 solid #F77B6E;
-    border-bottom: 2px dotted #fff;
-    color: #fff;
+    border: 0 solid #AB2747;
+    border-bottom: 2px dotted #008B8B;
+    color: #1e1e1e
     background: rgba(0, 0, 0, 0);
     min-width:50px!important;
     max-width:99.99%!important;
     transition: width 0.25s;
     text-align:center;
+    border-radius: 10%;
 
 
   }
 
   .longquestion {
     display: inline;
-    border: 0 solid #F77B6E;
-    border-bottom: 2px dotted #fff;
+    border: 0 solid #AB2747;
+    border-bottom: 2px dotted #008B8B;
     color: #fff;
     font-size: larger;
     background: rgba(0, 0, 0, 0);
@@ -133,12 +135,12 @@ export class DoQuizPage implements OnInit {
 
   .gapfillsolution {
     display: inline;
-    border: 0 solid #F77B6E;
-    border-bottom: 2px dotted #fff;
+    border: 0 solid #AB2747;
+    border-bottom: 2px dotted #008B8B;
     color: rgba(0,142,198,1);
     width: 38px;
     background: rgba(0, 0, 0, 0);
-
+    border-radius: 10%;
   }
 
   .mediaimage{
@@ -196,8 +198,8 @@ export class DoQuizPage implements OnInit {
   }
 
   input[type=checkbox]:checked + label:before {
-    background-color: #10D398;
-    border-color: #10D398;
+    background-color: #008B8B;
+    border-color: #008B8B;
     color: #fff;
   }
 
@@ -208,8 +210,8 @@ export class DoQuizPage implements OnInit {
 
   input[type=checkbox]:checked:disabled + label:before {
     transform: scale(1);
-    background-color: #10D398;
-    border-color: #10D398;
+    background-color: #008B8B;
+    border-color: #008B8B;
   }
 
 
@@ -217,14 +219,18 @@ td{
   padding: 5px;
   width: fit-content!important;
   vertical-align: baseline;
+  font-family: 'Montserrat-Regular';
+  font-size: 20px;
+  border: none;
   //text-align: center;
   //font-size: 80%;
 }
 
 table{
   //border: 2px solid #4A80F0;
+  border: none;
   margin-top: 20px;
-  font-size: medium;
+  //font-size: medium;
   width: 100% !important;
   //table-layout: fixed;
 }
@@ -243,13 +249,13 @@ div.p{
 .droparea1{
 
   min-width: 60px;
-  min-height: 20px;
-  display: inline-block;
-  margin-left: 2px;
-  margin-right: 5px;
-  border-bottom: 2px dotted #fff;
-  color: #fff;
-  background: rgba(0, 0, 0, 0);
+      min-height: 33px;
+      display: inline-block;
+      margin-left: 2px;
+      margin-right: 5px;
+      border-bottom: 1px dotted #008B8B;
+      position: relative;
+
 }
 
 .droparea7{
@@ -261,12 +267,14 @@ div.p{
   margin-right: 5px;
   border: none !important;
   padding-bottom: 20%;
-  border-bottom: 2px dotted #fff;
-  color: #fff;
-  background: rgba(0, 0, 0, 0);
+  border-bottom: 0px dotted #fff;
+  background-color: #F0F0F0;
 }
 .dragbadge{
   text-align: center;
+  font-family: 'Montserrat-Regular';
+background-color: #f0f0f0;
+
 }
 
 .droparea7 .dragbadge{
@@ -276,10 +284,14 @@ div.p{
 }
 
 textarea{
+  padding: 20px;
+  margin-top: 10%;
   width: -webkit-fill-available;
-  background-color: transparent;
-  border: 2px white solid;
-  color: white;
+  background-color: #F0F0F0;
+  color: #1e1e1e;
+  border: none;
+  border-radius: 20px;
+  height: 300px;
 }
 
 .slidewrapper{
@@ -301,6 +313,17 @@ textarea{
 @keyframes slide {
     100% { opacity: 100;}
 }
+
+.comment{
+      color: #3c7a7a;
+      border-radius: 20px;
+      box-shadow: 0px 0.2px 10px #b3b5b4ad;
+      margin-top: 10%;
+      padding: 20px;
+      line-height: 1.3;
+      font-size: 16px!important;
+}
+
   </style>`;
 
 
@@ -343,9 +366,10 @@ textarea{
 
       this.html = this.html.replace(new RegExp('<table.+?>', 'g'), '<div class="slidewrapper" id ="quizslides">', 'g');
       this.html = this.html.replace(new RegExp('</table>', 'g'), '</div>', 'g');
+      this.html = this.html.replace(new RegExp('<tr>', 'g'), '<div class="slide" style="display:none;">', 'g');
       this.html = this.html.replace(new RegExp('<tr.+?>', 'g'), '<div class="slide" style="display:none;">', 'g');
       this.html = this.html.replace(new RegExp('</tr>', 'g'), '</div>', 'g');
-      this.html = this.html.replace(new RegExp('<td.+?>', 'g'), '<div style="margin-top:10px;">', 'g');
+      this.html = this.html.replace(new RegExp('<td.+?>', 'g'), '<div style="margin-top:10px;font-size:24px;color:#1e1e1e;">', 'g');
       this.html = this.html.replace(new RegExp('</td>', 'g'), '</div>', 'g');
       this.html = this.html.replace(new RegExp('&arr', 'g'), '<p></p>', 'g');
       var match = this.html.match(new RegExp('<div class="slide"', 'g'));
@@ -449,19 +473,19 @@ textarea{
 
 
     if(this.selection_id == event.target.id){
-      this.renderer.setAttribute( event.target, 'style', 'background-color: grey;');
+      this.renderer.setAttribute( event.target, 'style', 'background-color: #F0F0F0;');
       this.renderer.setAttribute( event.target, 'used', 'no');
       this.selection_id = '';
       this.selection = '';
     }
     else{
 
-    this.renderer.setAttribute( event.target, 'style', 'background-color: #4F71EC;');
+    this.renderer.setAttribute( event.target, 'style', 'background-color: #9CD1D1;');
     this.renderer.setAttribute( event.target, 'used', 'no');
     if (this.selection_id != ""){
       console.log(this.selection_id);
     var el = document.getElementById(this.selection_id);
-    this.renderer.setAttribute( el, 'style', 'background-color: grey;');
+    this.renderer.setAttribute( el, 'style', 'background-color: #F0F0F0;');
     }
     this.selection_id = event.target.id;
     this.selection = event.target.firstChild.nodeValue.trim();
@@ -481,7 +505,7 @@ textarea{
           console.log(this.selection);
           var usedid = this.selection_dict[(event.target as HTMLElement).id];
           var usedel = document.getElementById(usedid);
-          this.renderer.setAttribute( usedel, 'style', 'background-color: grey;');
+          this.renderer.setAttribute( usedel, 'style', 'background-color: #F0F0F0;');
           this.renderer.setAttribute( usedel, 'used', 'no');
         }
         this.selection_dict[(event.target as HTMLElement).id] = this.selection_id;
@@ -492,7 +516,7 @@ textarea{
 
         if (this.selection_id != ""){
         var el = document.getElementById(this.selection_id);
-        this.renderer.setAttribute( el, 'style', 'text-decoration: line-through;background-color: #F77B6E;');
+        this.renderer.setAttribute( el, 'style', 'text-decoration: line-through; background-color: #F0F0F0;'); //background-color: #AB2747;
         this.renderer.setAttribute( el, 'used', 'yes');
        }
 
@@ -519,7 +543,7 @@ textarea{
       console.log("Selection used: ", this.selection_id); // click on already used badges, should be in containers
       var el = document.getElementById('answeropt');
       el.appendChild(target.parentElement as HTMLElement);
-      this.renderer.setAttribute( target, 'style', 'background-color: grey;');
+      this.renderer.setAttribute( target, 'style', 'background-color: #F0F0F0;');
       this.renderer.setAttribute( target, 'used', 'no');
 
     this.selection_id = target.id;
@@ -528,10 +552,10 @@ textarea{
     else{
       if(this.selection_id != ''){
     var el = document.getElementById(this.selection_id)
-    this.renderer.setAttribute( el, 'style', 'background-color: grey;');
+    this.renderer.setAttribute( el, 'style', 'background-color: #F0F0F0;');
     this.renderer.setAttribute( el, 'used', 'no');}
 
-    this.renderer.setAttribute( target, 'style', 'background-color: #4F71EC;');
+    this.renderer.setAttribute( target, 'style', 'background-color: #9CD1D1;');
     this.renderer.setAttribute( target, 'used', 'selected');
     this.selection_id = target.id;
 
@@ -575,7 +599,7 @@ textarea{
           console.log(this.selection_dict);
         if (this.selection_id != ""){
         var el = document.getElementById(this.selection_id);
-        this.renderer.setAttribute( el, 'style', 'background-color: #F77B6E;');
+        this.renderer.setAttribute( el, 'style', 'background-color: #F0F0F0;');
         this.renderer.setAttribute( el, 'used', 'yes');
        }
 
@@ -587,7 +611,7 @@ textarea{
       }
       else{
         var el = document.getElementById(this.selection_id);
-        this.renderer.setAttribute( el, 'style', 'background-color: grey;');
+        this.renderer.setAttribute( el, 'style', 'background-color: #F0F0F0;');
         this.renderer.setAttribute( el, 'used', 'no');
         this.selection = '';
         this.selection_id = '';
@@ -698,6 +722,7 @@ textarea{
        (data:any)=>{
        this.solutiondata = data;
        console.log("SOLUTIONDATA: ", this.solutiondata);
+
        if (this.solutiondata.total > 0){
        this.success = ((this.solutiondata.score/this.solutiondata.total)>= 0.8);
         }
@@ -720,6 +745,10 @@ textarea{
        else{
          this.showwaiting = true;
        }
+       setTimeout(()=>{
+   this.checkanswer(0);
+ });
+
      },
    (error)=>{
      console.log(error)
@@ -735,7 +764,14 @@ textarea{
 
 }
 
-
+toggle(){
+  this.checkanswer(this.toggle_bool);
+  if (this.toggle_bool == 0){
+    this.toggle_bool = 1;
+  }
+  else{
+    this.toggle_bool = 0;
+  }}
 
 checkanswer(mode){
 
@@ -770,10 +806,10 @@ checkanswer(mode){
         console.log("Correct: ", container_correct)
         console.log("yours: ", container_yours)
         if(container_yours.includes(container_correct[y])){
-      element.innerHTML += '<div class="dragbadge" style="display: flex; background: #10D398; border-radius: 15px; margin-top: 2px; margin-bottom: 4px; padding:10px; font-size: 60%!important;width: -webkit-fill-available;text-align: center;">' + container_correct[y] + '</div>' ;
+      element.innerHTML += '<div class="dragbadge" style="display: flex; font-family:Montserrat; background: #f0f0f0; border-radius: 15px; margin-top: 2px; margin-bottom: 4px; padding:10px; font-size: 60%!important;width: -webkit-fill-available;text-align: center;">' + container_correct[y] + '</div>' ;
     }
     else{
-      element.innerHTML += '<div class="dragbadge" style="display: flex; background:  #F77B6E; border-radius: 15px; margin-top: 2px; margin-bottom: 4px; padding:10px; font-size: 60%!important;width: -webkit-fill-available;text-align: center;">' + container_correct[y] + '</div>' ;
+      element.innerHTML += '<div class="dragbadge" style="display: flex; font-family:Montserrat; background:  #f0f0f0; border-radius: 15px; margin-top: 2px; margin-bottom: 4px; padding:10px; font-size: 60%!important;width: -webkit-fill-available;text-align: center;">' + container_correct[y] + '</div>' ;
 
     }
     }
@@ -804,7 +840,7 @@ checkanswer(mode){
         else if (this.data.Type === 6){
           console.log(this.solutiondata.canswers);
           let label = document.getElementById('l'+qid);
-          this.renderer.setAttribute(label, 'style', 'color: #10D398;');
+          this.renderer.setAttribute(label, 'style', 'color: #008B8B;');
           if (this.solutiondata.canswers[qid] === 'on'){
             this.renderer.setAttribute(element, 'checked', 'true');
             console.log('check !!!!');
@@ -853,7 +889,7 @@ checkanswer(mode){
     else if (this.data.Type === 6){
       console.log(this.solutiondata.canswers);
       let label = document.getElementById('l'+qid);
-      this.renderer.setAttribute(label, 'style', 'color: #f77b6e;');
+      this.renderer.setAttribute(label, 'style', 'color: #AB2747;');
       if (this.solutiondata.canswers[qid] === 'on'){
 
         this.renderer.setAttribute(element, 'checked', 'true');
@@ -911,14 +947,14 @@ checkanswer(mode){
         console.log("Correct: ", container_correct)
         console.log("yours: ", container_yours)
         if(container_correct.includes(container_yours[y])){
-      element.innerHTML += '<div class="dragbadge" style="display: flex; background: #10D398; border-radius: 15px; margin-top: 2px; margin-bottom: 4px; padding:10px; width: fit-content; font-size: 16px;font-size: 60%!important;width: -webkit-fill-available;text-align: center;">' + container_yours[y] + '</div>' ;
+      element.innerHTML += '<div class="dragbadge" style="display: flex; font-family:Montserrat; background: #f0f0f0;  border-radius: 15px; margin-top: 2px; margin-bottom: 4px; padding:10px; width: fit-content; font-size: 16px;font-size: 60%!important;width: -webkit-fill-available;text-align: center;">' + container_yours[y] + '</div>' ;
     }
     else if (!container_correct.includes(container_yours[y]) && container_yours[y] != ''){
-      element.innerHTML += '<div class="dragbadge" style="display: flex; background:  #F77B6E; border-radius: 15px; margin-top: 2px; margin-bottom: 4px; padding:10px; width: fit-content; font-size: 16px;font-size: 60%!important;width: -webkit-fill-available;text-align: center;">' + container_yours[y] + '</div>' ;
+      element.innerHTML += '<div class="dragbadge" style="display: flex; background:  #f0f0f0; border-radius: 15px; margin-top: 2px; margin-bottom: 4px; padding:10px; width: fit-content; font-size: 16px;font-size: 60%!important;width: -webkit-fill-available;text-align: center;">' + container_yours[y] + '</div>' ;
 
     }
     else{
-      element.innerHTML += '<div class="dragbadge" style="visibility: hidden; display: flex; background:  #F77B6E; border-radius: 15px; margin-top: 2px; margin-bottom: 4px; padding:10px; width: fit-content; font-size: 16px;font-size: 60%!important;width: -webkit-fill-available;text-align: center;">' + container_correct[y] + '</div>' ;
+      element.innerHTML += '<div class="dragbadge" style="visibility: hidden; display: flex; background:  #f0f0f0; border-radius: 15px; margin-top: 2px; margin-bottom: 4px; padding:10px; width: fit-content; font-size: 16px;font-size: 60%!important;width: -webkit-fill-available;text-align: center;">' + container_correct[y] + '</div>' ;
 
     }
     }
@@ -952,7 +988,7 @@ checkanswer(mode){
       else if (this.data.Type === 6){
         console.log(this.solutiondata.canswers);
         let label = document.getElementById('l'+qid);
-        this.renderer.setAttribute(label, 'style', 'color: #10D398;');
+        this.renderer.setAttribute(label, 'style', 'color: #008B8B;');
         if (this.solutiondata.yanswers[qid] === 'on'){
 
           this.renderer.setAttribute(element, 'checked', 'true');
@@ -998,7 +1034,7 @@ checkanswer(mode){
 
     else if (this.data.Type === 6){
       let label = document.getElementById('l'+qid);
-      this.renderer.setAttribute(label, 'style', 'color: #f77b6e;');
+      this.renderer.setAttribute(label, 'style', 'color: #AB2747;');
       console.log(this.solutiondata.canswers);
       if (this.solutiondata.yanswers[qid] === 'on'){
 
@@ -1028,13 +1064,16 @@ checkanswer(mode){
   }
 
   let htmldivelement = document.getElementById('solhtml');
+  console.log(htmldivelement);
   this.renderer.removeAttribute(htmldivelement, 'hidden');
 }
 
 startrecording(){
 
-this.startTimer()
+this.time = 0;
+this.duration = 0;
 this.audioFile.startRecord();
+this.startTimer()
 this.record = 1
 
 }
@@ -1046,13 +1085,15 @@ deleterecording(){
     fileEntry.remove();
     this.audioFile = this.media.create(this.file.externalRootDirectory  + '/audiotemp.mp3');
     this.record = 0;
+    this.time = 0;
+    this.duration = 0;
   });
 
 
 }
 
 stoprecording(){
-
+this.duration = this.time;
 this.stopTimer()
 this.audioFile.stopRecord();
 this.record = 2;
@@ -1083,22 +1124,26 @@ startTimer() {
   this.interval = setInterval(() => {
     if(this.time < 30) {
       this.time++;
+      console.log(this.time);
     } else {
       this.stoprecording()
-      this.time = 0;
+      console.log('stop timer')
+      clearInterval(this.interval);
     }
   },1000)
 }
 
 countdown() {
-  this.duration = 30;
-  this.duration = this.audioFile.getDuration();
+  clearInterval(this.interval);
+
+  this.time = 0;
+  console.log(this.duration);
+  console.log(this.time);
   this.interval = setInterval(() => {
     if(this.time < this.duration) {
       this.time++;
     } else {
       this.stop()
-      this.duration = 30;
       this.time = 0;
     }
   },1000)
@@ -1106,8 +1151,8 @@ countdown() {
 
 
 stopTimer() {
-  this.time = 0;
   clearInterval(this.interval);
+  console.log('stop timer manually')
 }
 
 readFile(file){
@@ -1124,16 +1169,19 @@ readFile(file){
 
 
 play(){
+  this.stopTimer();
   this.audioFile.play();
   this.record = 3
-  this.countdown()
+  this.countdown();
+
 
 }
 
 stop(){
   this.audioFile.stop();
   this.record = 4;
-
+  this.stopTimer();
+  this.time = 0;
 }
 
 

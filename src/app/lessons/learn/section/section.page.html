@@ -1,21 +1,9 @@
 <ion-header>
 </ion-header>
 
+
 <ion-content>
-  <div class='backgroundimage'>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-      <ion-title>
-      </ion-title>
-    </ion-toolbar>
-
-<img class='wave'  src="/assets/images/background.svg"/>
-
-  </div>
-
-
+<div id="account" routerLink="/account"><ion-icon id="account-icon" name="person" ></ion-icon></div>
 
 
     <ion-slides *ngIf="didInit" [options]="slideConfig" #slides>
@@ -30,6 +18,8 @@
                  <audio controls src="'https://www.e-fluent.com'+item.path" type='audio/mp3'></audio>
                 </div>
                 <div class="slide" *ngIf="item.type === 'video'" >
+                  <h2 class="title">{{item.title}}</h2>
+                  <div class="description">{{item.description}}</div>
                   <video controls [src]="'https://www.e-fluent.com'+item.path" type='video/mp4'></video>
                  </div>
 
@@ -37,14 +27,14 @@
            </ion-slide>
 
     </ion-slides>
-  <div class="premium_err" *ngIf="!available"> This Section of the lesson is premium content. Please upgrade to premium</div>
+
 
 </ion-content>
 
 
 <ion-footer>
   <div id='nav'>
-    <ion-button  *ngIf="!disablePrevBtn" shape="round" style="background-color:#10D398" color="#10D398" class="navigation" id="nav-back" (click)="back()" >Back</ion-button>
-  <ion-button *ngIf="!disableNextBtn" shape="round" style="background-color:#10D398" color="#10D398" class="navigation" id="nav-next" (click)="next()" >Next</ion-button>
+    <div  *ngIf="!disablePrevBtn" class="navigation" id="nav-back" (click)="back()" ><ion-icon class='nav-icon' name="chevron-back-outline"></ion-icon></div>
+  <div *ngIf="!disableNextBtn"  class="navigation" id="nav-next" (click)="next()" ><ion-icon class='nav-icon' name="chevron-forward-outline"></ion-icon></div>
   </div>
 </ion-footer>
