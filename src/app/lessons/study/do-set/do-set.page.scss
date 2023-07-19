@@ -9,6 +9,32 @@ ion-menu-button{
   margin-top: 20px;
 }
 
+
+#spinner{
+  width: 400px;
+  color: #008086;
+  transform: scale(3);
+}
+.spinnerdiv{
+  width: 100%;
+  text-align: -webkit-center;
+  position: absolute;
+  top:200px;
+  z-index: 2;
+}
+
+#account-icon{
+
+  //transform: scale(2);
+   font-size:34px;
+  position: absolute;
+  z-index: 2;
+  top:35px;
+  right: 35px;
+  color: #1e1e1e
+}
+
+
 .backgroundimage{
   position: absolute;
 }
@@ -19,22 +45,21 @@ ion-menu-button{
 }
 
 .field{
-  color: #fff;
+  color: #1e1e1e;
   //line-height: 40px;
-  font-family: Avenir Next LT Pro;
+  font-family: Montserrat-Regular;
   font-style: normal;
   font-weight: normal;
   //font-size: 20px;
   //line-height: 24px;
-  color: #FFFFFF;
-  background-color: #001124;
+
+  background-color: #F0F0F0;
   height: 50px;
   margin: 2px;
   max-width: 500px;
   padding-top: 15px;
-  color: white;
   border: 0 solid #005e68;
-  border-bottom: 2px solid #005e68;
+  border-bottom: 2px solid #008086;
   margin-bottom: 50px;
   text-align: center;
 }
@@ -95,7 +120,7 @@ h2{
 }
 
 .flip{
-  margin-top: 60%;
+  margin-top: 100px;
   width: 90%;
   margin-left: 5%;
   text-align: center;
@@ -135,7 +160,8 @@ ion-card-subtitle {
   --text-align: center;
   --padding-top: 40%;
   --color: white;
-  font-family: Avenir Next LT Pro;
+
+  font-family: Montserrat-Regular;
   font-style: normal;
   font-weight: 1000;
   font-size: 2.0em;
@@ -151,16 +177,11 @@ ion-item{
 ion-list{
   background: transparent;
 }
-ion-content{
 
-//  --background: rgb(29,253,220);
-//  --background: linear-gradient(to top, rgba(29,253,220,1) 28%, rgba(69,116,252,1) 100%);
---background: #001124;
-//--background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,168,252,1) 100%);
-}
+
 
 ion-card-title {
-  font-family: Avenir Next LT Pro;
+  font-family:  Montserrat-Regular;
   font-style: normal;
   font-weight: 1000;
   font-size: 2.0em;
@@ -199,15 +220,14 @@ ion-card-content{
 }
 
 .answ{
-     color: #fff;
      //line-height: 40px;
-     font-family: Avenir Next LT Pro;
+     font-family:  Montserrat-Regular;
      font-style: normal;
      font-weight: normal;
      //font-size: 20px;
      //line-height: 24px;
-     color: #FFFFFF;
-     background-color: rgba(106, 101, 101, 0.2);
+     color: #1e1e1e;
+     background-color: #f0f0f0;
      height: 50px;
      margin: 2px;
      max-width: 500px;
@@ -217,13 +237,13 @@ ion-card-content{
 .answcorrect{
   color: #fff;
   //line-height: 40px;
-  font-family: Avenir Next LT Pro;
+  font-family:  Montserrat-Regular;
   font-style: normal;
   font-weight: normal;
   //font-size: 20px;
   //line-height: 24px;
   color: #FFFFFF;
-  background-color: #09debbff;
+  background-color: #008086;
   height: 50px;
   margin: 2px;
   max-width: 500px;
@@ -504,5 +524,16 @@ svg.level5 #drop {
 
 
 .congrats{
+  position: absolute;
 margin-top: 10%;
+color: #008b8b;
+font-family: Montserrat-Regular;
+top: 150px;
+text-align: -webkit-center;
+width: 100%;
+}
+
+#congratsimg{
+  max-width: 200px;
+    margin-top: 40px;
 }

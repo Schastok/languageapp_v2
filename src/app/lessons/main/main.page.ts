@@ -14,7 +14,7 @@ export class MainPage implements OnInit {
   lessonImage;
   lessonDescription;
   lessonName;
-
+  first_section;
   sections;
   exercises;
   flipcardlist;
@@ -58,6 +58,16 @@ export class MainPage implements OnInit {
         console.log(sect_arr);
         for(let i = 0; i < sect_arr.length; i++){
           console.log("get sections");
+
+          if(this.sections[i].Config.length > 0){
+            var obj = JSON.parse(this.sections[i].Config);
+            if (obj['position'] === '1'){
+              this.first_section = this.sections[i];
+              console.log("first");
+              console.log(this.first_section);
+            }
+          }
+
           this.sections_done[this.sections[i].Section_ID] = 0;
           console.log('section_' + this.sections[i].Section_ID + '_done');
           this.storage.get(this.apiService.STUDENT_ID + '_section_' + this.sections[i].Section_ID + '_done').then((val) => {

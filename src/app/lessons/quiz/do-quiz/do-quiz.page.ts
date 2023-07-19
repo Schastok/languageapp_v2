@@ -157,14 +157,23 @@ export class DoQuizPage implements OnInit {
   }
 
   .question_span{
-  font-weight: bold;
-  font-size: 18px;
+font-family: 'Montserrat-Regular';
+  font-size: 20px;
   }
 
 .aclass{
   font-size: large;
   margin-left: 0%;
+  text-align: left;
+    margin-left: 30%;
 }
+
+@media screen and (min-width: 700px) {
+.aclass{
+    margin-left: 45%;
+}
+}
+
 
   input[type=checkbox] + label {
     display: -webkit-inline-box;
@@ -179,13 +188,13 @@ export class DoQuizPage implements OnInit {
 
   input[type=checkbox] + label:before {
     content: "\\2714";
-    border: 0.1em solid  #fff;
+    border: 0.1em solid  #008B8B;
     border-radius: 1em;
 
     display: inline-block;
-    width: 1em;
-    height: 1em;
-    padding-left: 0.2em;
+    width: 20px;
+    height: 15px;
+    //padding-left: 0.2em;
     padding-bottom: 0.3em;
     margin-right: 0.2em;
     vertical-align: bottom;
@@ -220,7 +229,7 @@ td{
   width: fit-content!important;
   vertical-align: baseline;
   font-family: 'Montserrat-Regular';
-  font-size: 20px;
+  font-size: 22px;
   border: none;
   //text-align: center;
   //font-size: 80%;

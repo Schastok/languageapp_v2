@@ -54,7 +54,7 @@ export class DoSetPage implements OnInit {
     timer2 = 15;
     timerstart = false;
     timerend = false;
-
+    loading;
 
 
     constructor(private admobFree: AdMobFree, private nativeAudio: NativeAudio, private location: Location, private activatedRoute: ActivatedRoute, private apiService: ApiService, private renderer: Renderer2, private router: Router) {
@@ -69,7 +69,8 @@ export class DoSetPage implements OnInit {
 
       console.log("ngOnInit called")
       this.random = Math.random() < 0.5;
-      this.finished = false;
+      this.loading = true;
+
       this.showside = 0;
       this.activatedRoute.paramMap.subscribe(paramMap => {
         if(!paramMap.has('lessonId')){
@@ -102,6 +103,8 @@ export class DoSetPage implements OnInit {
         else{
           this.location.back();
         }
+        this.loading = false;
+        this.finished = false;
       },
     (error)=>{
       let err = error.status as number;
@@ -279,6 +282,7 @@ earlysubmit(arr1, arr2){
   this.countdown(this.timer);
    }
    else{
+     this.finished = true;
      console.log('the end');
 
  /*

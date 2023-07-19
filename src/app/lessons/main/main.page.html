@@ -62,76 +62,106 @@
 
 </ion-content>
 
+
+
+
+
+
+
+     <ion-progress-bar id="prog" value="{{overallprogress}}"></ion-progress-bar>
  -->
 
- <ion-header style="background-color: #001124;">
-   <div class="header">
-     <ion-progress-bar id="prog" value="{{overallprogress}}"></ion-progress-bar>
-     </div>
- </ion-header>
+
 
  <ion-content>
-   <div class='backgroundimage'>
-     <ion-toolbar>
-         <ion-buttons slot="start">
-         <ion-menu-button></ion-menu-button>
-         </ion-buttons>
-       <ion-title>
-       </ion-title>
-     </ion-toolbar>
- <img class='wave'  src="/assets/images/background.svg"/>
 
-   </div>
+     <div id="account" routerLink="/account"><ion-icon id="account-icon" name="person" ></ion-icon></div>
+<div class='description' [innerHTML]="lessonDescription | safe: 'html'"></div>
 
- <h2>{{ lessonName }}</h2>
-<div class='desciption' [innerHTML]="lessonDescription | safe: 'html'"></div>
+ <div class="title">{{ lessonName }}</div>
 
- <div class='blueline'></div>
+
+
+
 
 <div class='content'></div>
 <div class="wrapper">
-  <div class="boxwrapper" *ngFor="let section of sections; let i = index">
 
-    <div class="box" [routerLink]="['../../../../../../learn/', lessonId, 'section', section.Section_ID]" >
-      <span class="boxname">{{section.name}}</span>
-      <span class="premium" *ngIf="section.Subscrmodel === 1">(Premium)</span>
-      <img *ngIf="sections_done[section.Section_ID] === 0" class='icon'  src="/assets/images/043-location.svg"/>
-      <img *ngIf="sections_done[section.Section_ID] === 1" class='icon'  src="/assets/images/043-location.svg"/>
+
+  <div class="first_section_wrapper" *ngFor="let section of sections; let i = index">
+
+    <div class="first_section" *ngIf="section == first_section" [routerLink]="['../../../../../../learn/', lessonId, 'section', section.Section_ID]" >
+      <div><span class="first_section_name">{{section.name}}</span></div>
+      <div><span class="premium" *ngIf="section.Subscrmodel === 1">(Premium)</span></div>
+      <div><ion-icon clas="first_section_done_icon" *ngIf="sections_done[section.Section_ID] === 0" name="medal-outline"></ion-icon></div>
+        <div>  <img class='first_section_img'  [src]="lessonImage"/></div>
+
+
 
   </div> </div>
-  <div class="boxwrapper"  *ngIf="flipcardlist?.length > 0"> <div class="box" [routerLink]="['../../../../../../study/', lessonId]" ><span class="boxname">Flipcards</span><img *ngIf="!flipdone" class='icon'  src="/assets/images/043-location.svg"/><img *ngIf="flipdone" class='icon'  src="/assets/images/043-location.svg"/></div></div>
-  <div class="boxwrapper" *ngFor="let quiz of exercises; let i = index" >
 
 
-    <div *ngIf="(quiz.Type === 8) && quiz.Evaluation <= -100"  class="box"  [ngStyle]="{'background-color': '#d3d3d3'}">
+ <div class="subtitle">Learn the basics!</div>
+
+  <div class="section_wrapper" *ngFor="let section of sections; let i = index">
+
+    <div class="section" *ngIf="section !== first_section"  >
+      <div><span class="section_name">{{section.name}}</span></div>
+      <div><span class="premium" *ngIf="section.Subscrmodel === 1">(Premium)</span></div>
+            <div><ion-icon clas="section_done_icon" *ngIf="sections_done[section.Section_ID] === 0" name="medal-outline"></ion-icon></div>
+<ion-button shape="round" color="white" class="entersection" [routerLink]="['../../../../../../learn/', lessonId, 'section', section.Section_ID]">study</ion-button>
+<div>  <img class='section_img'  [src]="lessonImage"/></div>
+  </div>
+  </div>
+
+<div class="vocab_wrapper">
+  <div class="vocab"  *ngIf="flipcardlist?.length > 0">
+       <div><span class="vocab_name">Vocabulary</span></div>
+       <ion-button shape="round" color="white" class="entervocabstudy" [routerLink]="['../../../../../../study/', lessonId, 'view_set']">study</ion-button>
+              <ion-button shape="round" color="white" class="entervocabquiz" [routerLink]="['../../../../../../study/', lessonId, 'do_set']">quiz</ion-button>
+       <div><ion-icon clas="vocab_done_icon" *ngIf="flipdone" name="medal-outline"></ion-icon></div>
+       <div>  <img class='vocab_img'  [src]="lessonImage"/></div>
+     </div>
+
+
+ </div>
+
+<div class="subtitle">Let's practice!</div>
+
+
+<div class="boxwrapper">
+  <div *ngFor="let quiz of exercises; let i = index" >
+
+
+    <div *ngIf="(quiz.Type === 8) && quiz.Evaluation <= -100"  class="box">
     <span class="prc">please wait for evaluation</span>
   </div>
-  <div *ngIf="(quiz.Type === 8) && quiz.Evaluation >= 0"  class="box"  [routerLink]="['../../../../../../quiz/', lessonId, quiz.EvaluationID]"  [ngStyle]="{'background-color': getColor2(i%4)}">
+  <div *ngIf="(quiz.Type === 8) && quiz.Evaluation >= 0"  class="box"  [routerLink]="['../../../../../../quiz/', lessonId, quiz.EvaluationID]" >
   <span class="prc">{{quiz.Evaluation |  number:'1.0-0'}}%</span>
 </div>
-<div *ngIf="(quiz.Type === 8) && quiz.Evaluation === -1"  class="box"  [routerLink]="['../../../../../../quiz/', lessonId, 'do_quiz', quiz.ID]"  [ngStyle]="{'background-color': getColor2(i%4)}">
+<div *ngIf="(quiz.Type === 8) && quiz.Evaluation === -1"  class="box"  [routerLink]="['../../../../../../quiz/', lessonId, 'do_quiz', quiz.ID]" >
 <span class="prc"></span>
 </div>
 
-    <div *ngIf="(quiz.Type !== 8)" class="box" [routerLink]="['../../../../../../quiz/', lessonId, 'do_quiz', quiz.ID]" [ngStyle]="{'background-color': getColor2(i%4)}">
+    <div *ngIf="(quiz.Type !== 8)" class="box" [routerLink]="['../../../../../../quiz/', lessonId, 'do_quiz', quiz.ID]" >
 <span class="boxname">{{quiz.Title}}</span>
 <span class="premium" *ngIf="quiz.Subscrmodel === 1">(Premium)</span>
-    <img  *ngIf="(quiz.Type === 1 || quiz.Type === 2) && quiz.Evaluation < 80" class='icon'  src="/assets/images/043-location.svg"/>
-    <img  *ngIf="(quiz.Type === 1 || quiz.Type === 2) && quiz.Evaluation >= 80" class='icon'  src="/assets/images/043-location.svg"/>
+    <img  *ngIf="(quiz.Type === 1 || quiz.Type === 2) && quiz.Evaluation < 80" class='box_img' [src]="lessonImage"/>
+    <img  *ngIf="(quiz.Type === 1 || quiz.Type === 2) && quiz.Evaluation >= 80" class='box_img'  [src]="lessonImage"/>
 
-    <img  *ngIf="quiz.Type === 6 && quiz.Evaluation < 80" class='icon'  src="/assets/images/043-location.svg"/>
-    <img  *ngIf="quiz.Type === 6 && quiz.Evaluation >= 80" class='icon'  src="/assets/images/043-location.svg"/>
+    <img  *ngIf="quiz.Type === 6 && quiz.Evaluation < 80" class='box_img' [src]="lessonImage"/>
+    <img  *ngIf="quiz.Type === 6 && quiz.Evaluation >= 80" class='box_img' [src]="lessonImage"/>
 
-    <img  *ngIf="quiz.Type === 3" class='icon'  src="/assets/images/container_qa.svg"/>
+    <img  *ngIf="quiz.Type === 3" class='icon'  class='box_img' [src]="lessonImage"/>
 
 
-    <img  *ngIf="quiz.Type === 7  && quiz.Evaluation < 80" class='icon'  src="/assets/images/043-location.svg"/>
-    <img  *ngIf="quiz.Type === 7 && quiz.Evaluation >= 80" class='icon'  src="/assets/images/043-location.svg"/>
+    <img  *ngIf="quiz.Type === 7  && quiz.Evaluation < 80" class='box_img' [src]="lessonImage"/>
+    <img  *ngIf="quiz.Type === 7 && quiz.Evaluation >= 80" class='box_img' [src]="lessonImage"/>
     <span *ngIf="quiz.Evaluation >= 0"class="prc">{{quiz.Evaluation |  number:'1.0-0'}}%</span>
   </div>
 
   </div>
-
+  </div>
 </div>
 
 
