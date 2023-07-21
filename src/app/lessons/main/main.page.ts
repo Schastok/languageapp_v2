@@ -22,6 +22,7 @@ export class MainPage implements OnInit {
   flipprogress = 0;
   sections_done = {};
   overallprogress = 0;
+  first_section_description;
 
   constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private storage: Storage) { }
 
@@ -63,20 +64,22 @@ export class MainPage implements OnInit {
             var obj = JSON.parse(this.sections[i].Config);
             if (obj['position'] === '1'){
               this.first_section = this.sections[i];
+              this.first_section_description = obj['description'];
               console.log("first");
-              console.log(this.first_section);
+              console.log(this.first_section_description);
             }
+
           }
 
           this.sections_done[this.sections[i].Section_ID] = 0;
-          console.log('section_' + this.sections[i].Section_ID + '_done');
           this.storage.get(this.apiService.STUDENT_ID + '_section_' + this.sections[i].Section_ID + '_done').then((val) => {
             console.log("section found");
             console.log(val);
             if(val === 1){
               this.sections_done[this.sections[i].Section_ID] = 1;
             }
-
+            console.log("sections done");
+            console.log(this.sections_done);
           },
         error => console.log(error));
         }
