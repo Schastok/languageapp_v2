@@ -32,3 +32,12 @@ div:focus{
 span:focus{
   outline: none;
 }
+
+ion-content{
+    --background:  #ffffff;
+    --padding-top: 20px;
+}
+
+#account-icon{
+  top: 45px;
+}

@@ -12,18 +12,22 @@ export class ApiService {
 
   TEST = false;
   URL;
-  PROJECT_ID = '10';
+  CLASSROOM_DATA;
+  CLASSROOM_ID = '10';
   STUDENT_ID = '4';
   SIZE;
   TOKEN;
   STUDENT_NAME;
   MARKET_ID = '1';
+  PROJECT_ID = '1';
+
+
 
 
   constructor(private httpClient: HttpClient, private storage: Storage) {
     if (this.TEST){
       this.URL = 'http://127.0.0.1:8000';
-      this.PROJECT_ID = '1';
+      this.CLASSROOM_ID = '1';
       this.STUDENT_ID = '';
       this.SIZE = '10';
     }
@@ -60,7 +64,7 @@ export class ApiService {
     let token = "Token " + this.TOKEN;
     console.log(token);
     headers = headers.set('Authorization', token);
-    return this.httpClient.get(`${this.URL}/api_lessons_2/?project=${this.PROJECT_ID}`,  {headers: headers});
+    return this.httpClient.get(`${this.URL}/api_lessons_2/?project=${this.CLASSROOM_ID}`,  {headers: headers});
   }
 
   getSections(lessonID: string){

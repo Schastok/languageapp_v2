@@ -28,8 +28,11 @@ export class LessonsPage {
   slidesPerView: 1,
   spaceBetween: 10,
   loop: true
-};
 
+};
+  course;
+  Classroom_name;
+  Classroom_description;
   constructor(private admobFree: AdMobFree, private apiService: ApiService,  private storage: Storage, private platform: Platform, private routerOutlet: IonRouterOutlet, private navigationBar: NavigationBar, private statusBar: StatusBar){
 
     this.platform.backButton.subscribeWithPriority(-1, () => {
@@ -54,8 +57,10 @@ export class LessonsPage {
     this.statusBar.overlaysWebView(true);
     this.statusBar.backgroundColorByHexString('#005f69');
 
-
-
+    this.course = this.apiService.CLASSROOM_DATA
+    this.Classroom_name = this.course[0]['Classroom_name'];
+    this.Classroom_description = this.course[0]['Classroom_description'];;
+    console.log(this.course);
     this.apiService.getLessons().subscribe((data)=>{
       console.log(data);
       this.lessons = data;

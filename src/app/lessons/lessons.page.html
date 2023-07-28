@@ -1,12 +1,5 @@
 
-
-<ion-content>
-
-<h2></h2>
-
-
-
-
+<!--
   <ion-slides *ngIf="didInit" loop="true" [options]="sliderConfig" style="//height: -webkit-fill-available !important;">
 
          <ion-slide *ngFor="let lesson of lessons; let i = index" >
@@ -44,6 +37,36 @@
          </ion-slide>
 
   </ion-slides>
+
+    -->
+<ion-content>
+
+
+
+    <div id="account" routerLink="/account"><ion-icon id="account-icon" name="person" ></ion-icon></div>
+    <div class="title">{{Classroom_name}}</div>
+    <div class='description'>{{Classroom_description}}</div>
+
+
+
+
+
+
+<div class='content'></div>
+<div class="wrapper">
+  <div class="lesson_wrapper" *ngFor="let lesson of lessons; let i = index">
+
+    <div class="lesson" >
+<div><span class="lesson_name">{{lesson.Lesson_name}}</span><object  class="lesson_done_icon" *ngIf="lessonprogress[lesson.Lessons_ID] === 1" type="image/svg+xml" data="/assets/images/done2.svg"></object></div>
+      <div class="lesson_description">{{lesson.Lesson_description}}</div>
+
+
+
+<ion-button shape="round" color="white" class="enterlesson" [routerLink]="['./', lesson.Lessons_ID, lesson.Lesson_image, lesson.Lesson_name, lesson.Lesson_description, 'overview']">study</ion-button>
+<div>  <img class='lesson_img'  [src]="lesson.Lesson_image"/></div>
+  </div>
+  </div>
+  </div>
 
 
 </ion-content>

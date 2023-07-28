@@ -161,8 +161,8 @@
     <img  *ngIf="quiz.Type === 6" class='box_img' src="/assets/images/quiz.jpg"/>
     <img  *ngIf="quiz.Type === 3" class='icon'  class='box_img' src="/assets/images/quiz.jpg"/>
     <img  *ngIf="quiz.Type === 7" class='box_img' [src]="lessonImage"/>
-    <img  *ngIf="quiz.Type === 9" class='icon'  class='box_img' src="/assets/images/speak.jpg"/>
-    <img  *ngIf="quiz.Type === 10" class='icon'  class='box_img' src="/assets/images/write.jpg"/>
+    <img  *ngIf="quiz.Type === 9" class='icon'  class='box_img' src="/assets/images/write.jpg"/>
+    <img  *ngIf="quiz.Type === 10" class='icon'  class='box_img' src="/assets/images/speak.jpg"/>
       <object  class="box_done_icon" *ngIf="quiz.Evaluation >= 80" type="image/svg+xml" data="/assets/images/done2.svg"></object>
       <object  class="box_done_icon" style="visibility:hidden;" *ngIf="quiz.Evaluation < 80" type="image/svg+xml" data="/assets/images/done2.svg"></object>
     <div class="boxname">{{quiz.Title}}</div>

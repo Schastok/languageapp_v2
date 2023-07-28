@@ -50,6 +50,14 @@ export class DoQuizPage implements OnInit {
   success = false;
   hasslides = false;
   slidecheck = false;
+  started = 0;
+  training = false;
+  training_text = "";
+  selectbadge = true;
+  ready = false;
+  error = false;
+  error_text = '';
+
   solutionstyle_correct= `display: inline;
   border: 0 solid #AB2747;
   border-bottom: 2px dotted #008B8B;
@@ -262,8 +270,10 @@ div.p{
       display: inline-block;
       margin-left: 2px;
       margin-right: 5px;
+      //top: 10px;
       border-bottom: 1px dotted #008B8B;
       position: relative;
+      //background-image: url('/assets/images/dot.svg');
 
 }
 
@@ -283,6 +293,7 @@ div.p{
   text-align: center;
   font-family: 'Montserrat-Regular';
 background-color: #f0f0f0;
+
 
 }
 
@@ -344,6 +355,8 @@ textarea{
 
   ngOnInit() {
 
+
+
     this.audioFile = this.media.create(this.file.externalRootDirectory  + '/audiotemp.mp3');
 
     this.nativeAudio.preloadSimple('fanfare', 'assets/audio/fanfare.wav');
@@ -392,6 +405,17 @@ textarea{
       this.quizName = this.data.Title;
       this.quizType = this.data.Type;
 
+      if(this.quizType === 1){
+        this.training_text = "Please select the word that fits the gap";
+      }
+      else if(this.quizType === 2){
+              this.training_text = "Please enter a word that fits the gap";
+            }
+      else if(this.quizType === 99){
+        var submit = document.getElementById('submitdiv');
+        this.renderer.setAttribute(submit, 'style', 'visibility:hidden;');
+                  }
+
       if ([1,7].includes(this.data.Type)){
         var match = this.data.html.match(new RegExp('<script>var dict = (.+?);</script>', 'g'));
         match = match[0].replace(new RegExp('<script>var dict = ', 'g'), '', 'g');
@@ -403,7 +427,7 @@ textarea{
         console.log(this.answeropts);
       }
 
-
+     this.ready = true;
     },
 
     (err) => {
@@ -416,6 +440,187 @@ textarea{
        }
      );
   }
+
+_remove_error = (e: MouseEvent | TouchEvent): void => {
+  this.error = false;
+};
+
+_trainingnextonclick = (e: MouseEvent | TouchEvent): void => {
+
+      if (this.training){
+        if (this.quizType === 2){
+        var nxt = document.getElementById('slidenext');
+        this.renderer.setAttribute(nxt, 'style', "background-image: url('/assets/images/dot.svg');");
+        this.renderer.setAttribute(nxt, 'disabled', "false");
+        this.training_text = "Click on 'next' to continue the quiz";
+        let inputfields = document.getElementsByClassName("gapfillinput");
+        for (let i = 0; i < inputfields.length; i++) {
+
+          var style = inputfields[i].getAttribute('style')
+          if (style === null){
+            this.renderer.setAttribute(inputfields[i], 'style', "background-image: none;");
+          }
+          else{
+            this.renderer.setAttribute(inputfields[i], 'style', style + "background-image: none;");
+              }
+            }
+          }
+          else if (this.quizType === 6){
+
+            var nxt = document.getElementById('slidenext');
+            this.renderer.setAttribute(nxt, 'style', "background-image: url('/assets/images/dot.svg');");
+            this.renderer.setAttribute(nxt, 'disabled', "false");
+            this.training_text = "Click on 'next' to continue the quiz";
+            let checkboxes = document.getElementsByClassName("aclass");
+            for (let i = 0; i < checkboxes.length; i++) {
+            var style = checkboxes[i].getAttribute('style');
+            if (style === null){
+              this.renderer.setAttribute(checkboxes[i], 'style', "background-image: none;");
+            }
+            else{
+              this.renderer.setAttribute(checkboxes[i], 'style', style + "background-image: none;");
+                }
+              }
+
+          }
+
+      }
+
+  };
+
+
+
+
+cleanuptraining(){
+
+  if (this.training){
+
+  var nxt = document.getElementById('slidenext');
+  this.renderer.setAttribute(nxt, 'style', "background-image:none;");
+
+if (this.quizType === 1){
+let childrendrop = document.getElementsByClassName("droparea1");
+for (let i = 0; i < childrendrop.length; i++) {
+    var style = childrendrop[i].getAttribute('style')
+    if (style === null){
+      this.renderer.setAttribute(childrendrop[i], 'style', "background-image: none;");
+    }
+    else{
+    this.renderer.setAttribute(childrendrop[i], 'style', style +"background-image: none;");
+    }
+}
+}
+
+else if (this.quizType === 2){
+  let gapfillinputs = document.getElementsByClassName("gapfillinput");
+  for (let i = 0; i < gapfillinputs.length; i++) {
+    var style = gapfillinputs[i].getAttribute('style');
+    if (style === null){
+      this.renderer.setAttribute(gapfillinputs[i], 'style', "background-image: none;");
+    }
+    else{
+      this.renderer.setAttribute(gapfillinputs[i], 'style', style + "background-image: none;");
+        }
+      }
+}
+
+
+else if (this.quizType === 6){
+  let checkboxes = document.getElementsByClassName("aclass");
+  for (let i = 0; i < checkboxes.length; i++) {
+  var style = checkboxes[i].getAttribute('style');
+  if (style === null){
+    this.renderer.setAttribute(checkboxes[i], 'style', "background-image: none;");
+  }
+  else{
+    this.renderer.setAttribute(checkboxes[i], 'style', style + "background-image: none;");
+      }
+    }
+}
+
+this.training = false;
+}
+
+}
+
+
+  starttraining(){
+    if (this.training){
+
+
+    console.log("training!")
+    console.log(this.quizType)
+
+    if (this.quizType === 1){
+    this.training_text = "Click on the word that matches the gap"
+    var answeropt = document.getElementById("answeropt");
+    this.renderer.setAttribute(answeropt, 'style', 'visibility:visible;');
+
+
+    let dragbadges = document.getElementsByClassName("dragbadge");
+    for (let i = 0; i < dragbadges.length; i++) {
+
+      var style = dragbadges[i].getAttribute('style')
+      if (style === null){
+        this.renderer.setAttribute(dragbadges[i], 'style', "background-image: url('/assets/images/dot.svg');");
+      }
+      else{
+        this.renderer.setAttribute(dragbadges[i], 'style', style + "background-image: url('/assets/images/dot.svg');");
+          }
+        }
+      }
+
+      else if (this.quizType === 2){
+      this.training_text = "Enter the matching word into the gap"
+      let gapfillinputs = document.getElementsByClassName("gapfillinput");
+      for (let i = 0; i < gapfillinputs.length; i++) {
+        gapfillinputs[i].addEventListener("keyup", this._trainingnextonclick);
+        var style = gapfillinputs[i].getAttribute('style');
+        if (style === null){
+          this.renderer.setAttribute(gapfillinputs[i], 'style', "background-image: url('/assets/images/dot.svg');");
+        }
+        else{
+          this.renderer.setAttribute(gapfillinputs[i], 'style', style + "background-image: url('/assets/images/dot.svg');");
+            }
+          }
+        }
+        else if (this.quizType === 6){
+
+          this.training_text = "select one one more correct answers"
+          let checkboxes = document.getElementsByClassName("aclass");
+          for (let i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].addEventListener("click", this._trainingnextonclick);
+            var style = checkboxes[i].getAttribute('style');
+            if (style === null){
+              this.renderer.setAttribute(checkboxes[i], 'style', "background-image: url('/assets/images/dot.svg');background-repeat: no-repeat;");
+            }
+            else{
+              this.renderer.setAttribute(checkboxes[i], 'style', style + "background-image: url('/assets/images/dot.svg');background-repeat: no-repeat;");
+                }
+              }
+            }
+
+          else{
+            this.training = false;
+          }
+
+        }
+
+    }
+
+
+    endtraining(){
+      if (this.training){
+
+      var nxt = document.getElementById('slidenext');
+      this.renderer.setAttribute(nxt, 'style', "background-image:none;");
+
+      this.cleanuptraining()
+    }
+    this.training = false;
+    }
+
+
 
 
   slidebefore(){
@@ -451,11 +656,14 @@ textarea{
       this.next = false;
       this.slidecheck = true;
     }
-  }
+
+    this.endtraining()
+
+}
 
 
   slidestart(){
-
+    this.training = true; //will depend on storage value and quiztype
     // all slides invisible, button start in slideshow triggers visibility of first slide. counter-> set next slide to visible with button next
     let slides = document.getElementById("quizslides").children
     console.log(slides[0]);
@@ -463,6 +671,7 @@ textarea{
     slides[0].className = 'activeslide';
     this.next = true;
     this.counter = this.counter + 1;
+    this.starttraining();
   }
 
 
@@ -473,7 +682,6 @@ textarea{
   }
 
   doclick(event:any){
-
 
     if (event.target.getAttribute('used') == "yes"){
       return
@@ -486,15 +694,50 @@ textarea{
       this.renderer.setAttribute( event.target, 'used', 'no');
       this.selection_id = '';
       this.selection = '';
+      this.selectbadge = false;
     }
     else{
 
+      if (this.training){
+
+      let childrendrag = document.getElementsByClassName("dragbadge");
+      for (let i = 0; i < childrendrag.length; i++) {
+
+        var style = childrendrag[i].getAttribute('style')
+        if (style === null){
+          this.renderer.setAttribute(childrendrag[i], 'style', "background-image: none;");
+        }
+        else{
+          this.renderer.setAttribute(childrendrag[i], 'style', style + "background-image: none;");
+        }
+
+
+      }
+
+      this.training_text = "Click on the gap in the text"
+      let childrendrop = document.getElementsByClassName("droparea1");
+      for (let i = 0; i < childrendrop.length; i++) {
+        var style = childrendrop[i].getAttribute('style')
+        if (style === null){
+          this.renderer.setAttribute(childrendrop[i], 'style', "background-image: url('/assets/images/dot.svg');");
+        }
+        else{
+        this.renderer.setAttribute(childrendrop[i], 'style', style +"background-image: url('/assets/images/dot.svg');");
+        }
+
+      }
+
+      }
+
+
     this.renderer.setAttribute( event.target, 'style', 'background-color: #9CD1D1;');
+    this.selectbadge = true;
     this.renderer.setAttribute( event.target, 'used', 'no');
     if (this.selection_id != ""){
       console.log(this.selection_id);
     var el = document.getElementById(this.selection_id);
     this.renderer.setAttribute( el, 'style', 'background-color: #F0F0F0;');
+    this.selectbadge = false;
     }
     this.selection_id = event.target.id;
     this.selection = event.target.firstChild.nodeValue.trim();
@@ -504,6 +747,8 @@ textarea{
 
 
     if (!this.firstclick){
+
+
     let children = document.getElementsByClassName("droparea1");
 
     for (let i = 0; i < children.length; i++) {
@@ -516,17 +761,30 @@ textarea{
           var usedel = document.getElementById(usedid);
           this.renderer.setAttribute( usedel, 'style', 'background-color: #F0F0F0;');
           this.renderer.setAttribute( usedel, 'used', 'no');
+          this.selectbadge = false;
         }
         this.selection_dict[(event.target as HTMLElement).id] = this.selection_id;
 
         var hiddeninput = document.getElementById("q"+(event.target as HTMLElement).id) as HTMLInputElement;
         hiddeninput.value = this.selection;
         (event.target as HTMLElement).textContent = this.selection;
+        var droparea = document.getElementById((event.target as HTMLElement).id);
+        console.log(droparea);
+        this.renderer.setAttribute( droparea, 'style', 'background-image: none;');
+
 
         if (this.selection_id != ""){
         var el = document.getElementById(this.selection_id);
-        this.renderer.setAttribute( el, 'style', 'text-decoration: line-through; background-color: #F0F0F0;'); //background-color: #AB2747;
+        this.renderer.setAttribute( el, 'style', 'text-decoration: line-through; background-color: #F0F0F0; background-image: none;'); //background-color: #AB2747;
         this.renderer.setAttribute( el, 'used', 'yes');
+        this.selectbadge = false;
+        if (this.training){
+          this.training_text = "Click on 'next' to continue the quiz"
+          var nxt = document.getElementById('slidenext');
+          this.renderer.setAttribute(nxt, 'style', "background-image: url('/assets/images/dot.svg');");
+          this.renderer.setAttribute(nxt, 'disabled', 'false');
+        }
+
        }
 
         this.selection = '';
@@ -535,7 +793,20 @@ textarea{
 }
   this.firstclick = true;
 }
+
+
+
+
+
+
+
   }
+
+
+
+
+
+
   doclick7(event:any){
     let target   = event.target as HTMLElement;
     let droparea = false
@@ -673,6 +944,14 @@ textarea{
       for (let i = 0; i < target.length; i++) {
 
           formData[target.elements[i].getAttribute("name")] = target.elements[i].value;
+      }
+      if (this.data.Type === 9 && formData['q1'].length < 1)
+      {
+        this.error = true;
+        this.error_text = 'Please write something before submitting';
+        var textarea = document.getElementById('q1');;
+        textarea.addEventListener("keyup", this._remove_error);
+        return;
       }
     }
     else if (this.data.Type === 10){

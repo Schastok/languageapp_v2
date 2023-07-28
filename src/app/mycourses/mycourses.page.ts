@@ -59,12 +59,12 @@ export class MycoursesPage implements OnInit {
     this.apiService.getstudentcls().subscribe((data)=>{
       console.log(data);
       this.courses = data;
+      this.apiService.CLASSROOM_DATA = data;
     });
   }
 
 enter_cl(cl_id){
-  this.apiService.PROJECT_ID = cl_id;
-
+  this.apiService.CLASSROOM_ID = cl_id;
   this.router.navigate(['/lessons']);
 }
 

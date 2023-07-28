@@ -1,5 +1,5 @@
 
-
+<!--
 <ion-content>
   <div class='backgroundimage'>
     <ion-toolbar>
@@ -38,3 +38,39 @@
 <button (click)="all_cl()" class="button_dark" shape="round" >Find Courses</button>
 </div>
 </ion-footer>
+    -->
+
+
+    <ion-content>
+
+
+
+        <div id="account" routerLink="/account"><ion-icon id="account-icon" name="person" ></ion-icon></div>
+
+    <div class="title">Your Courses</div>
+    <div class='description'>Select a course to get started</div>
+
+<div id="search" (click)="all_cl()" ><ion-icon id="search-icon" name="search" ></ion-icon><span id="search-text">search for courses</span></div>
+
+
+
+
+
+    <div class='content'></div>
+    <div class="wrapper">
+      <div class="course_wrapper" *ngFor="let course of courses; let i = index">
+
+        <div class="course" >
+    <div><span class="course_name">{{course.Classroom_name}}</span></div>
+          <div class="course_description">{{course.Classroom_description}}</div>
+
+
+
+    <ion-button shape="round" color="white" class="entercourse" (click)=enter_cl(course.Classroom_ID)>study</ion-button>
+    <div>  <img class='course_img'  [src]="course.Classroom_image"/></div>
+      </div>
+      </div>
+      </div>
+
+
+    </ion-content>

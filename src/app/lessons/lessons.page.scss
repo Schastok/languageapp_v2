@@ -1,260 +1,164 @@
 
-* {
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
-  -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
-  outline: none !important;
-}
 
-* {
---imgsize: 300px;
-}
+#account-icon{
 
-ion-toolbar{
-  --background: transparent!important;
+  //transform: scale(2);
+   font-size:34px;
   position: absolute;
+  z-index: 2;
+  top:42px;
+  right: 35px;
+  color: #1e1e1e
 
 }
 
-ion-menu-button{
-  --color: white;
-  margin-top: 20px;
+.title{
+
+  text-align: left;
+    color: #1e1e1e;
+    font-family: "Montserrat-Black";
+    font-size: 32px;
+    margin-top: 71px;
+    margin-left: 21px;
+    margin-right: 20px;
+    margin-bottom: 10px;
 }
 
-ion-content{
-
-//  --background: rgb(29,253,220);
-//  --background: linear-gradient(to top, rgba(29,253,220,1) 28%, rgba(69,116,252,1) 100%);
---background: #001124;
-
+.description{
+  font-family: Montserrat-Regular;
+  font-size: 16px;
+  color: #1e1e1ea1;
+  margin-top: 15px;
+  margin-left: 21px;
 
 
 }
 
-ion-slides{
+.wrapper {
   margin-left: 5%;
-  margin-top: 5%;
-}
-
-ion-slide{
-  //margin-right: 5%!important;
-  padding-right: 20px;
-}
-
-
-h2{
-position: absolute;
-width: 90%;
-top:40px;
-top:10%;
-//height: 72px;
-//padding-top: 20%;
-padding-left: 5%;
-margin-top:0px;
-
-
-  font-family: Avenir Next LT Pro;
-  font-style: normal;
-  //font-weight: 600;
-  font-size: 32px;
-    font-size: 7vw;
-  line-height: 7vw;
-  /* or 125% */
-
-  display: flex;
-  //align-items: center;
-
-  color: #FFFFFF;
-}
-
-ion-slide{
-
-  //height: '-webkit-fill-available'!important;
+  margin-right: 5%;
+  display: flow-root;
+  justify-content: center;
+  margin-bottom: 50px;
+  text-align: center;
+  color: #1e1e1e;
+  font-family: Montserrat-Regular;
 }
 
 
 
-.lessonitem{
-
-//  background: linear-gradient(180deg, rgba(18, 20, 33, 0) 50%, rgba(18, 20, 33, 0.5) 100%);
-  box-shadow: 0 20px 30px rgba(0,0,0,0.2);
-  display: inline-block;
-  //margin: 15px 12px;
-  //position: relative;
-  top:5%;
-  //height: 200px;
-  //width: 500px;
-  width: 100%;
-  height: 60vw;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  border-radius: 16px;
-  margin-bottom: 100%;
-  margin-top: 2vw;
-}
-.overlay{
-
-  background: linear-gradient(180deg, rgba(18, 20, 33, 0) 50%, rgba(18, 20, 33, 0.5) 100%);
-  height: 60vw;
-  width:100%;
-  position: absolute;
-  //top: 0;
-  right:0;
-}
-.name{
-  font-family: Avenir Next LT Pro;
-  position: absolute;
-  //margin-top: 150px;
-  bottom: 10%;
-  line-height: 4vw;
-  color: #FFFFFF;
-  width: 90%;
+.lesson_description{
+  font-family: Montserrat-Regular;
+  font-size: 12px;
+  color: #1e1e1e;
+  margin-top: 19px;
+  margin-left: 5px;
+  width: 60%;
 
 }
 
-.prog{
-  position: absolute;
-  //margin-top: 150px;
-  top: 2%;
-  margin-left: 5%;
-  width: 80%;
+
+.lesson_wrapper{
+margin-top: 71px;
+}
+
+.lesson{
+  background-color: white;
+  border-radius: 20px;
+height: 150px;
+width: 100%;
+margin-bottom: 15px;
+padding:20px;
+text-align: left;
+box-shadow: 0px 2px 10px #1e1e1e2b;
 }
 
 
-.prog_prc{
-  font-family: Avenir Next LT Pro;
-  position: absolute;
-  //margin-top: 150px;
-
-  margin-left: 5%;
-  font-size: 14px;
-  color: #FFFFFF;
-  bottom: calc(-30vw + 67px);
-      right: -142px;
-}
-
-.desciption{
-  font-family: Avenir Next LT Pro;
-      position: absolute;
-      width: 90%;
-      left: 0px;
-      margin-top: 40vw;
-      margin-right: 10px;
-      text-align: left;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 14px;
-      font-size: 4vw;
-      line-height: 24px;
-      line-height: 6vw;
-      color: black;
-      background-color: #191640;
-      background: linear-gradient(rgba(24,15,149,1) 0%, rgba(233,95,141,1) 0%, rgba(227,154,101,1) 100%);
-      padding: 15px;
-      border-radius: 15px;
-      height: 100vw;
-      padding-top: 20vw;
+.lesson_img{
+  width: 100px;
+      height: 100px;
+      -o-object-fit: cover;
+      object-fit: cover;
+      border-radius: 30%;
+      border: 0;
+      position: relative;
+      bottom: 100px;
+      left: 68%;
 
 }
 
-.blueline{
-  position: absolute;
-  width: 40px;
-  height: 3px;
-  border-radius: 25px;
-  left: 0%;
-  bottom: 3%;
-  background-color: #180f95;
+
+.lesson_done_icon{
+ width: 20px;
+ margin-left: 5px;
+ //position: relative;
+ //top: 32px;
+ //right: -126px;
 }
-.greyline{
-
- background-color: whitesmoke;
- position: absolute;
- width: 40px;
- height: 3px;
- border-radius: 25px;
- left: 0%;
-  bottom: 3%;
-
-}
-
-.bullets{
-
-  text-align:center;
+.lesson_premium_icon{
+ width: 20px;
+ margin-left: 5px;
+//position: relative;
+ //bottom: 10px;
+ //right: 100px;
 }
 
 
-@media screen and (min-width: 600px) {
-
-  * {
-  --imgsize: 600px;
-  }
-
-  .lessonitem{
-    width:500px;
-    height: 300px;
-  }
-  .overlay{
-    width:500px;
-    height: 300px;
-    right: initial;
-  }
-  .name{
-    font-size: 22px;
-  }
-  .desciption{
+.lesson_name{
+  font-family: 'Montserrat-Bold';
       font-size: 22px;
-      left: initial;
-      top:35%;
+      letter-spacing: 0.8px;
+      color: #008B8B;
+      margin-top: 5px;
+      margin-left: 5px;
+      font-weight: bold;
 
+}
+.enterlesson{
+  font-family: "Montserrat-Regular";
+  font-size: 14px;
+  background-color: #008B8B;
+  border-radius: 25px;
+  color: white;
+  margin-bottom: 10px;
+  //border: 1px solid #008B8B;
+  position: relative;
+  top: 15px;
+  //left: -14px;
+  width: 110px;
+  height: 30px;
+  text-transform: unset !important;
+
+}
+
+
+@media screen and (min-width: 450px) {
+  .lesson_img {
+      left: 78%;
+  }
+}
+
+
+@media screen and (max-width: 340px) {
+  .lesson_img {
+      display: none;
   }
 
-}
+  .lesson{
 
-svg{
-  position: absolute;
-  bottom: -30vw;
-  transform: scale(0.3);
-}
-
-svg circle
-{
-  width:100%;
-  height:100%;
-  fill:none;
-  stroke: #180f95;
-  stroke-width:10;
-  stroke-linecap:round;
-  transform:translate(5px,5px);
-}
-svg circle:nth-child(2)
-{
-  stroke-dasharray:440;
-  stroke-dashoffset:440;
-}
-.card:nth-child(1) svg circle:nth-child(2)
-{
-
-  stroke:#00ff43;
-}
-
-
-.progresscircle{
-  position: absolute;
-  margin-right: 10%;
-
-}
-
-@media screen and (min-width: 800px) {
-
-  * {
-  --imgsize: 800px;
+height: 150px;
+  width: 90%;
   }
+}
 
+@media screen and (min-width: 700px) {
+.lesson_img {
+  left: 462px!important;
+}
 
-  .desciption{
-      font-size: 32px;
-  }
+.lesson{
 
+height: 150px;
+width: 600px;
+}
 }
