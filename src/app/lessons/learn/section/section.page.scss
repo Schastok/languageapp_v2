@@ -240,3 +240,38 @@ ion-footer{
   }
 
 }
+
+
+#spinner{
+  //width: 400px;
+  color: #008086;
+  transform: scale(2);
+}
+.spinnerdiv{
+  width: 100%;
+  text-align: -webkit-center;
+  position: relative;
+  left:0px;
+  top:200px;
+  z-index: 2;
+}
+
+.back{
+  position: absolute;
+  left: 10px;
+  top:42px;
+  z-index: 5;
+  width: 37px;
+  height: 37px;
+  background-color: #ffffff;
+  border-radius: 10000px;
+  box-shadow: 0px 2px 10px rgba(3, 3, 3, 0.1);
+  text-align: center;
+  padding-top: 5px;
+}
+
+#icon_navback{
+  color:  #008b8b;
+  font-size: 22px;
+  vertical-align: -webkit-baseline-middle;
+}

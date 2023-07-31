@@ -302,4 +302,10 @@ earlysubmit(arr1, arr2){
 
  }
 
+
+ goBack(){
+ this.location.back();
+ }
+
+
 }

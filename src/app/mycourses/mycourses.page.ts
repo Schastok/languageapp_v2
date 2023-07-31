@@ -19,6 +19,7 @@ import { AdMobFree, AdMobFreeBannerConfig,AdMobFreeInterstitialConfig,AdMobFreeR
 export class MycoursesPage implements OnInit {
 
   courses;
+  ready = false;
 
   constructor(private admobFree: AdMobFree, private router: Router, private apiService: ApiService,  private storage: Storage, private platform: Platform, private routerOutlet: IonRouterOutlet, private navigationBar: NavigationBar, private statusBar: StatusBar) {
     this.platform.backButton.subscribeWithPriority(-1, () => {
@@ -60,6 +61,7 @@ export class MycoursesPage implements OnInit {
       console.log(data);
       this.courses = data;
       this.apiService.CLASSROOM_DATA = data;
+      this.ready = true;
     });
   }
 

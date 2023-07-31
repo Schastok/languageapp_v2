@@ -11,7 +11,7 @@ import { Plugins } from '@capacitor/core';
 const { App } = Plugins;
 //import { AudioService } from '../services/audio.service';
 import { AdMobFree, AdMobFreeBannerConfig,AdMobFreeInterstitialConfig,AdMobFreeRewardVideoConfig } from '@ionic-native/admob-free/ngx';
-
+import { Location } from "@angular/common";
 
 
 @Component({
@@ -22,6 +22,7 @@ import { AdMobFree, AdMobFreeBannerConfig,AdMobFreeInterstitialConfig,AdMobFreeR
 export class LessonsPage {
 
   lessons;
+  ready = false;
   lessonprogress= {};
   didInit = false;
   sliderConfig = {
@@ -33,7 +34,7 @@ export class LessonsPage {
   course;
   Classroom_name;
   Classroom_description;
-  constructor(private admobFree: AdMobFree, private apiService: ApiService,  private storage: Storage, private platform: Platform, private routerOutlet: IonRouterOutlet, private navigationBar: NavigationBar, private statusBar: StatusBar){
+  constructor(private admobFree: AdMobFree, private apiService: ApiService,  private storage: Storage, private platform: Platform, private routerOutlet: IonRouterOutlet, private navigationBar: NavigationBar, private statusBar: StatusBar, private location: Location){
 
     this.platform.backButton.subscribeWithPriority(-1, () => {
       console.log("HW button pressed, exiting....")
@@ -88,7 +89,7 @@ export class LessonsPage {
 
       }
 
-
+      this.ready = true;
     });
 
 
@@ -100,5 +101,10 @@ export class LessonsPage {
 
 
 
+  }
+
+
+  goBack(){
+  this.location.back();
   }
 }

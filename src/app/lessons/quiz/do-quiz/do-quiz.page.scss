@@ -49,6 +49,50 @@ ion-slides{
   //margin-left: 5%;
 }
 
+#slidestart{
+
+width: 103px;
+height: 98px;
+background-color: #008b8b;
+border-radius: 10000px;
+box-shadow: 0px 2px 10px rgba(3,3,3,0.1);
+}
+
+
+#slidebefore{
+
+  position: absolute;
+      left: 80%;
+      //top: -18vh;
+      width: 37px;
+      height: 37px;
+      background-color: #ffffff;
+      border-radius: 10000px;
+      box-shadow: 0px 2px 10px rgba(3, 3, 3, 0.1);
+
+}
+
+#slidebefore2{
+
+  position: absolute;
+      left: 80%;
+      //top: -32vh;
+      width: 37px;
+      height: 37px;
+      background-color: #ffffff;
+      border-radius: 10000px;
+      box-shadow: 0px 2px 10px rgba(3, 3, 3, 0.1);
+
+}
+
+
+
+#iconback{
+  color:  #008b8b;
+  font-size: 22px;
+  vertical-align: -webkit-baseline-middle;
+}
+
 .headline{
   text-align: center;
   width: 100%;
@@ -297,8 +341,37 @@ bottom: 10px;
   font-family: 'Montserrat-Regular';
 }
 
+
+
+
 @media screen and (min-width: 700px) {
 
+  #slidebefore{
+
+    position: absolute;
+        left: 55vw;
+        //top: -20vh;
+        width: 37px;
+        height: 37px;
+        background-color: #ffffff;
+        border-radius: 10000px;
+        box-shadow: 0px 2px 10px rgba(3, 3, 3, 0.1);
+
+  }
+
+
+  #slidebefore2{
+
+    position: absolute;
+        left: 55vw;
+        //top: -42vh;
+        width: 37px;
+        height: 37px;
+        background-color: #ffffff;
+        border-radius: 10000px;
+        box-shadow: 0px 2px 10px rgba(3, 3, 3, 0.1);
+
+  }
 
   .answeropts{
 
@@ -315,7 +388,7 @@ bottom: 10px;
   }
 
 .recording_handler{
-  margin-top: 20%;
+  //margin-top: 20%;
 }
 }
 
@@ -500,12 +573,12 @@ background-color: #f0f0f0;
 
 @media screen and (max-width: 600px) {
   .recording_handler{
-    margin-top: 40%;
+    margin-top: 20%;
   }
 }
 @media screen and (min-width: 600px) {
   .recording_handler{
-    margin-top: 30%;
+    margin-top: 10%;
   }
 
 h2{
@@ -736,4 +809,39 @@ font-style: italic;
 line-height: 23px;
 position: relative;
 top: -10px;
+}
+
+#spinner{
+  //width: 400px;
+  color: #008086;
+  transform: scale(3);
+}
+.spinnerdiv{
+  width: 100%;
+  text-align: -webkit-center;
+  position: absolute;
+  left:0px;
+  top:200px;
+  z-index: 2;
+}
+
+
+.back{
+  position: absolute;
+  left: 10px;
+  top:42px;
+  z-index: 5;
+  width: 37px;
+  height: 37px;
+  background-color: #ffffff;
+  border-radius: 10000px;
+  box-shadow: 0px 2px 10px rgba(3, 3, 3, 0.1);
+  text-align: center;
+  padding-top: 5px;
+}
+
+#icon_navback{
+  color:  #008b8b;
+  font-size: 22px;
+  vertical-align: -webkit-baseline-middle;
 }

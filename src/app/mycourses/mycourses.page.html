@@ -58,6 +58,7 @@
 
     <div class='content'></div>
     <div class="wrapper">
+        <div class="spinnerdiv"><ion-spinner  id="spinner" *ngIf="!ready" name="bubbles"></ion-spinner></div>
       <div class="course_wrapper" *ngFor="let course of courses; let i = index">
 
         <div class="course" >

@@ -6,7 +6,7 @@ import { IonContent } from '@ionic/angular';
 import {IonSlides} from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { AdMobFree, AdMobFreeBannerConfig,AdMobFreeInterstitialConfig,AdMobFreeRewardVideoConfig } from '@ionic-native/admob-free/ngx';
-
+import { Location } from "@angular/common";
 @Component({
   selector: 'app-section',
   templateUrl: './section.page.html',
@@ -23,6 +23,7 @@ export class SectionPage implements OnInit{
   didInit = false;
   sectionId;
   sectiondetails;
+  ready = false;
 
   slideConfig = {
       slidesPerView: 1,
@@ -34,7 +35,7 @@ export class SectionPage implements OnInit{
 @ViewChild(IonContent) IonContent: IonContent;
 
 
-  constructor(private admobFree: AdMobFree, private activatedRoute: ActivatedRoute, private storage: Storage, private apiService: ApiService, private router: Router) {}
+  constructor(private admobFree: AdMobFree, private activatedRoute: ActivatedRoute, private storage: Storage, private apiService: ApiService, private router: Router, private location: Location) {}
 
   ngAfterViewInit() {
       this.didInit = true;
@@ -101,7 +102,7 @@ else{
       };
       //this.sectiondetails = this.html.replace(new RegExp('/media/', 'g'), 'https://www.e-fluent.com/media/', 'g');
       //console.log(this.sectiondetails);
-
+        this.ready = true;
     },
 
 
@@ -246,6 +247,10 @@ doCheck() {
     data[0] ? this.disablePrevBtn = true : this.disablePrevBtn = false;
     data[1] ? this.disableNextBtn = true : this.disableNextBtn = false;
   });
+}
+
+goBack(){
+this.location.back();
 }
 
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { ApiService } from '../../../api.service';
 import {Directive, ElementRef, HostListener, Renderer2} from '@angular/core';
+import { Location } from "@angular/common";
 //import { FlipModule } from 'ngx-flip';
 
 
@@ -33,7 +34,8 @@ export class ViewSetPage implements OnInit {
     training_1 = false;
     training_2 = false;
     training_text = "";
-    constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private renderer: Renderer2) {
+    ready = false;
+    constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private renderer: Renderer2, private location: Location) {
 
     }
 
@@ -60,7 +62,7 @@ export class ViewSetPage implements OnInit {
           this.training_1 = true;
           this.training_text = "Tap on the card to flip";
         }
-
+        this.ready = true;
       });
     }
 
@@ -75,7 +77,7 @@ export class ViewSetPage implements OnInit {
      this.training_1 = false;
      this.training_2 = true;
 
-     this.training_text = "Tap on the card to flip"
+     this.training_text = "swipe to see the next card"
    }
    if (this.showside === 0){
 
@@ -107,5 +109,8 @@ export class ViewSetPage implements OnInit {
  }
    }
 
+   goBack(){
+   this.location.back();
+   }
 
 }

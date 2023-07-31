@@ -6,6 +6,8 @@ import { NativeAudio } from '@ionic-native/native-audio/ngx';
 import { AdMobFree, AdMobFreeBannerConfig,AdMobFreeInterstitialConfig,AdMobFreeRewardVideoConfig } from '@ionic-native/admob-free/ngx';
 import  { Media, MediaObject } from '@ionic-native/media/ngx';
 import  { File } from '@ionic-native/file/ngx';
+import { Location } from "@angular/common";
+
 
 @Component({
   selector: 'app-do-quiz',
@@ -57,6 +59,7 @@ export class DoQuizPage implements OnInit {
   ready = false;
   error = false;
   error_text = '';
+
 
   solutionstyle_correct= `display: inline;
   border: 0 solid #AB2747;
@@ -350,7 +353,7 @@ textarea{
 
 
 
-  constructor(private admobFree: AdMobFree, private nativeAudio: NativeAudio, private activatedRoute: ActivatedRoute, private apiService: ApiService, private renderer: Renderer2, private elementRef: ElementRef, private media: Media, private file: File) { }
+  constructor(private admobFree: AdMobFree, private nativeAudio: NativeAudio, private activatedRoute: ActivatedRoute, private apiService: ApiService, private renderer: Renderer2, private elementRef: ElementRef, private media: Media, private file: File, private location: Location) { }
 
 
   ngOnInit() {
@@ -1472,6 +1475,9 @@ stop(){
   this.time = 0;
 }
 
+goBack(){
+this.location.back();
+}
 
 
 }

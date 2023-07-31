@@ -191,3 +191,18 @@ height: 150px;
 width: 600px;
 }
 }
+
+
+#spinner{
+  //width: 400px;
+  color: #008086;
+  transform: scale(2);
+}
+.spinnerdiv{
+  width: 100%;
+  text-align: -webkit-center;
+  position: relative;
+  left:0px;
+  top:200px;
+  z-index: 2;
+}

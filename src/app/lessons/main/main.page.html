@@ -76,11 +76,14 @@
  <ion-content>
 
      <div id="account" routerLink="/account"><ion-icon id="account-icon" name="person" ></ion-icon></div>
+     <div class="back" (click)="goBack()"><ion-icon id="icon_navback" name="arrow-back-outline"></ion-icon></div>
+
 <div class='description' [innerHTML]="lessonDescription | safe: 'html'"></div>
 
  <div class="title">{{ lessonName }}</div>
-
-
+ <div class="wrapper"  *ngIf="!ready1">
+<div class="spinnerdiv" id="first_section_spinner_div"><ion-spinner  class="spinner" id="#first_section_spinner"  name="bubbles"></ion-spinner></div>
+  </div>
 
 
 
@@ -102,7 +105,7 @@
 
 
  <div class="subtitle">Learn the basics!</div>
-
+<div class="spinnerdiv" *ngIf="!ready2 && !ready3"><ion-spinner  class="spinner" id="#section_spinner"  name="bubbles"></ion-spinner></div>
   <div class="section_wrapper" *ngFor="let section of sections; let i = index">
 
     <div class="section" *ngIf="section !== first_section"  >
@@ -118,6 +121,7 @@
   </div>
 
 <div class="vocab_wrapper">
+
   <div class="vocab"  *ngIf="flipcardlist?.length > 0">
        <div><span class="vocab_name">Vocabulary</span><object  class="vocab_done_icon" *ngIf="flipdone" type="image/svg+xml" data="/assets/images/done2.svg"></object>
        </div>
@@ -134,7 +138,7 @@
  </div>
 
 <div class="subtitle">Time to practice!</div>
-
+<div class="spinnerdiv" *ngIf="!ready4" ><ion-spinner  class="spinner" id="#quiz_spinner" name="bubbles"></ion-spinner></div>
 
 <div class="boxwrapper">
   <div *ngFor="let quiz of exercises; let i = index" >

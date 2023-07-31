@@ -8,8 +8,8 @@
 <ion-content class="content">
 
 <div id="account" routerLink="/account"><ion-icon id="account-icon" name="person" ></ion-icon></div>
-
-<div class="spinnerdiv"><ion-spinner  id="spinner" *ngIf="!didInit" name="bubbles"></ion-spinner></div>
+ <div class="back" (click)="goBack()"><ion-icon id="icon_navback" name="arrow-back-outline"></ion-icon></div>
+<div class="spinnerdiv"><ion-spinner  id="spinner" *ngIf="!ready" name="bubbles"></ion-spinner></div>
 
 <ion-slides *ngIf="didInit" #slides [options]="slideOpts" (ionSlideWillChange)="slide($event)">
 
@@ -109,7 +109,7 @@
 			</div>
 			</div>
 
-      <div class="training_wrapper" *ngIf="training">
+      <div class="training_wrapper" *ngIf="training && ready">
         <div class="training_card">
       <ion-icon class="training_icon" name="bulb-outline"></ion-icon>
       <span class="training_instructions">{{training_text}}</span>

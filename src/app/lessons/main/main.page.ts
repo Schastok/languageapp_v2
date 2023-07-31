@@ -3,7 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import { ApiService } from '../../api.service';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
-
+import { Location } from "@angular/common";
 @Component({
   selector: 'app-main',
   templateUrl: './main.page.html',
@@ -23,8 +23,12 @@ export class MainPage implements OnInit {
   sections_done = {};
   overallprogress = 0;
   first_section_description;
+  ready1= false;
+  ready2= false;
+  ready3= false;
+  ready4= false;
 
-  constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private storage: Storage) { }
+  constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private storage: Storage, private router: Router, private location: Location) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
@@ -67,6 +71,7 @@ export class MainPage implements OnInit {
               this.first_section_description = obj['description'];
               console.log("first");
               console.log(this.first_section_description);
+              this.ready1 = true;
             }
 
           }
@@ -80,14 +85,18 @@ export class MainPage implements OnInit {
             }
             console.log("sections done");
             console.log(this.sections_done);
+
           },
         error => console.log(error));
         }
+
+        this.ready2 = true;
       });
       this.apiService.getExerciselist(this.lessonId).subscribe((data)=>{
         console.log(data);
         this.exercises = data;
         console.log(this.exercises);
+        this.ready4 = true;
       });
       this.apiService.getFlipcardlist(this.lessonId).subscribe((data)=>{
         console.log('data pulled: ')
@@ -116,6 +125,7 @@ export class MainPage implements OnInit {
         }
         this.flipprogress = val;
         console.log(this.flipdone);
+        this.ready3 = true;
       });
     });
 
@@ -181,6 +191,11 @@ logprogress(){
     getColor2(index:any){
       var colordict = {3: "#F77B6E", 2:"#FCCE38", 1:"#4F71EC", 0:"#10D398"}
       return colordict[index]
+      }
+
+
+      goBack(){
+      this.location.back();
       }
 
 }
