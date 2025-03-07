@@ -7,7 +7,7 @@ import { AdMobFree, AdMobFreeBannerConfig,AdMobFreeInterstitialConfig,AdMobFreeR
 import  { Media, MediaObject } from '@ionic-native/media/ngx';
 import  { File } from '@ionic-native/file/ngx';
 import { Location } from "@angular/common";
-
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-do-quiz',
@@ -353,7 +353,7 @@ textarea{
 
 
 
-  constructor(private admobFree: AdMobFree, private nativeAudio: NativeAudio, private activatedRoute: ActivatedRoute, private apiService: ApiService, private renderer: Renderer2, private elementRef: ElementRef, private media: Media, private file: File, private location: Location) { }
+  constructor(private admobFree: AdMobFree, private nativeAudio: NativeAudio, private activatedRoute: ActivatedRoute, private apiService: ApiService, private renderer: Renderer2, private elementRef: ElementRef, private media: Media, private file: File, private location: Location, private storage: Storage,) { }
 
 
   ngOnInit() {
@@ -453,7 +453,7 @@ _trainingnextonclick = (e: MouseEvent | TouchEvent): void => {
       if (this.training){
         if (this.quizType === 2){
         var nxt = document.getElementById('slidenext');
-        this.renderer.setAttribute(nxt, 'style', "background-image: url('/assets/images/dot.svg');");
+        this.renderer.setAttribute(nxt, 'style', "background-image: url('/assets/images/dot_right.svg');");
         this.renderer.setAttribute(nxt, 'disabled', "false");
         this.training_text = "Click on 'next' to continue the quiz";
         let inputfields = document.getElementsByClassName("gapfillinput");
@@ -471,7 +471,7 @@ _trainingnextonclick = (e: MouseEvent | TouchEvent): void => {
           else if (this.quizType === 6){
 
             var nxt = document.getElementById('slidenext');
-            this.renderer.setAttribute(nxt, 'style', "background-image: url('/assets/images/dot.svg');");
+            this.renderer.setAttribute(nxt, 'style', "background-image: url('/assets/images/dot_right.svg');");
             this.renderer.setAttribute(nxt, 'disabled', "false");
             this.training_text = "Click on 'next' to continue the quiz";
             let checkboxes = document.getElementsByClassName("aclass");
@@ -542,6 +542,7 @@ else if (this.quizType === 6){
 }
 
 this.training = false;
+this.storage.set('training_' + this.quizType + '_done', 1);
 }
 
 }
@@ -555,7 +556,7 @@ this.training = false;
     console.log(this.quizType)
 
     if (this.quizType === 1){
-    this.training_text = "Click on the word that matches the gap"
+    this.training_text = "Click on the word matching the gap"
     var answeropt = document.getElementById("answeropt");
     this.renderer.setAttribute(answeropt, 'style', 'visibility:visible;');
 
@@ -595,16 +596,17 @@ this.training = false;
             checkboxes[i].addEventListener("click", this._trainingnextonclick);
             var style = checkboxes[i].getAttribute('style');
             if (style === null){
-              this.renderer.setAttribute(checkboxes[i], 'style', "background-image: url('/assets/images/dot.svg');background-repeat: no-repeat;");
+              this.renderer.setAttribute(checkboxes[i], 'style', "background-image: url('/assets/images/dot_right.svg');background-repeat: no-repeat;");
             }
             else{
-              this.renderer.setAttribute(checkboxes[i], 'style', style + "background-image: url('/assets/images/dot.svg');background-repeat: no-repeat;");
+              this.renderer.setAttribute(checkboxes[i], 'style', style + "background-image: url('/assets/images/dot_right.svg');background-repeat: no-repeat;");
                 }
               }
             }
 
           else{
             this.training = false;
+            this.storage.set('training_' + this.quizType + '_done', 1);
           }
 
         }
@@ -621,6 +623,7 @@ this.training = false;
       this.cleanuptraining()
     }
     this.training = false;
+    this.storage.set('training_' + this.quizType + '_done', 1);
     }
 
 
@@ -666,7 +669,12 @@ this.training = false;
 
 
   slidestart(){
-    this.training = true; //will depend on storage value and quiztype
+
+
+
+
+
+    //this.training = true; //will depend on storage value and quiztype
     // all slides invisible, button start in slideshow triggers visibility of first slide. counter-> set next slide to visible with button next
     let slides = document.getElementById("quizslides").children
     console.log(slides[0]);
@@ -674,7 +682,21 @@ this.training = false;
     slides[0].className = 'activeslide';
     this.next = true;
     this.counter = this.counter + 1;
-    this.starttraining();
+
+    this.storage.get('training_' + this.quizType + '_done').then((val) => {
+      console.log("training found for  ", this.quizType);
+      if (val === null){
+        this.training = true;
+        this.starttraining();
+      }
+      else{
+        this.training = false;
+        var answeropt = document.getElementById("answeropt");
+        this.renderer.setAttribute(answeropt, 'style', 'visibility:visible;');
+      }},
+          error => console.log(error)
+        );
+
   }
 
 
@@ -784,7 +806,7 @@ this.training = false;
         if (this.training){
           this.training_text = "Click on 'next' to continue the quiz"
           var nxt = document.getElementById('slidenext');
-          this.renderer.setAttribute(nxt, 'style', "background-image: url('/assets/images/dot.svg');");
+          this.renderer.setAttribute(nxt, 'style', "background-image: url('/assets/images/dot_right.svg');");
           this.renderer.setAttribute(nxt, 'disabled', 'false');
         }
 

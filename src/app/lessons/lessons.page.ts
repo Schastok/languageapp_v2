@@ -20,7 +20,7 @@ import { Location } from "@angular/common";
   styleUrls: ['./lessons.page.scss'],
 })
 export class LessonsPage {
-
+  cl_index;
   lessons;
   ready = false;
   lessonprogress= {};
@@ -28,7 +28,8 @@ export class LessonsPage {
   sliderConfig = {
   slidesPerView: 1,
   spaceBetween: 10,
-  loop: true
+  loop: true,
+
 
 };
   course;
@@ -59,9 +60,16 @@ export class LessonsPage {
     this.statusBar.backgroundColorByHexString('#005f69');
 
     this.course = this.apiService.CLASSROOM_DATA
-    this.Classroom_name = this.course[0]['Classroom_name'];
-    this.Classroom_description = this.course[0]['Classroom_description'];;
-    console.log(this.course);
+    for(let i = 0; i <   this.course.length; i++){
+      if (this.course[i].Classroom_ID === this.apiService.CLASSROOM_ID){
+        this.cl_index = i;
+      }
+    }
+    this.Classroom_name = this.course[this.cl_index]['Classroom_name'];
+    this.Classroom_description = this.course[this.cl_index]['Classroom_description'];;
+    console.log("This is the course");
+    console.log(this.apiService.CLASSROOM_DATA);
+    console.log(this.apiService.CLASSROOM_ID);
     this.apiService.getLessons().subscribe((data)=>{
       console.log(data);
       this.lessons = data;

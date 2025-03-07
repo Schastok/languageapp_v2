@@ -11,7 +11,7 @@ import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 import { ApiService } from '../../api.service';
-
+import { Location } from "@angular/common";
 @Component({
   selector: 'app-coursedetails',
   templateUrl: './coursedetails.page.html',
@@ -29,7 +29,7 @@ Coursedetails2;
 Coursedetails3;
 Coursedetails4;
 
-  constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute, private router: Router, public alertController: AlertController,  private storage: Storage, private platform: Platform, private routerOutlet: IonRouterOutlet, private navigationBar: NavigationBar, private statusBar: StatusBar) { }
+  constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute, private router: Router, public alertController: AlertController,  private storage: Storage, private platform: Platform, private routerOutlet: IonRouterOutlet, private navigationBar: NavigationBar, private statusBar: StatusBar, private location: Location) { }
 
   ngOnInit() {
 
@@ -117,5 +117,9 @@ Coursedetails4;
     });
 
     await alert.present();
+  }
+
+  goBack(){
+  this.location.back();
   }
 }

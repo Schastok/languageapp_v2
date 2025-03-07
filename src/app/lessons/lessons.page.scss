@@ -54,12 +54,13 @@
   margin-top: 19px;
   margin-left: 5px;
   width: 60%;
+  z-index: 5;
 
 }
 
 
 .lesson_wrapper{
-margin-top: 71px;
+margin-top: 30px;
 }
 
 .lesson{
@@ -112,6 +113,8 @@ box-shadow: 0px 2px 10px #1e1e1e2b;
       margin-top: 5px;
       margin-left: 5px;
       font-weight: bold;
+      z-index: 100;
+      position: relative;
 
 }
 .enterlesson{

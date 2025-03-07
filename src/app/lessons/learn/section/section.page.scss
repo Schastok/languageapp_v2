@@ -167,9 +167,10 @@ ion-back-button{
 
 #nav{
 
-    width: 100%;
-    position: relative;
-    bottom: 100px;
+      position: relative;
+      bottom: 100px;
+      display: inline-flex;
+      text-align: center;
 }
 #navslide{
     text-align: center;
@@ -195,11 +196,13 @@ ion-back-button{
 
 #nav-back{
   padding-top: 3px;
+  margin-right: 3px;
 }
 
 #nav-next{
   padding-top: 3px;
   padding-left: 5px;
+  margin-left: 3px;
 }
 .navigation > .nav-icon{
 
@@ -274,4 +277,12 @@ ion-footer{
   color:  #008b8b;
   font-size: 22px;
   vertical-align: -webkit-baseline-middle;
+}
+
+.premium_err{
+  position: absolute;
+  top:40%;
+  left: 10%;
+  font-weight: 400;
+  color: black;
 }

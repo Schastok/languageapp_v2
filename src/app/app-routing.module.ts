@@ -130,6 +130,14 @@ const routes: Routes = [
   {
     path: 'cancelsubscription',
     loadChildren: () => import('./cancelsubscription/cancelsubscription.module').then( m => m.CancelsubscriptionPageModule)
+  },
+  {
+    path: 'contact',
+    loadChildren: () => import('./contact/contact.module').then( m => m.ContactPageModule)
+  },
+  {
+    path: 'privacy',
+    loadChildren: () => import('./privacy/privacy.module').then( m => m.PrivacyPageModule)
   }
 ];
 @NgModule({

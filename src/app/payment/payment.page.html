@@ -45,66 +45,47 @@
 
 
 <ion-content>
-  <div class='backgroundimage'>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-      <ion-title>
-      </ion-title>
-    </ion-toolbar>
-<img class='wave'  src="/assets/images/background.svg"/>
-  </div>
+
+
+<div id="account" routerLink="/account"><ion-icon id="account-icon" name="person" ></ion-icon></div>
+
+
+<div class="title">{{product_name}}</div>
+<div class="accountwrapper" *ngIf="polling === 0">
 
 
 
-  <div class="container mt-4 mb-4 p-3 d-flex justify-content-center" style="text-align: -webkit-center;">
-    <div class="card p-4">
-      <div class=" image d-flex flex-column justify-content-center align-items-center">
-  <div *ngIf="polling === 0 && paymentstatus === 0" >
-            <div class="name mt-3">{{product_name}}</div>
-            <div class="d-flex flex-row justify-content-center align-items-center gap-2">
-                                <div class="amount_descr"> <span class="join">Amount</span> </div>
-                                <div class="amount"> {{price}} {{currency_symbol}} </div>
-                                <div class="amount_descr"> <span class="join">VAT {{tax}}%</span> </div>
-                                <div class="amount"> {{tax_amount}} {{currency_symbol}} </div>
-                                <div class="amount_descr"> <span class="total_amount_descr">Total amount </span> </div>
-                                <div class="total_amount"> {{total_amount}} {{currency_symbol}} </div>
-              <span><i class="fa fa-copy"></i></span> </div>
+         <div class="amount_descr"> <span class="join">Amount</span> </div>
+         <div class="amount"> {{price}} {{currency_symbol}} </div>
+         <div class="amount_descr"> <span class="join">VAT {{tax}}%</span> </div>
+         <div class="amount"> {{tax_amount}} {{currency_symbol}} </div>
+         <div class="amount_descr"> <span class="total_amount_descr">Total amount </span> </div>
+         <div class="total_amount"> {{total_amount}} {{currency_symbol}} </div>
 
-    </div>
 
-    <div *ngIf="polling === 1" >
-      <div class="name mt-3">Waiting for payment</div>
-      <ion-spinner  class="spinnerbig" name="bubbles"></ion-spinner>
-        </div>
 
+
+</div>
+<div class="spinnerdiv" *ngIf="waiting" ><ion-spinner  class="spinner" id="#quiz_spinner" name="bubbles"></ion-spinner></div>
+<div class="spinnerdiv" *ngIf="paymentwaiting" ><ion-spinner  class="spinner" id="#quiz_spinner" name="bubbles"></ion-spinner></div>
 
         <div *ngIf="polling === 3" >
-          <div class="name mt-3">{{paymentstatus_info}}</div>
+          <div class="status">{{paymentstatus_info}}</div>
             </div>
 
-            <div *ngIf="polling === 4" >
-              <div class="name mt-3">Your payment could not be completed. It timed out. Please try again.</div>
-                <button (click)="openBlank()" shape="round" class="submit" >Try again</button>
+            <div *ngIf="polling === 4" class="timeout" >
+              <div class="status">It is possible that your payment has timed out. Check your membership and if neccessary try to upgrade again.</div>
+                <ion-button (click)="reload()">back</ion-button>
                 </div>
 
-                 <div class=" d-flex mt-2">
 
-                   <div class="buttonfields">
-                     <button *ngIf="polling === 0 && paymentstatus === 0" (click)="openBlank()" shape="round" class="submit" >Proceed to payment</button>
-                     <button *ngIf="polling === 1" shape="round" class="submit" style="background-color:grey;" ><ion-spinner  *ngIf="polling === 1" name="bubbles"></ion-spinner></button>
+                <div class="buttonfields">
+                  <ion-button *ngIf="polling === 0 && paymentstatus === 0" (click)="openBlank()" shape="round" class="submit" >Proceed to payment</ion-button>
 
-
+                </div>
 
 
 
-
-                   </div>
-
-                 </div>
- </div> </div>
-  </div>
 
 
 

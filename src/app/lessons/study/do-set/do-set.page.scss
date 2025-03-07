@@ -60,7 +60,7 @@ ion-menu-button{
   padding-top: 15px;
   border: 0 solid #005e68;
   border-bottom: 2px solid #008086;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
@@ -554,6 +554,24 @@ width: 100%;
 }
 
 #icon_navback{
+  color:  #008b8b;
+  font-size: 22px;
+  vertical-align: -webkit-baseline-middle;
+}
+
+
+
+.submitinput{
+  width: 37px;
+  height: 37px;
+  background-color: #ffffff;
+  border-radius: 10000px;
+  box-shadow: 0px 2px 10px rgba(3, 3, 3, 0.1);
+  text-align: center;
+  padding-top: 5px;
+}
+
+#icon_submit{
   color:  #008b8b;
   font-size: 22px;
   vertical-align: -webkit-baseline-middle;

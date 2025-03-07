@@ -32,7 +32,6 @@ function remove(array, element) {
 
 
 
-
 @Component({
   selector: 'app-do-set',
   templateUrl: './do-set.page.html',
@@ -196,7 +195,9 @@ earlysubmit(arr1, arr2){
    console.log(arr1)
    console.log(arr2)
    console.log(this.iscorrect)
-
+   if(this.iscorrect){
+     this.changeshowside(event);
+   }
 
  }
 

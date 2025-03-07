@@ -1,32 +1,28 @@
 
 
 <ion-content>
-  <div class='backgroundimage'>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-      <ion-title>
-      </ion-title>
-    </ion-toolbar>
-<img class='wave'  src="/assets/images/background.svg"/>
-  </div>
 
+
+
+
+  <div class="head">
+    <div id="account" routerLink="/account"><ion-icon id="account-icon" name="person" ></ion-icon></div>
+  </div>
 
 <div class="request" *ngIf="opt == 0">
 <h2>Do you really want to delete your account?</h2>
 
 
-<div class='desciption'>Please confirm that you want to delete your account. This will delete all data that is connected to your account. You will not be able tore-activate your account afterwards.
+<div class='description'>Please confirm that you want to delete your account. This will delete all data that is connected to your account. You will not be able to re-activate your account afterwards.
 If you still want to delete your account, we will send you the instructions how to proceed via email.</div>
 
-<div class='blueline'></div>
+
 
   <div class="formblock">
 
 
 <div class="buttonfields">
-    <button (click)="delete()" class="submit" shape="round" >Send link</button>
+    <ion-button (click)="delete()" class="submit" shape="round" >Send link</ion-button>
 </div>
 </div>
 
@@ -34,14 +30,18 @@ If you still want to delete your account, we will send you the instructions how 
 
 
 <div class="success" *ngIf="opt == 1">
-  <div class='desciption'>Thank you for your request. A link has been sent to your email adress. Please follow the instructions in the email.</div>
+  <div class='description'>Thank you for your request. A link has been sent to your email adress. Please follow the instructions in the email.</div>
 
-  <div class='blueline'></div>
+
   </div>
 
   <div class="fail" *ngIf="opt == 2">
-    <div class='desciption'>Sorry! We encountered a technical issue... If you want to delete your account, please try again later or contact our customer support. </div>
+    <div class='description'>Sorry! We encountered a technical issue... If you want to delete your account, please try again later or contact our customer support. </div>
 
-    <div class='blueline'></div>
+
     </div>
+
+    <div class="spinnerdiv" *ngIf="opt == 3" ><ion-spinner  class="spinner" id="#quiz_spinner" name="bubbles"></ion-spinner></div>
+
+
 </ion-content>

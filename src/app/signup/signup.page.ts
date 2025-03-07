@@ -15,6 +15,7 @@ errorkeys = [];
 errorobj;
 pw_error;
 
+
   constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {}
@@ -34,6 +35,7 @@ pw_error;
       (error)=>{
         console.log("This is the error", error);
         this.errorobj = error;
+        console.log(this.errorobj);
         for (let i = 0; i < Object.keys(error).length; i++){
           let e = Object.keys(error)[i]
           if (e != 'client'){
@@ -41,7 +43,7 @@ pw_error;
           this.errorkeys.push(e)
           }
         }
-
+          console.log(this.errorkeys);
       }
     );
 

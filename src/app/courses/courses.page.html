@@ -1,44 +1,33 @@
 <ion-content>
-  <div class='backgroundimage'>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-      <ion-title>
-      </ion-title>
-    </ion-toolbar>
-<img class='wave'  src="/assets/images/background.svg"/>
+  <div id="account" routerLink="/account"><ion-icon id="account-icon" name="person" ></ion-icon></div>
+<div class="back" (click)="goBack()"><ion-icon id="icon_navback" name="arrow-back-outline"></ion-icon></div>
+<div class="title">Available Courses</div>
+<div class='description'>Please select a new course</div>
+
+
+
+<div class="wrapper">
+    <div class="spinnerdiv"><ion-spinner  id="spinner" *ngIf="!ready" name="bubbles"></ion-spinner></div>
+  <div class="course_wrapper" *ngFor="let course of courses; let i = index">
+
+    <div class="course"  *ngIf="validated(course.Classroom_ID)" [routerLink]="['./coursedetails', course.Classroom_ID, course.Classroom_image, course.Classroom_name, course.Classroom_description, 0]">
+<div><span class="course_name">{{course.Classroom_name}}</span></div>
+      <div class="course_description">{{course.Classroom_description}}</div>
+      <img class='course_img'  [src]="course.Classroom_image"/>
+
+
+    </div>
+
+    <div class="course"  *ngIf="!validated(course.Classroom_ID)" [routerLink]="['./coursedetails', course.Classroom_ID, course.Classroom_image, course.Classroom_name, course.Classroom_description, 1]">
+<div><span class="course_name">{{course.Classroom_name}}</span></div>
+      <div class="course_description">{{course.Classroom_description}}</div>
+      <img class='course_img'  [src]="course.Classroom_image"/>
+
+    </div>
+
 
   </div>
-<h2>Courses</h2>
-<div class='desciption'>Please select a new course</div>
-<div class='blueline'></div>
-
-<ion-list *ngFor="let course of courses">
-
-       <ion-item class="item"  *ngIf="validated(course.Classroom_ID)" [routerLink]="['./coursedetails', course.Classroom_ID, course.Classroom_image, course.Classroom_name, course.Classroom_description, 0]">
-         <ion-avatar slot="start">
-           <img [src]="course.Classroom_image">
-         </ion-avatar>
-         <ion-label>
-           <h2 class="cl_name">{{course.Classroom_name}}</h2>
-           <div class="cl_description">{{course.Classroom_description}}</div>
-         </ion-label>
-       </ion-item>
-
-
-        <ion-item class="item"  *ngIf="!validated(course.Classroom_ID)" [routerLink]="['./coursedetails', course.Classroom_ID, course.Classroom_image, course.Classroom_name, course.Classroom_description, 1]">
-
-         <ion-avatar slot="start">
-           <img [src]="course.Classroom_image">
-         </ion-avatar>
-         <ion-label>
-           <h2 class="cl_name">{{course.Classroom_name}}</h2>
-           <div class="cl_description">{{course.Classroom_description}}</div>
-         </ion-label>
-       </ion-item>
-
-</ion-list>
+  </div>
 
 
 </ion-content>

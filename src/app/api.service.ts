@@ -34,7 +34,7 @@ export class ApiService {
     else{
       this.URL = 'https://www.e-fluent.com';
       this.STUDENT_ID = '';
-      this.SIZE = '5';
+      this.SIZE = '15';
     }
   }
 
@@ -57,6 +57,27 @@ export class ApiService {
     // Return an observable with a user-facing error message.
     return throwError(result)
   }
+
+
+  private handleError2(error: HttpErrorResponse) {
+    let result;
+    console.log("enter error");
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.log('An error occurred:', error.error.message);
+      result = {'client': error.error.message};
+    }
+    else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong.
+      console.log(
+        `Backend returned code ${error.status}`);
+        result = error.error;
+    }
+    // Return an observable with a user-facing error message.
+    return throwError(result)
+  }
+
 
   getLessons(){
 
@@ -93,7 +114,7 @@ export class ApiService {
     let headers = new HttpHeaders();
     let token = "Token " + this.TOKEN;
     headers = headers.set('Authorization', token);
-    return this.httpClient.get(`${this.URL}/api_section_2/?section=${sectionID}`,  {headers: headers}).pipe(
+    return this.httpClient.get(`${this.URL}/api_section_2/?section=${sectionID}&project=${this.PROJECT_ID}`,  {headers: headers}).pipe(
       catchError(this.handleError));
   }
 
@@ -128,7 +149,7 @@ export class ApiService {
     let headers = new HttpHeaders();
     let token = "Token " + this.TOKEN;
     headers = headers.set('Authorization', token);
-    return this.httpClient.get(`${this.URL}/api_excercise_content_2/?excercise=${quizID}`,  {headers: headers});
+    return this.httpClient.get(`${this.URL}/api_excercise_content_2/?excercise=${quizID}&project=${this.PROJECT_ID}`,  {headers: headers});
   }
 
 
@@ -171,7 +192,7 @@ export class ApiService {
         "password": password
       };
     return this.httpClient.post(`${this.URL}/api-token-auth/`, postData, {observe: "body"}).pipe(
-      catchError(this.handleError)
+      catchError(this.handleError2)
     );
 
   }
@@ -185,7 +206,7 @@ export class ApiService {
       };
       console.log(postData);
     return this.httpClient.post(`${this.URL}/api_signup/`, postData, {observe: "body"}).pipe(
-      catchError(this.handleError)
+      catchError(this.handleError2)
     );
 
   }

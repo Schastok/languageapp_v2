@@ -1,298 +1,231 @@
 
-* {
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
-  -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
-  outline: none !important;
-}
 
-ion-toolbar{
-  --background: transparent!important;
+.back{
   position: absolute;
-
+  left: 10px;
+  top:42px;
+  width: 37px;
+  height: 37px;
+  background-color: #ffffff;
+  border-radius: 10000px;
+  box-shadow: 0px 2px 10px rgba(3, 3, 3, 0.1);
+  text-align: center;
+  padding-top: 5px;
 }
 
-ion-menu-button{
-  --color: white;
-  margin-top: 20px;
+#icon_navback{
+  color:  #008b8b;
+  font-size: 22px;
+  vertical-align: -webkit-baseline-middle;
 }
 
-ion-content{
-
-//  --background: rgb(29,253,220);
-//  --background: linear-gradient(to top, rgba(29,253,220,1) 28%, rgba(69,116,252,1) 100%);
---background: #001124;
-
-
-
-}
-
-ion-slides{
-  margin-left: 5%;
-}
-
-ion-slide{
-  //margin-right: 5%!important;
-  padding-right: 20px;
-}
-
-h2{
-position: relative;
-width: 60%;
-//height: 72px;
-//padding-top: 20%;
-padding-left: 5%;
-margin-top:0px;
-
-
-  font-family: Avenir Next LT Pro;
-  font-style: normal;
-  //font-weight: 600;
-  font-size: 32px;
-    font-size: 7vw;
-  line-height: 7vw;
-  /* or 125% */
-
-  display: flex;
-  //align-items: center;
-
-  color: #FFFFFF;
-}
-
-ion-slide{
-
-  //height: '-webkit-fill-available'!important;
-}
-
-
-
-.lessonitem{
-
-//  background: linear-gradient(180deg, rgba(18, 20, 33, 0) 50%, rgba(18, 20, 33, 0.5) 100%);
-  box-shadow: 0 20px 30px rgba(0,0,0,0.2);
-  display: inline-block;
-  //margin: 15px 12px;
-  //position: relative;
-  top:5%;
-  //height: 200px;
-  //width: 500px;
+.nav_wrapper{
   width: 100%;
-  height: 55vw;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  border-radius: 16px;
-  margin-bottom: 100%;
-  margin-top: 2vw;
+
 }
+#account-icon{
 
-
-.name{
-  font-family: Avenir Next LT Pro;
+  //transform: scale(2);
+   font-size:34px;
   position: absolute;
-  //margin-top: 150px;
-  bottom: 10%;
-  margin-left: 10px;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 24px;
-  color: #FFFFFF;
+  z-index: 2;
+  top:42px;
+  right: 35px;
+  color: #1e1e1e
 
 }
 
-.desciption{
-  font-family: Avenir Next LT Pro;
-  //position: absolute;
-  //width: 60%;
-  //height: 70px;
-  left: 0px;
-  //top: 50%;
 
-  margin-top: 10%;
+#search-icon{
+   font-size:34px;
+  position: relative;
+  color: #1e1e1e;
+  font-weight: 400;
+
+}
+
+#search-text{
+  font-size: 14px;
+  color: #1e1e1ea1;
+  position: relative;
+  bottom: 10px;
+
+
+}
+
+
+
+#search{
+  font-size: 12px;
+  color: #1e1e1ea1;
+  margin-top: 15px;
+  margin-left: 21px;
+  width: 60%;
+}
+
+.title{
+
+  text-align: left;
+    color: #1e1e1e;
+    font-family: "Montserrat-Black";
+    font-size: 32px;
+    margin-top: 100px;
+    margin-left: 21px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.description{
+  font-family: Montserrat-Regular;
+  font-size: 16px;
+  color: #1e1e1ea1;
+  margin-top: 15px;
+  margin-left: 21px;
+
+
+}
+
+.wrapper {
   margin-left: 5%;
   margin-right: 5%;
-  margin-bottom: 5%;
-text-align: left;
-font-style: normal;
-font-weight: normal;
-//font-size: 14px;
-font-size: 4vw;
-line-height: 6vw;
-/* or 171% */
-color: #FFFFFF;
-}
-
-.blueline{
-  position: absolute;
-  width: 40px;
-  height: 0.3%;
-  left: 5%;
-  background-color: #4A80F0;
-
-}
-
-
-.button_dark{
-  width: 200px;
-  height: 36px;
-  font-size: 14px;
-  background-color:#005e68;
-  border-radius:25px;
-  color: white;
-  margin-bottom: 10px;
-  display: block;
-}
-
-.buttonfields{
-  position: relative;
-  margin-top: 50px;
+  display: flow-root;
+  justify-content: center;
   margin-bottom: 50px;
-  text-align: left;
+  text-align: center;
+  color: #1e1e1e;
+  font-family: Montserrat-Regular;
+}
+
+
+
+.course_description{
+  font-family: Montserrat-Regular;
+  font-size: 12px;
+  color: #1e1e1e;
+  margin-top: 19px;
+  margin-left: 5px;
+  width: 60%;
+
+}
+
+
+.course_wrapper{
+margin-top: 44px;
+}
+
+.course{
+  background-color: white;
+  border-radius: 20px;
+height: 135px;
+width: 100%;
+margin-bottom: 15px;
+padding:20px;
+text-align: left;
+box-shadow: 0px 2px 10px #1e1e1e2b;
+}
+
+
+.course_img{
+  width: 100px;
+      height: 100px;
+      -o-object-fit: cover;
+      object-fit: cover;
+      border-radius: 30%;
+      border: 0;
+      position: relative;
+      bottom: 50px;
+      left: 68%;
+
+}
+
+
+.course_done_icon{
+ width: 20px;
+ margin-left: 5px;
+ //position: relative;
+ //top: 32px;
+ //right: -126px;
+}
+.course_premium_icon{
+ width: 20px;
+ margin-left: 5px;
+//position: relative;
+ //bottom: 10px;
+ //right: 100px;
+}
+
+
+.course_name{
+  font-family: 'Montserrat-Bold';
+      font-size: 22px;
+      letter-spacing: 0.8px;
+      color: #008B8B;
+      margin-top: 5px;
+      margin-left: 5px;
+      font-weight: bold;
+
+}
+.entercourse{
+  font-family: "Montserrat-Regular";
+  font-size: 14px;
+  background-color: white;
+  border-radius: 25px;
+  border: 1px solid #008B8B;
+  color: #008B8B;
+  margin-bottom: 10px;
+  //border: 1px solid #008B8B;
+  position: relative;
+  top: 15px;
+  //left: -14px;
+  width: 110px;
+  height: 30px;
+  text-transform: unset !important;
+
+}
+
+
+@media screen and (min-width: 450px) {
+  .course_img {
+      left: 78%;
+  }
+}
+
+
+@media screen and (max-width: 340px) {
+  .course_img {
+      display: none;
+  }
+
+  .course{
+
+height: 150px;
+  width: 90%;
+  }
+}
+
+@media screen and (min-width: 700px) {
+.course_img {
+  left: 462px!important;
+}
+
+.course{
+
+height: 150px;
+width: 600px;
+}
+}
+
+
+#spinner{
+  //width: 400px;
+  color: #008086;
+  transform: scale(2);
+}
+.spinnerdiv{
   width: 100%;
-  margin-left:calc(50% - 100px);
-}
-
-.cl_name{
-  font-family: Avenir Next LT Pro;
-  //margin-top: 150px;
-  bottom: 10%;
-  //margin-left: 10px;
-  font-style: normal;
-  font-weight: bold;
-  letter-spacing: 1.5px;
-  font-size: 16px;
-  line-height: 24px;
-  color: #FFFFFF;
-
-}
-
-.cl_description{
-  font-family: Avenir Next LT Pro;
-  //margin-top: 150px;
-  bottom: 10%;
-  margin-left: 10px;
-  font-style: normal;
-  white-space: pre-wrap;
-  font-size: 16px;
-  line-height: 24px;
-  color: #FFFFFF;
-  font-style: italic;
-}
-
-ion-list{
-  background: transparent;
-}
-
-ion-item {
-    --background: linear-gradient(#180f95 0%, #e95f8d 0%, #e39a65 100%);
-    margin: 10px;
-    border-radius: 10px;
-  }
-
-ion-avatar{
-  width: 70px;
-  height: 70px;
-}
-ion-avatar > img{
-      border-radius:0%;
-      height:60px;
-      width:60px;
-      border: 2px solid white;
-  }
-
-ion-label{
-  text-align: left;
-}
-
-@media screen and (min-width: 600px) {
-
-  h2{
-    font-size: 32px;
-  }
-  .cl_name{
-    padding-left: 0px;
-    font-size: 20px;
-  }
-
-  .cl_description{
-    margin-left: 0px;
-    font-size: 20px;
-
-  }
-
-.desciption{
-      margin-bottom:10%;
-      font-size: 22px;
-}
-
-
-  ion-avatar{
-    width: 110px;
-    height: 110px;
-  }
-
-  ion-avatar > img{
-        border-radius:0%;
-        height:100px;
-        width:100px;
-        border: 2px solid white;
-    }
-
-  ion-item {
-      margin-left: 3%;
-      margin-top: 20px;
-      --border-style: none;
-      }
-
- .blueline{
-   margin-bottom: 50px;
- }
-
-}
-
-@media screen and (min-width: 800px) {
-
-  h2{
-    font-size: 32px;
-  }
-  .cl_name{
-    padding-left: 0px;
-    font-size: 20px;
-  }
-
-  .cl_description{
-    margin-left: 0px;
-    font-size: 20px;
-
-  }
-
-.desciption{
-      margin-bottom:10%;
-      font-size: 22px;
-}
-
-
-  ion-avatar{
-    width: 110px;
-    height: 110px;
-  }
-
-  ion-avatar > img{
-        border-radius:0%;
-        height:100px;
-        width:100px;
-        border: 2px solid white;
-    }
-
-  ion-item {
-      margin-left: 3%;
-      margin-top: 20px;
-      --border-style: none;
-      }
-
- .blueline{
-   margin-bottom: 50px;
- }
-
+  text-align: -webkit-center;
+  position: relative;
+  left:0px;
+  top:200px;
+  z-index: 2;
 }

@@ -1,28 +1,37 @@
 
 
 <ion-content>
-  <div class='backgroundimage'>
-<img class='wave'  src="/assets/images/background.svg"/>
-</div>
+<div class="wrapper">
+<div class="title">Welcome back!</div>
 
   <div class="formblock">
     <div class="formfields">
       <div class="userfield">
+        <div>
+          <label class="formdescriptions" for="username">username</label></div>
             <input class="field" type="text"  id="username"  name="username" required />
-      <label class="formdescriptions" for="username">username</label>
+<div><div *ngFor="let error of errorkeys" class="fielderrors"><div *ngIf="error === 'email' || error === 'username'">{{errorobj[error]}}</div></div></div>
 
     </div>
     <div class="pwfield">
-
+      <div>
+<label class="formdescriptions"  for="password">password</label></div>
       <input class="field" type="password" id="password" name="password" required />
-    <label class="formdescriptions"  for="password">password</label>
+<div><span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'password'">{{errorobj[error]}}</span></span>  </div>
       </div>
-        <span *ngFor="let error of errorkeys" class="fielderrors"><span *ngIf="error === 'non_field_errors'">{{errorobj[error]}}</span></span>
       </div>
-      <div class="buttonfields">
-    <button (click)="login()" class="submit" shape="round" >Login</button>
-    <button [routerLink]="['/signup']" class="signup" shape="round" >Signup</button>
-    <a class="forgotpw" href="https://www.e-fluent.com/password_reset/">forgot password?</a>
+      <div class="pwforgotfield">
+      <a class="forgotpw" href="https://www.e-fluent.com/password_reset/">forgot password?</a>
+</div>
+
+<div><div *ngFor="let error of errorkeys" class="fielderrors"><div *ngIf="error === 'non_field_errors'">{{errorobj[error]}}</div></div></div>
+</div>
+
+<div class="buttonfields">
+<ion-button shape="round" color="white" class="login" (click)="login()">Log in</ion-button>
+<div class="or">or</div>
+<ion-button [routerLink]="['/signup']" class="signup" shape="round"  color="#008B8B">Sign up</ion-button>
+
 </div>
 </div>
 </ion-content>

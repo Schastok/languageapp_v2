@@ -1,47 +1,41 @@
 
 <ion-content>
-  <div class='backgroundimage'>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-      <ion-title>
-      </ion-title>
-    </ion-toolbar>
-<img class='wave'  src="/assets/images/background.svg"/>
-  </div>
+  <div id="home" routerLink="/mycourses"><ion-icon id="home-icon" name="home" ></ion-icon></div>
+  <div class="back" (click)="goBack()"><ion-icon id="icon_navback" name="arrow-back-outline" ></ion-icon></div>
+   <div class="title">Account</div>
+<div class="accountwrapper" *ngIf="!waiting">
 
+            <div id="account"><ion-icon id="account-icon" name="person" ></ion-icon><span class="user">{{username}}</span></div>
 
-
-  <div class="container mt-4 mb-4 p-3 d-flex justify-content-center" style="text-align: -webkit-center;">
-    <div class="card p-4">
-      <div class=" image d-flex flex-column justify-content-center align-items-center">
-        <div class="buttoncontainer">
-         <button class="btn btn-secondary">
-            <img src="https://www.svgrepo.com/show/357123/gender-neutral-user.svg" height="100" width="100" /></button></div>
-            <div class="name mt-3">{{username}}</div>
-            <div class="d-flex flex-row justify-content-center align-items-center gap-2">
-                                <div class="date"> <span class="join">Joined {{creation_date | date:'dd-MM-YYYY'}}</span> </div>
-              <span><i class="fa fa-copy"></i></span> </div>
+            <div class="date"> <span class="join">member since {{creation_date | date:'dd-MM-YYYY'}}</span> </div>
               <div class="basicmembership" *ngIf="subscription_model === 0" >
-                  <span class='desciption'>Free membership</span> </div>
+                  <span class='description_free'>Free membership</span> </div>
               <div class="premiummembership" *ngIf="subscription_model === 1" >
-                  <span class='desciption'>Premium membership</span> </div>
-                <div  *ngIf="subscription_model === 1"> <span class="idd">Premium member since {{change_date | date:'dd-MM-YYYY'}}</span> </div>
+                  <span class='description_prem'>Premium membership</span> </div>
+
                 <div  *ngIf="subscription_model === 1 && status === 2"> <span class="idd">Premium membership cancelled</span> </div>
 
-                 <div class=" d-flex mt-2">
 
                    <div class="buttonfields">
-                       <button *ngIf="subscription_model === 0" class="submit" shape="round"  [routerLink]="['../payment']">Upgrade to premium</button>
-                       <button *ngIf="subscription_model === 1 && status === 1" class="submit" shape="round" [routerLink]="['../cancelsubscription']">Cancel Subscription</button>
+                       <ion-button id="up" *ngIf="subscription_model === 0"  [routerLink]="['../payment']">Upgrade to premium</ion-button>
+                       <ion-button id="down" *ngIf="subscription_model === 1 && status === 1"  [routerLink]="['../cancelsubscription']">Downgrade</ion-button>
                    </div>
-                 </div>
- </div> </div>
-  </div>
+</div>
+<div class="spinnerdiv" *ngIf="waiting" ><ion-spinner  class="spinner" id="#quiz_spinner" name="bubbles"></ion-spinner></div>
 
-
-
-
+<ion-list class="linklist">
+  <ion-item  routerLink="/delete-account">
+    <ion-icon class="circleicon" name="trash"> </ion-icon><ion-label>Delete Profile</ion-label><ion-icon class="icon-arrow" name="chevron-forward-outline"></ion-icon>
+  </ion-item>
+  <ion-item routerLink="/privacy">
+    <ion-icon class="circleicon" name="shield-checkmark"></ion-icon><ion-label>Privacy & Security</ion-label><ion-icon class="icon-arrow" name="chevron-forward-outline"></ion-icon>
+  </ion-item>
+  <ion-item routerLink="/contact">
+    <ion-icon class="circleicon" name="headset"></ion-icon><ion-label>Help & Support</ion-label><ion-icon class="icon-arrow" name="chevron-forward-outline"></ion-icon>
+  </ion-item>
+  <ion-item  routerLink="/logout">
+    <ion-icon class="circleicon" name="log-out"></ion-icon><ion-label>Logout</ion-label><ion-icon class="icon-arrow" name="chevron-forward-outline"></ion-icon>
+  </ion-item>
+</ion-list>
 
 </ion-content>

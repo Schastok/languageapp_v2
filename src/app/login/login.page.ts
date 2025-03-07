@@ -85,15 +85,6 @@ credentials = {};
         console.log(data['id'])
       },
       (error)=>{
-        console.log("This is the error", error);
-        this.errorobj = error;
-        for (let i = 0; i < Object.keys(error).length; i++){
-          let e = Object.keys(error)[i]
-          if (e != 'client'){
-          this.errors.push(error[e])
-          this.errorkeys.push(e)
-          }
-        }
 
       }
     );

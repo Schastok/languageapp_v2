@@ -83,6 +83,7 @@ export class SectionPage implements OnInit{
 else{
   this.storage.set('section_' + this.sectionId + '_done', 1);
 }
+
       this.sectiondetails = data;
       for (let slide of this.sectiondetails) {
 
@@ -126,6 +127,7 @@ ncheck(){
 
   const ncheck = document.getElementsByClassName("ncheck");
   console.log(ncheck.length);
+  var disablenext = false
   if (ncheck.length > 0){
     var disablenext = false
     for (let i = 0; i < ncheck.length; i++) {
@@ -133,13 +135,15 @@ ncheck(){
         if (ncheck[i].id.startsWith('n' + pageindex)){
           if (!ncheck[i].hasAttribute('viewed')){
             disablenext = true;
+            console.log("disabled because !viewed ", disablenext);
           }
           else if (ncheck[i].getAttribute('viewed') == 'false') {
             disablenext = true;
+            console.log("disabled because viewed=false ", disablenext);
           }
           else{
           }
-        console.log(disablenext);
+        console.log("disabled: ", disablenext);
         }
         else{
         }
@@ -149,6 +153,7 @@ ncheck(){
     if (disablenext){
       let next = document.getElementById("nav-next")
       next.setAttribute("disabled", "true");
+      console.log("next button disabled");
     }
     else{
       let next = document.getElementById("nav-next")
@@ -168,7 +173,6 @@ next()
   console.log(this.IonSlides);
   this.IonSlides.slideNext();
   console.log("next");
-  //console.log(this.IonContent);
   this.IonContent.scrollToTop();
   this.IonSlides.lockSwipes(true)
   this.doCheck()
@@ -177,11 +181,12 @@ next()
       let pageindex = index.toString();
 
   const ncheck = document.getElementsByClassName("ncheck");
-  console.log(ncheck.length);
+  var disablenext = false;
   if (ncheck.length > 0){
-    var disablenext = false
+    var disablenext = false;
+    console.log("disablenext ", disablenext);
     for (let i = 0; i < ncheck.length; i++) {
-      console.log(ncheck[i])
+      console.log("Nchecklrgth", ncheck[i])
       ncheck[i].addEventListener("click", (event: Event) => {
         let target = event.target as HTMLElement;
         target.setAttribute("viewed", "true");
@@ -193,9 +198,11 @@ next()
         if (ncheck[i].id.startsWith('n' + pageindex)){
           if (!ncheck[i].hasAttribute('viewed')){
             disablenext = true;
+            console.log("viewed, disabled")
           }
           else if (ncheck[i].getAttribute('viewed') == 'false') {
             disablenext = true;
+            console.log("viewed, disabled")
           }
           else{
           }
@@ -208,6 +215,7 @@ next()
     if (disablenext){
       let next = document.getElementById("nav-next")
       next.setAttribute("disabled", "true");
+      console.log("next button disabled");
     }
     else{
       let next = document.getElementById("nav-next")
@@ -239,7 +247,10 @@ doCheck() {
       console.log(istrue);
       if (istrue) {
         this.storage.set(this.apiService.STUDENT_ID + '_section_' + this.sectionId + '_done', 1);
-      } else {
+        console.log("section done");
+      }
+      else {
+        console.log("section not done");
       }
     });
 

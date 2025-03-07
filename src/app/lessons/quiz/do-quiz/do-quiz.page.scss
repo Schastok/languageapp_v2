@@ -456,7 +456,7 @@ ion-back-button{
   border-radius:25px;
 }
 .submit{
-  width: 300px;
+  width: 100px;
   background-color: #180f95;
   border-radius:25px;
 
@@ -471,19 +471,20 @@ ion-back-button{
 }
 #submitdiv{
   text-align: center;
-  position: absolute;
-  bottom: 5%;
-  margin-top: 10px;
-  text-align: -webkit-center;
-  width: 100%;
-  left: 0;
+      /* position: absolute; */
+      bottom: 5%;
+
+      text-align: -webkit-center;
+      /* width: 100px; */
+
 }
 
 #slidecontrol{
+  width: 100%;
   text-align: center;
-  position: relative;
+  position: absolute;
   bottom: 5%;
-  margin-top: 50px;
+  left: 0px;
 }
 
 
@@ -538,14 +539,14 @@ example-list {
 
 .answeropts{
   position: absolute;
-  bottom: 100px;
+  bottom: 90px;
   text-align: -webkit-center;
   margin-top: 50px;
   padding-bottom: 50px;
   display: grid;
   width: 90%;
   //grid-template-columns: 1fr 1fr 1fr;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   grid-gap: 2%;
   grid-auto-rows: 1fr;
   //overflow: auto;
@@ -729,15 +730,15 @@ color: black;
   position: absolute;
   top:40%;
   left: 10%;
-  color: #FFFFFF;
   font-weight: 400;
+  color: black;
 }
 
 
 .training_wrapper{
 
   text-align: center;
-  position: absolute;
+
   bottom: 5%;
   margin-top: 10px;
   text-align: -webkit-center;
@@ -765,7 +766,7 @@ color: black;
 }
 .training_instructions{
   color: #030303;
-font-size: 18px;
+font-size: 17px;
 font-family: "Montserrat";
 font-style: italic;
 line-height: 23px;

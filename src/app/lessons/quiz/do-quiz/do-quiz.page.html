@@ -62,7 +62,9 @@
   <div id='slidebefore2' class="scont" *ngIf='quizType == 6 && (hasslides && before)' (click)="slidebefore()"><ion-icon name="return-up-back-outline" id="iconback"></ion-icon></div>
   <ion-button  shape="round" style="background-color:#F0F0F0" color="#F0F0F0" id="slidenext" disabled class="scont" *ngIf='hasslides && next && training' (click)="slidenext()">next</ion-button>
   <ion-button  shape="round" style="background-color:#008B8B" color="#008B8B" id="slidenext" class="scont" *ngIf='hasslides && next && !training' (click)="slidenext()">next</ion-button>
-
+  <div id='submitdiv' *ngIf='quizType != 10 || record > 1'>
+  <ion-button shape="round" style="  background-color:#008B8B;" color="#008B8B" class="submit"  *ngIf='(!hasslides || slidecheck) && ready'  id="check" type="submit" name="submit"><span *ngIf="!spinner" >Check</span><ion-spinner  *ngIf="spinner" name="bubbles"></ion-spinner></ion-button>
+  </div>
   </div>
 
   <div class="training_wrapper" *ngIf="training">
@@ -82,9 +84,7 @@
 
 
 
-  <div id='submitdiv' *ngIf='quizType != 10 || record > 1'>
-  <ion-button shape="round" style="  background-color:#008B8B;" color="#008B8B" class="submit"  *ngIf='(!hasslides || slidecheck) && ready'  id="check" type="submit" name="submit"><span *ngIf="!spinner" >Check</span><ion-spinner  *ngIf="spinner" name="bubbles"></ion-spinner></ion-button>
-  </div>
+
 
 
 

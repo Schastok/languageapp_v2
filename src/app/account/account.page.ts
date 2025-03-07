@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import { ApiService } from '../api.service';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
+import { Location } from "@angular/common";
 
 @Component({
   selector: 'app-account',
@@ -18,8 +19,8 @@ export class AccountPage implements OnInit {
   payment_method;
   account;
   status;
-
-  constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private storage: Storage, private router: Router) { }
+  waiting = true;
+  constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private storage: Storage, private router: Router, private location: Location) { }
 
   ngOnInit() {
 
@@ -30,9 +31,12 @@ export class AccountPage implements OnInit {
   }
 
   ionViewDidEnter() {
+  this.waiting = true;
+
   console.log('ionViewDidEnter ');
   this.apiService.getaccountdetails().subscribe((data)=>{
     console.log(data);
+    this.waiting = false;
     this.account = data[0];
     this.username= this.account.username;
     this.subscription_model= this.account.subscription_model;
@@ -43,5 +47,7 @@ export class AccountPage implements OnInit {
 
   });
 }
-
+goBack(){
+this.location.back();
+}
 }

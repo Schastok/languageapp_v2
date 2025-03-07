@@ -29,7 +29,8 @@ export class MycoursesPage implements OnInit {
    }
 
   ngOnInit() {
-
+    this.statusBar.overlaysWebView(true);
+    this.statusBar.backgroundColorByHexString('#005f69');
 
 
   }

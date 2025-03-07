@@ -86,12 +86,14 @@
           </div>
 
           <div *ngIf="card.multiplechoice_possible == 0 && card.entry_possible == 1" class="answerlist">
-  <input class="field" autocapitalize="off" type="text" #input id="input_{{card.flipcardID}}" (keyup)="checkanswerinput(input.value, $event, card.Answers)">
-
+  <input class="field" autocapitalize="off" type="text" #input id="input_{{card.flipcardID}}" (keydown.enter)="changeshowside($event)" (keyup)="checkanswerinput(input.value, $event, card.Answers)" >
+ <div class="submitinput" (click)="changeshowside($event)"><ion-icon id="icon_submit" name="arrow-forward-outline"></ion-icon></div>
           </div>
           <div *ngIf="card.multiplechoice_possible == 1 && card.entry_possible == 1" class="answerlist">
               <div *ngIf="random" class="answerinput">
-                <input class="field" type="text" #input id="input_{{card.flipcardID}}" (keyup)="checkanswerinput(input.value, $event, card.Answers)">
+                <input class="field" type="text" #input id="input_{{card.flipcardID}}" (keydown.enter)="changeshowside($event)" (keyup)="checkanswerinput(input.value, $event, card.Answers)">
+                <div class="submitinput" (click)="changeshowside($event)"><ion-icon id="icon_submit" name="arrow-forward-outline"></ion-icon></div>
+
                 </div>
                   <div *ngIf="!random" class="answerchoice">
                 <div  class='answ' ticked='nein' *ngFor="let answer of card.Alt_Answers" (click)="checkanswer(answer, $event, card.Answers)">
@@ -131,7 +133,7 @@
 
 
               <div class="animated flipInY wrapper" *ngIf="card.flipcardID === showid && showside === 1">
-                <svg [ngClass]="'level'+ card.Status" id="card_{{card.flipcardID}}"  (click)="submitanswer(card.ProgressID, card.Status, $event)" width="100%" height="100%" version="1.1" viewBox="0 0 875.37 662.23" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <svg [ngClass]="'level'+ card.Status" id="card_{{card.flipcardID}}" (keydown.enter)="submitanswer(card.ProgressID, card.Status, $event)" (click)="submitanswer(card.ProgressID, card.Status, $event)" width="100%" height="100%" version="1.1" viewBox="0 0 875.37 662.23" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <pattern *ngIf="card.image == ''" id="image{{card.flipcardID}}" x="0" y="0" patternUnits="objectBoundingBox" height="1" width="1">
 
                   <image   x="0" y="0" width="600" xlink:href="https://www.e-fluent.com/media/images/user_10/flipcard_background.jpg"></image>
@@ -141,19 +143,29 @@
 
                   <image   x="0" y="0" width="600" [attr.xlink:href]="'https://www.e-fluent.com/media/' + card.image"></image>
               </pattern>
+
+
                  <g transform="translate(1.8439 -3.3629)">
 
                   <path x="-1.8438932" y="3.3629329" width="875.28021" height="658.43988" rx="42.230354" ry="46.564548" d="m40.386 3.3629h790.82c23.396 0 42.23 20.768 42.23 46.565v565.31c0 25.797-18.835 46.565-42.23 46.565h-790.82c-23.396 0-42.23-20.768-42.23-46.565v-565.31c0-25.797 18.835-46.565 42.23-46.565z" fill="#14a2af" opacity=".699" stroke="#4d4d4d" stroke-width="2.2774"/>
                   <path  *ngIf="iscorrect"  id="rise" d="" fill="#72d6e1" stroke-width="1.3863"/>
                   <path  *ngIf="!iscorrect" id="drop" d="" fill="#72d6e1" stroke-width="1.3863"/>
                   <text transform="scale(1.0093 .9908)" x="825.42889" y="579.16003" font-size="27.709px" letter-spacing="0px" stroke-width="2.3091" text-align="center" text-anchor="middle" word-spacing="0px" xml:space="preserve">
-                    <tspan x="439.93542" y="529.16003" fill="#ffffff" font-family="Arial" font-size="60px" stroke-width="2.3091" text-align="center" text-anchor="middle" style="line-height:1.25" >{{ card.Question | slice:0:26 }}</tspan>
-                    <tspan x="439.93542" y="559.16003" fill="#ffffff" font-family="Arial" font-size="60px" stroke-width="2.3091" text-align="center" text-anchor="middle" style="line-height:1.25" dy="30">{{ card.Question | slice:26:52}}</tspan>
-                    <tspan x="439.93542" y="579.16003" fill="#ffffff" font-family="Arial" font-size="60px" stroke-width="2.3091" text-align="center" text-anchor="middle" style="line-height:1.25" dy="80">{{ card.Question | slice:52}}</tspan>
+                    <tspan x="439.93542" y="529.16003" fill="#ffffff" font-family="Montserrat-Bold" font-size="60px" stroke-width="2.3091" text-align="center" text-anchor="middle" style="line-height:1.25" >{{ card.Question | slice:0:26 }}</tspan>
+                    <tspan x="439.93542" y="559.16003" fill="#ffffff" font-family="Montserrat-Bold" font-size="60px" stroke-width="2.3091" text-align="center" text-anchor="middle" style="line-height:1.25" dy="30">{{ card.Question | slice:26:52}}</tspan>
+                    <tspan x="439.93542" y="579.16003" fill="#ffffff" font-family="Montserrat-Bold" font-size="60px" stroke-width="2.3091" text-align="center" text-anchor="middle" style="line-height:1.25" dy="80">{{ card.Question | slice:52}}</tspan>
                   </text>
 
             <ellipse cx="435.8" cy="246.2" rx="199.78" ry="196.61"  [attr.fill]="'url(#image' + card.flipcardID + ')'" fill-opacity=".85"/>
                  </g>
+
+                 <g transform="translate(800 75) scale(0.2)">
+                   <text transform="scale(2)" x="10" y="150" font-size="27.709px" letter-spacing="0px" stroke-width="2.3091" text-align="center" text-anchor="middle" word-spacing="0px" xml:space="preserve">
+                     <tspan x="0" y="150" fill="#ffffff" font-family="Montserrat-Regular" font-size="70px" stroke-width="2.3091" text-align="center" text-anchor="middle" style="line-height:1.25" >next</tspan>
+                   </text>
+                   <path fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="10" d="M216 352l96-96-96-96"/>
+                 </g>
+
                 </svg>
 
 

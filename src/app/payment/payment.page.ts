@@ -46,6 +46,9 @@ paymenttoken;
 pollingresult;
 paymentstatus_info;
 router;
+waiting = true;
+paymentwaiting = false;
+browser;
 
 
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private iab: InAppBrowser, private apiService: ApiService, private routing: Router) {
@@ -56,9 +59,12 @@ router;
     ngOnInit() {
     //   this.setupStripe();
 
-    this.polling = 0;
+
     this.paymentstatus = 0;
+
         this.apiService.getproductdetails().subscribe((data)=>{
+          this.waiting = false;
+          this.polling = 0;
           console.log("calling product api");
           console.log(data);
           this.product = data[0];
@@ -98,18 +104,20 @@ router;
     }
 
     openpaymentpage(){
+      this.paymentwaiting = true;
       if(this.apiService.TEST){
       this.url = 'http://localhost:8000/payment/' + this.paymenttoken + '/'
       }
       else{
       this.url = 'https://www.e-fluent.com/payment/' + this.paymenttoken + '/'
       }
-      this.iab.create(this.url, '_blank');
+      //this.iab.create(this.url, '_blank');
+      this.browser = this.iab.create(this.url, '_blank');
     }
 
     poll(){
       let count=0;
-             this.pollingData=interval(1000)
+             this.pollingData=interval(5000)
              .pipe(
                startWith(0),
                switchMap(() => this.value+"s")
@@ -120,6 +128,9 @@ router;
                     this.polling = 1;
                      this.value=count;
                      console.log(this.value);
+                     if(count < 50 && this.paymentstatus == 1){
+                       console.log(count);
+                       console.log(this.paymentstatus);
                      this.apiService.getsessionpolling(this.paymenttoken).subscribe((data)=>{
                        console.log("calling sessionpolling api");
                        console.log(data);
@@ -127,19 +138,23 @@ router;
                        this.paymentstatus_info= this.pollingresult.status_info;
                        this.paymentstatus = this.pollingresult.status;
                      });
-                     if(this.paymentstatus != 1 ){
-
+                     }
+                     else if(this.paymentstatus != 1 ){
+                       this.paymentwaiting = false;
                          this.pollingData.unsubscribe();
                          this.polling = 3;
+                         this.browser.close()
                      }
-                     if(count > 200){
-
-
+                     else if(count >= 50){
                          this.pollingData.unsubscribe();
                          this.polling = 4;
+                         this.paymentwaiting = false;
+                         this.browser.close()
                      }
                      if(this.paymentstatus === 2){
+                       this.paymentwaiting = false;
                       this.router.navigate(['/account']);
+                      this.browser.close()
                      }
                  },
                  error=>{
@@ -148,6 +163,10 @@ router;
              );
     }
 
+
+reload(){
+  this.router.navigate(['/account']);
+}
 
 /*
 

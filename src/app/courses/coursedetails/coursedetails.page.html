@@ -1,28 +1,19 @@
 <ion-content>
-  <div class='backgroundimage'>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-      <ion-title>
-      </ion-title>
-    </ion-toolbar>
-
-<img class='wave'  src="/assets/images/background.svg"/>
-
-  </div>
 
 
-        <h2 class="cl_name">{{ClassroomName}}</h2>
-        <img class="cl_img" [src]="ClassroomImage">
+  <div id="account" routerLink="/account"><ion-icon id="account-icon" name="person" ></ion-icon></div>
+<div class="back" (click)="goBack()"><ion-icon id="icon_navback" name="arrow-back-outline"></ion-icon></div>
+<div class="title">{{ClassroomName}}</div>
 
-        <div class='desciption' [innerHTML]="Coursedetails1 | safe: 'html'"></div>
-        <div class='desciption' [innerHTML]="Coursedetails2 | safe: 'html'"></div>
-        <div class='desciption' [innerHTML]="Coursedetails3 | safe: 'html'"></div>
-        <div class='desciption' [innerHTML]="Coursedetails4 | safe: 'html'"></div>
+  <img class="course_img" [src]="ClassroomImage">
+
+        <div class='description' [innerHTML]="Coursedetails1 | safe: 'html'">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
+        <div class='description' [innerHTML]="Coursedetails2 | safe: 'html'">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
+        <div class='description' [innerHTML]="Coursedetails3 | safe: 'html'">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
+        <div class='description' [innerHTML]="Coursedetails4 | safe: 'html'">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
 
 
   <div class="buttonfields">
-<button  *ngIf="New === '1'" (click)="presentAlertConfirm(ClassroomId, ClassroomName)" class="button_dark" shape="round" >Signup</button>
+<ion-button *ngIf="New === '1'" shape="round" color="white" class="entercourse" (click)="presentAlertConfirm(ClassroomId, ClassroomName)">signup</ion-button>
   </div>
 </ion-content>

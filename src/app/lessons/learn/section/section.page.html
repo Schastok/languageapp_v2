@@ -5,8 +5,8 @@
 <ion-content>
 <div id="account" routerLink="/account"><ion-icon id="account-icon" name="person" ></ion-icon></div>
    <div class="back" (click)="goBack()"><ion-icon id="icon_navback" name="arrow-back-outline"></ion-icon></div>
-  <div class="spinnerdiv"><ion-spinner  id="spinner" *ngIf="!ready" name="bubbles"></ion-spinner></div>
-    <ion-slides *ngIf="didInit" [options]="slideConfig" #slides>
+  <div class="spinnerdiv"><ion-spinner  id="spinner" *ngIf="!ready && available" name="bubbles"></ion-spinner></div>
+    <ion-slides *ngIf="didInit && available" [options]="slideConfig" #slides>
            <ion-slide *ngFor="let item of sectiondetails" id="section{{item.position}}" >
 
              <div class="slide" id="htmlslide" *ngIf="item.type === 'text'" [innerHTML]="item.content | safe: 'html'">
@@ -28,7 +28,7 @@
 
     </ion-slides>
 
-
+<div class="premium_err" *ngIf="!available"> This Section of the lesson is premium content. Please go to your account and upgrade to premium</div>
 </ion-content>
 
 

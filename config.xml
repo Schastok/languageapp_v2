@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.efluent.germansampleapp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>German Course</name>
-    <description>Example German Course</description>
-    <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
+<widget android-versionCode="1" id="com.pieria.languageapp" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Pieria</name>
+    <description>Langaue Learning App</description>
+    <author email="Robin.Schastok@gmail.com" href="http://pieria-app.com/">Robin Schastok</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

@@ -230,28 +230,7 @@ ion-card-subtitle {
    }
 
 
-   @media screen and (min-width: 800px) {
-     svg{
-     width: 90%;
-     max-width:500px;
-     }
 
-     .training_tap{
-       position: absolute;
-       top: 350px;
-       left: 50%;
-       z-index: 1;
-     }
-
-     .training_swipe{
-       position: absolute;
-       top: 350px;
-       left: 50%;
-     }
-
-
-
-   }
 
 
 
@@ -296,14 +275,14 @@ ion-card-subtitle {
 .training_tap{
   position: absolute;
   top: 330px;
-  left: 46%;
+  left: 47vw;
   z-index: 1;
 }
 
 .training_swipe{
   position: absolute;
   top: 330px;
-  left: 47%;
+  left: 49vw;
 }
 
 //animation
@@ -363,4 +342,29 @@ ion-card-subtitle {
         color:  #008b8b;
         font-size: 22px;
         vertical-align: -webkit-baseline-middle;
+      }
+
+      @media screen and (min-width: 800px) {
+
+        .training_tap{
+
+       top: 375px;
+       left: 49vw;
+
+   }
+
+        svg{
+        width: 90%;
+        max-width:500px;
+        }
+
+
+        .training_swipe{
+          position: absolute;
+          top: 350px;
+          left: 49vw;
+        }
+
+
+
       }
