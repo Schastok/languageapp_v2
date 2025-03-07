@@ -260,9 +260,6 @@ doCheck() {
   });
 }
 
-goBack(){
-this.location.back();
-}
 
 
 }

@@ -4,7 +4,7 @@
 <ion-content>
  <ion-back-button></ion-back-button>
 <div id="account" routerLink="/account"><ion-icon id="account-icon" name="person" ></ion-icon></div>
- <div class="back" (click)="goBack()"><ion-icon id="icon_navback" name="arrow-back-outline"></ion-icon></div>
+ <div id="home" routerLink="/mycourses"><ion-icon id="home-icon" name="home" ></ion-icon></div>
 <div class="premium_err" *ngIf="!available"> This Section of the lesson is premium content. Please go to your account and upgrade to premium</div>
   <div *ngIf="available">
 

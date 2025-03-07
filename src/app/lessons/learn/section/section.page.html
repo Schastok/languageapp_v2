@@ -4,7 +4,7 @@
 
 <ion-content>
 <div id="account" routerLink="/account"><ion-icon id="account-icon" name="person" ></ion-icon></div>
-   <div class="back" (click)="goBack()"><ion-icon id="icon_navback" name="arrow-back-outline"></ion-icon></div>
+   <div id="home" routerLink="/mycourses"><ion-icon id="home-icon" name="home" ></ion-icon></div>
   <div class="spinnerdiv"><ion-spinner  id="spinner" *ngIf="!ready && available" name="bubbles"></ion-spinner></div>
     <ion-slides *ngIf="didInit && available" [options]="slideConfig" #slides>
            <ion-slide *ngFor="let item of sectiondetails" id="section{{item.position}}" >
@@ -15,7 +15,7 @@
                 <img [src]="'https://www.e-fluent.com'+item.path"/>
                </div>
                <div class="slide" *ngIf="item.type === 'audio'">
-                 <audio controls src="'https://www.e-fluent.com'+item.path" type='audio/mp3'></audio>
+                 <audio controls [src]="'https://www.e-fluent.com'+item.path" type='audio/mp3'></audio>
                 </div>
                 <div class="slide" *ngIf="item.type === 'video'" >
                   <h2 class="title">{{item.title}}</h2>

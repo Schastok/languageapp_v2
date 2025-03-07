@@ -651,3 +651,39 @@ text-decoration: none;
 a:hover {
 text-decoration: underline;
 }
+
+.container {
+    position: relative;
+    display: inline-block;
+}
+.text {
+    display: none;
+}
+input[type="radio"] {
+    display: none;
+}
+label {
+    cursor: pointer;
+    padding: 10px 20px;
+    background: #008B8B;
+    color: white;
+    border-radius: 5px;
+    margin: 5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+label img {
+    width: 20px;
+    height: 15px;
+}
+#english:checked ~ .text.english,
+#german:checked ~ .text.german {
+    display: block;
+}
+
+.switch{
+  width: 100%;
+  text-align: center;
+  padding-bottom: 15px;
+}
